@@ -37,10 +37,11 @@
     "dist/"
   ],
   "dependencies": {
+    "@modern-js/plugin-less": "^1.2.1",
     "@modern-js/runtime": "^1.0.0",
+    "axios": "^0.26.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "@modern-js/plugin-less": "^1.2.1"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@modern-js/app-tools": "^1.0.0",
