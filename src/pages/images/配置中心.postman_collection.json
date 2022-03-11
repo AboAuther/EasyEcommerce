@@ -1,0 +1,1482 @@
+{
+	"info": {
+		"_postman_id": "4f77d95c-462a-40bb-8807-2d4b081fb654",
+		"name": "配置中心",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "规则项",
+			"item": [
+				{
+					"name": "添加规则项配置_Single_Integer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"testRuleCode2\",\n    \"name\": \"测试规则模板2\",\n    \"description\": \"规则模板测试用例2\",\n    \"ruleType\":\"INTEGER_SINGLE_RULE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"item",
+								"config",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加规则项配置_String_Single",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"testRuleCode3\",\n    \"name\": \"测试规则项3\",\n    \"description\": \"规则项测试用例3\",\n    \"ruleType\":\"SINGLE_STRING_RULE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"item",
+								"config",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改规则项配置",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"shiftFullTimeMinimumAttendanceRule\",\n    \"name\": \"全职出勤下限班次规则\",\n    \"description\": \"全职出勤下限班次规则\",\n    \"ruleType\":\"INTEGER_WEEK_RULE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/update",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"item",
+								"config",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发布规则项配置",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"governanceNonProductionMaximumNumberOfShiftsRule\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/publish",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"item",
+								"config",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询规则项配置明细",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/detail?code=testRuleCode3",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"item",
+								"config",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "testRuleCode3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "规则模板",
+			"item": [
+				{
+					"name": "添加规则模板配置",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"testRuleTemplate3\",\n    \"name\":\"测试规则模板3\",\n    \"description\":\"测试规则模板是否正常\",\n    \"config\":[{\n        \"code\":\"testRuleCode1\",\n        \"type\":\"BOOLEAN_SINGLE_RULE\",\n        \"nullable\":false,\n        \"defaultValue\": {\n            \"value\":false\n        }\n    }, {\n        \"code\":\"testRuleCode2\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"defaultValue\": {\n            \"value\":1\n        }\n    },{\n        \"code\":\"testRuleCode3\",\n        \"type\":\"SINGLE_STRING_RULE\",\n        \"nullable\":false,\n        \"candidateValue\":[{\n            \"value\": \"one\"\n        }, {\n            \"value\": \"two\"\n        }],\n        \"defaultValue\": {\n            \"value\":\"one\"\n        }\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/config/insert",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"config",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改规则模板配置",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"laborStrategyRuleTemplate\",\n    \"name\":\"用工策略模板\",\n    \"description\":\"用工策略的规则模板\",\n    \"config\":[{\n        \"code\":\"smartScheduleRule\",\n        \"type\":\"BOOLEAN_SINGLE_RULE\",\n        \"nullable\":false,\n        \"defaultValue\": {\n            \"value\":false\n        }\n    }, {\n        \"code\":\"distributaryCrowdsourcingRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":15,\n        \"defaultValue\": {\n            \"value\":15\n        }\n    },{\n        \"code\":\"distributaryNonProductionRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":5,\n        \"defaultValue\": {\n            \"value\":5\n        }\n    },{\n        \"code\":\"shiftFullTimeTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":11,\n            \"rightValue\":12\n        }\n    },{\n        \"code\":\"shiftFullTimeWeeklyAttendanceRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":false,\n        \"minValue\":0,\n        \"maxValue\":7,\n        \"defaultValue\": {\n            \"value\":1\n        }\n    },{\n        \"code\":\"shiftFullTimeMinimumAttendanceRule\",\n        \"type\":\"INTEGER_WEEK_RULE\",\n        \"nullable\":true,\n        \"minValue\":0,\n        \"maxValue\":100\n    },{\n        \"code\":\"shiftStudentWorkTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":8,\n            \"rightValue\":8\n        }\n    },{\n        \"code\":\"shiftNonProductionSupportTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":2,\n            \"rightValue\":3\n        }\n    },{\n        \"code\":\"shiftCrowdsourcingSupportTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":4,\n            \"rightValue\":6\n        }\n    },{\n        \"code\":\"hybridWeaveMixedPickingAndPackingRule\",\n        \"type\":\"BOOLEAN_SINGLE_RULE\",\n        \"nullable\":false,\n        \"defaultValue\": {\n            \"value\":false\n        }\n    },{\n        \"code\":\"hybridWeaveFullTimeTaskScopeRule\",\n        \"type\":\"STRING_MULTI_RULE\",\n        \"nullable\":false,\n        \"candidateValue\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"],\n        \"defaultValue\": {\n            \"values\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"]\n        }\n    },{\n        \"code\":\"hybridWeaveNonProductionSupportTaskScopeRule\",\n        \"type\":\"STRING_MULTI_RULE\",\n        \"nullable\":false,\n        \"candidateValue\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"],\n        \"defaultValue\": {\n            \"values\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"]\n        }\n    },{\n        \"code\":\"hybridWeaveCrowdsourcingSupportTaskScopeRule\",\n        \"type\":\"STRING_MULTI_RULE\",\n        \"nullable\":false,\n        \"candidateValue\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"],\n        \"defaultValue\": {\n            \"values\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"]\n        }\n    },{\n        \"code\":\"governanceFullTimeMaximumNumberOfShiftsRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":1,\n        \"defaultValue\": {\n            \"value\":3\n        }\n    },{\n        \"code\":\"governanceCrowdsourcingMaximumNumberOfShiftsRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":1,\n        \"defaultValue\": {\n            \"value\":3\n        }\n    },{\n        \"code\":\"governanceNonProductionMaximumNumberOfShiftsRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":1,\n        \"defaultValue\": {\n            \"value\":3\n        }\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/config/update",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"config",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发布规则模板配置",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"laborStrategyRuleTemplate\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/config/publish",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"config",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询规则模板配置明细",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/config/detail?code=testRuleTemplate3",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"config",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "testRuleTemplate3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "规则模板实例",
+			"item": [
+				{
+					"name": "添加规则模板实例",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"testRuleTemplateInstance1\",\n    \"name\":\"测试规则模板实例1\",\n    \"description\":\"测试规则模板实例是否正常\",\n    \"ruleTemplateCode\":\"testRuleTemplate3\",\n    \"ruleItemValue\": {\n        \"testRuleCode1\": {\n            \"value\":true\n        }, \n        \"testRuleCode2\": {\n            \"value\":1\n        },\n         \"testRuleCode3\": {\n            \"value\":\"one\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/instance/insert",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"instance",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改规则模板实例",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"laborStrategyRuleTemplate_Default\",\n    \"name\":\"用工策略默认实例\",\n    \"description\":\"当门店没有配置策略时，走默认策略的兜底逻辑\",\n    \"ruleTemplateCode\":\"laborStrategyRuleTemplate\",\n    \"ruleItemValue\": {\n        \"smartScheduleRule\":{\n            \"value\" : false\n        },\n        \"shiftFullTimeTimeRangeRule\":{\n            \"leftValue\" : 11,\n            \"rightValue\" : 12\n        },\n        \"shiftFullTimeWeeklyAttendanceRule\":{\n            \"value\" : 1\n        },\n        \"shiftStudentWorkTimeRangeRule\":{\n            \"leftValue\" : 8,\n            \"rightValue\" : 8\n        },\n        \"shiftNonProductionSupportTimeRangeRule\":{\n            \"leftValue\" : 2,\n            \"rightValue\" : 3\n        },\n        \"shiftCrowdsourcingSupportTimeRangeRule\":{\n            \"leftValue\" : 4,\n            \"rightValue\" : 6\n        },\n        \"hybridWeaveMixedPickingAndPackingRule\":{\n            \"value\" : false\n        },\n        \"hybridWeaveFullTimeTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveNonProductionSupportTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveCrowdsourcingSupportTaskScopeRule\":{\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/instance/update",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"instance",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发布规则模板实例",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"laborStrategyRuleTemplate_Default\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/instance/publish",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"instance",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询规则模板实例",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "cookie",
+								"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/instance/detail?code=testRuleTemplateInstance1",
+							"protocol": "https",
+							"host": [
+								"pre-wdk-rt-cfg",
+								"hemaos",
+								"com"
+							],
+							"path": [
+								"rule",
+								"template",
+								"instance",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "testRuleTemplateInstance1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "实现",
+			"item": [
+				{
+					"name": "用工策略",
+					"item": [
+						{
+							"name": "规则项",
+							"item": [
+								{
+									"name": "添加规则项配置_smartScheduleRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"smartScheduleRule\",\n    \"name\": \"智能排班开关\",\n    \"description\": \"是否开启智能排班\",\n    \"ruleType\":\"BOOLEAN_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_distributaryCrowdsourcingRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"distributaryCrowdsourcingRule\",\n    \"name\": \"众包分流规则\",\n    \"description\": \"分流规则中众包的配置\",\n    \"ruleType\":\"INTEGER_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_distributaryNonProductionRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"distributaryNonProductionRule\",\n    \"name\": \"非生产分流规则\",\n    \"description\": \"分流规则中非生产的配置\",\n    \"ruleType\":\"INTEGER_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_shiftFullTimeTimeRangeRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"shiftFullTimeTimeRangeRule\",\n    \"name\": \"全职班次时长班次规则\",\n    \"description\": \"全职班次时长班次规则\",\n    \"ruleType\":\"INTEGER_RANGE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_shiftFullTimeWeeklyAttendanceRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"shiftFullTimeWeeklyAttendanceRule\",\n    \"name\": \"全职周出勤规则班次规则\",\n    \"description\": \"全职周出勤规则班次规则\",\n    \"ruleType\":\"INTEGER_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_shiftFullTimeMinimumAttendanceRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"shiftFullTimeMinimumAttendanceRule\",\n    \"name\": \"全职出勤下限班次规则\",\n    \"description\": \"全职出勤下限班次规则\",\n    \"ruleType\":\"INTEGER_WEEK_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_shiftStudentWorkTimeRangeRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"shiftStudentWorkTimeRangeRule\",\n    \"name\": \"学生工班次时长班次规则\",\n    \"description\": \"学生工班次时长班次规则\",\n    \"ruleType\":\"INTEGER_RANGE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_shiftNonProductionSupportTimeRangeRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"shiftNonProductionSupportTimeRangeRule\",\n    \"name\": \"非生产支援班次时长班次规则\",\n    \"description\": \"非生产支援班次时长班次规则\",\n    \"ruleType\":\"INTEGER_RANGE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_shiftCrowdsourcingSupportTimeRangeRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"shiftCrowdsourcingSupportTimeRangeRule\",\n    \"name\": \"众包支援班次时长班次规则\",\n    \"description\": \"众包支援班次时长班次规则\",\n    \"ruleType\":\"INTEGER_RANGE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_hybridWeaveMixedPickingAndPackingRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"hybridWeaveMixedPickingAndPackingRule\",\n    \"name\": \"拣货和打包混岗混编规则\",\n    \"description\": \"拣货和打包混岗混编规则\",\n    \"ruleType\":\"BOOLEAN_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_hybridWeaveFullTimeTaskScopeRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"hybridWeaveFullTimeTaskScopeRule\",\n    \"name\": \"全职任务范围混编规则\",\n    \"description\": \"全职任务范围混编规则\",\n    \"ruleType\":\"STRING_MULTI_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_hybridWeaveNonProductionSupportTaskScopeRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"hybridWeaveNonProductionSupportTaskScopeRule\",\n    \"name\": \"非生产支援任务范围混编规则\",\n    \"description\": \"非生产支援任务范围混编规则\",\n    \"ruleType\":\"STRING_MULTI_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_hybridWeaveCrowdsourcingSupportTaskScopeRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"hybridWeaveCrowdsourcingSupportTaskScopeRule\",\n    \"name\": \"众包支援任务范围混编规则\",\n    \"description\": \"众包支援任务范围混编规则\",\n    \"ruleType\":\"STRING_MULTI_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_governanceFullTimeMaximumNumberOfShiftsRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"governanceFullTimeMaximumNumberOfShiftsRule\",\n    \"name\": \"全职班次数量上限管控规则\",\n    \"description\": \"全职班次数量上限管控规则\",\n    \"ruleType\":\"INTEGER_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_governanceCrowdsourcingMaximumNumberOfShiftsRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"governanceCrowdsourcingMaximumNumberOfShiftsRule\",\n    \"name\": \"众包班次数量上限管控规则\",\n    \"description\": \"众包班次数量上限管控规则\",\n    \"ruleType\":\"INTEGER_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "添加规则项配置_governanceNonProductionMaximumNumberOfShiftsRule",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"governanceNonProductionMaximumNumberOfShiftsRule\",\n    \"name\": \"非生产班次数量上限管控规则\",\n    \"description\": \"非生产班次数量上限管控规则\",\n    \"ruleType\":\"INTEGER_SINGLE_RULE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/item/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"item",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "规则模板",
+							"item": [
+								{
+									"name": "添加规则模板配_laborStrategyRuleTemplate",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"laborStrategyRuleTemplate\",\n    \"name\":\"用工策略模板\",\n    \"description\":\"用工策略的规则模板\",\n    \"config\":[{\n        \"code\":\"smartScheduleRule\",\n        \"type\":\"BOOLEAN_SINGLE_RULE\",\n        \"nullable\":false,\n        \"defaultValue\": {\n            \"value\":false\n        }\n    }, {\n        \"code\":\"distributaryCrowdsourcingRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":15,\n        \"defaultValue\": {\n            \"value\":15\n        }\n    },{\n        \"code\":\"distributaryNonProductionRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":5,\n        \"defaultValue\": {\n            \"value\":5\n        }\n    },{\n        \"code\":\"shiftFullTimeTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":11,\n            \"rightValue\":12\n        }\n    },{\n        \"code\":\"shiftFullTimeWeeklyAttendanceRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":false,\n        \"minValue\":0,\n        \"maxValue\":7,\n        \"defaultValue\": {\n            \"value\":1\n        }\n    },{\n        \"code\":\"shiftFullTimeMinimumAttendanceRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":0,\n        \"maxValue\":100\n    },{\n        \"code\":\"shiftStudentWorkTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":8,\n            \"rightValue\":8\n        }\n    },{\n        \"code\":\"shiftNonProductionSupportTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":2,\n            \"rightValue\":3\n        }\n    },{\n        \"code\":\"shiftCrowdsourcingSupportTimeRangeRule\",\n        \"type\":\"INTEGER_RANGE_RULE\",\n        \"nullable\":false,\n        \"includeLeftValue\":true,\n        \"includeRightValue\":true,\n        \"defaultValue\": {\n            \"leftValue\":4,\n            \"rightValue\":6\n        }\n    },{\n        \"code\":\"hybridWeaveMixedPickingAndPackingRule\",\n        \"type\":\"BOOLEAN_SINGLE_RULE\",\n        \"nullable\":false,\n        \"defaultValue\": {\n            \"value\":false\n        }\n    },{\n        \"code\":\"hybridWeaveFullTimeTaskScopeRule\",\n        \"type\":\"STRING_MULTI_RULE\",\n        \"nullable\":false,\n        \"candidateValue\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"],\n        \"defaultValue\": {\n            \"values\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"]\n        }\n    },{\n        \"code\":\"hybridWeaveNonProductionSupportTaskScopeRule\",\n        \"type\":\"STRING_MULTI_RULE\",\n        \"nullable\":false,\n        \"candidateValue\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"],\n        \"defaultValue\": {\n            \"values\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"]\n        }\n    },{\n        \"code\":\"hybridWeaveCrowdsourcingSupportTaskScopeRule\",\n        \"type\":\"STRING_MULTI_RULE\",\n        \"nullable\":false,\n        \"candidateValue\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"],\n        \"defaultValue\": {\n            \"values\":[\"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\"]\n        }\n    },{\n        \"code\":\"governanceFullTimeMaximumNumberOfShiftsRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":1,\n        \"defaultValue\": {\n            \"value\":3\n        }\n    },{\n        \"code\":\"governanceCrowdsourcingMaximumNumberOfShiftsRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":1,\n        \"defaultValue\": {\n            \"value\":3\n        }\n    },{\n        \"code\":\"governanceNonProductionMaximumNumberOfShiftsRule\",\n        \"type\":\"INTEGER_SINGLE_RULE\",\n        \"nullable\":true,\n        \"minValue\":1,\n        \"defaultValue\": {\n            \"value\":3\n        }\n    }]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/config/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"template",
+												"config",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "规则实例",
+							"item": [
+								{
+									"name": "用工策略默认实例",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "cookie",
+												"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"code\":\"laborStrategyRuleTemplate_Default\",\n    \"name\":\"用工策略默认实例\",\n    \"description\":\"当门店没有配置策略时，走默认策略的兜底逻辑\",\n    \"ruleTemplateCode\":\"laborStrategyRuleTemplate\",\n    \"ruleItemValue\": {\n        \"smartScheduleRule\":{\n            \"value\" : false\n        },\n        \"shiftFullTimeTimeRangeRule\":{\n            \"leftValue\" : 11,\n            \"rightValue\" : 12\n        },\n        \"shiftFullTimeWeeklyAttendanceRule\":{\n            \"value\" : 1\n        },\n        \"shiftStudentWorkTimeRangeRule\":{\n            \"leftValue\" : 8,\n            \"rightValue\" : 8\n        },\n        \"shiftNonProductionSupportTimeRangeRule\":{\n            \"leftValue\" : 2,\n            \"rightValue\" : 3\n        },\n        \"shiftCrowdsourcingSupportTimeRangeRule\":{\n            \"leftValue\" : 4,\n            \"rightValue\" : 6\n        },\n        \"hybridWeaveMixedPickingAndPackingRule\":{\n            \"value\" : false\n        },\n        \"hybridWeaveFullTimeTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveNonProductionSupportTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveCrowdsourcingSupportTaskScopeRule\":{\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://pre-wdk-rt-cfg.hemaos.com/rule/template/instance/insert",
+											"protocol": "https",
+											"host": [
+												"pre-wdk-rt-cfg",
+												"hemaos",
+												"com"
+											],
+											"path": [
+												"rule",
+												"template",
+												"instance",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "添加用工策略_1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "cookie",
+										"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"大雷用工策略测试\",\n    \"description\":\"测试测试商家上用工策略\",\n    \"ruleConfig\": {\n        \"smartScheduleRule\":{\n            \"value\" : true\n        },\n        \"shiftFullTimeTimeRangeRule\":{\n            \"leftValue\" : 11,\n            \"rightValue\" : 12\n        },\n        \"shiftFullTimeWeeklyAttendanceRule\":{\n            \"value\" : 1\n        },\n        \"shiftStudentWorkTimeRangeRule\":{\n            \"leftValue\" : 8,\n            \"rightValue\" : 8\n        },\n        \"shiftNonProductionSupportTimeRangeRule\":{\n            \"leftValue\" : 2,\n            \"rightValue\" : 3\n        },\n        \"shiftCrowdsourcingSupportTimeRangeRule\":{\n            \"leftValue\" : 4,\n            \"rightValue\" : 6\n        },\n        \"hybridWeaveMixedPickingAndPackingRule\":{\n            \"value\" : false\n        },\n        \"hybridWeaveFullTimeTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveNonProductionSupportTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveCrowdsourcingSupportTaskScopeRule\":{\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        }\n    },\n    \"shops\":[{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop1\",\n        \"shopName\":\"测试门店1\"\n    },{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop2\",\n        \"shopName\":\"测试门店2\"\n    },{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop3\",\n        \"shopName\":\"测试门店3\"\n    }]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pre-wdk-rt-cfg.hemaos.com/labor/strategy/commit",
+									"protocol": "https",
+									"host": [
+										"pre-wdk-rt-cfg",
+										"hemaos",
+										"com"
+									],
+									"path": [
+										"labor",
+										"strategy",
+										"commit"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "添加用工策略_2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "cookie",
+										"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"大雷用工策略测试2\",\n    \"description\":\"测试测试商家上用工策略2\",\n    \"ruleConfig\": {\n        \"smartScheduleRule\":{\n            \"value\" : true\n        },\n        \"shiftFullTimeTimeRangeRule\":{\n            \"leftValue\" : 11,\n            \"rightValue\" : 12\n        },\n        \"shiftFullTimeWeeklyAttendanceRule\":{\n            \"value\" : 1\n        },\n        \"shiftStudentWorkTimeRangeRule\":{\n            \"leftValue\" : 8,\n            \"rightValue\" : 8\n        },\n        \"shiftNonProductionSupportTimeRangeRule\":{\n            \"leftValue\" : 2,\n            \"rightValue\" : 3\n        },\n        \"shiftCrowdsourcingSupportTimeRangeRule\":{\n            \"leftValue\" : 4,\n            \"rightValue\" : 6\n        },\n        \"hybridWeaveMixedPickingAndPackingRule\":{\n            \"value\" : false\n        },\n        \"hybridWeaveFullTimeTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveNonProductionSupportTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveCrowdsourcingSupportTaskScopeRule\":{\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        }\n    },\n    \"shops\":[{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop11\",\n        \"shopName\":\"测试门店11\"\n    },{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop21\",\n        \"shopName\":\"测试门店21\"\n    },{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop3\",\n        \"shopName\":\"测试门店3\"\n    }]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pre-wdk-rt-cfg.hemaos.com/labor/strategy/commit",
+									"protocol": "https",
+									"host": [
+										"pre-wdk-rt-cfg",
+										"hemaos",
+										"com"
+									],
+									"path": [
+										"labor",
+										"strategy",
+										"commit"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新用工策略_1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "cookie",
+										"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\":\"nTuXGcSv\",\n    \"name\":\"大雷用工策略测试\",\n    \"description\":\"测试测试商家上用工策略\",\n    \"ruleConfig\": {\n        \"smartScheduleRule\":{\n            \"value\" : true\n        },\n        \"shiftFullTimeTimeRangeRule\":{\n            \"leftValue\" : 11,\n            \"rightValue\" : 12\n        },\n        \"shiftFullTimeWeeklyAttendanceRule\":{\n            \"value\" : 1\n        },\n        \"shiftStudentWorkTimeRangeRule\":{\n            \"leftValue\" : 8,\n            \"rightValue\" : 8\n        },\n        \"shiftNonProductionSupportTimeRangeRule\":{\n            \"leftValue\" : 2,\n            \"rightValue\" : 3\n        },\n        \"shiftCrowdsourcingSupportTimeRangeRule\":{\n            \"leftValue\" : 4,\n            \"rightValue\" : 6\n        },\n        \"hybridWeaveMixedPickingAndPackingRule\":{\n            \"value\" : false\n        },\n        \"hybridWeaveFullTimeTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveNonProductionSupportTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveCrowdsourcingSupportTaskScopeRule\":{\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        }\n    },\n    \"shops\":[{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop1\",\n        \"shopName\":\"测试门店1\"\n    },{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop2\",\n        \"shopName\":\"测试门店2\"\n    },{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop3\",\n        \"shopName\":\"测试门店3\"\n    }]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pre-wdk-rt-cfg.hemaos.com/labor/strategy/commit",
+									"protocol": "https",
+									"host": [
+										"pre-wdk-rt-cfg",
+										"hemaos",
+										"com"
+									],
+									"path": [
+										"labor",
+										"strategy",
+										"commit"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新用工策略_2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "cookie",
+										"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\":\"GGQ3aUH9\",\n    \"name\":\"大雷用工策略测试2\",\n    \"description\":\"测试测试商家上用工策略2\",\n    \"ruleConfig\": {\n        \"smartScheduleRule\":{\n            \"value\" : true\n        },\n        \"shiftFullTimeTimeRangeRule\":{\n            \"leftValue\" : 11,\n            \"rightValue\" : 12\n        },\n        \"shiftFullTimeWeeklyAttendanceRule\":{\n            \"value\" : 1\n        },\n        \"shiftStudentWorkTimeRangeRule\":{\n            \"leftValue\" : 8,\n            \"rightValue\" : 8\n        },\n        \"shiftNonProductionSupportTimeRangeRule\":{\n            \"leftValue\" : 2,\n            \"rightValue\" : 3\n        },\n        \"shiftCrowdsourcingSupportTimeRangeRule\":{\n            \"leftValue\" : 4,\n            \"rightValue\" : 6\n        },\n        \"hybridWeaveMixedPickingAndPackingRule\":{\n            \"value\" : false\n        },\n        \"hybridWeaveFullTimeTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveNonProductionSupportTaskScopeRule\": {\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        },\n        \"hybridWeaveCrowdsourcingSupportTaskScopeRule\":{\n            \"values\" : [ \"pick_front\", \"pick_back\", \"pick_and_pack\", \"pack\" ]\n        }\n    },\n    \"shops\":[{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop11\",\n        \"shopName\":\"测试门店11\"\n    },{\n        \"subsidiaryCode\":\"testCode11\",\n        \"subsidiaryName\":\"测试子公司11\",\n        \"shopCode\":\"testShop21\",\n        \"shopName\":\"测试门店21\"\n    },{\n        \"subsidiaryCode\":\"testCode1\",\n        \"subsidiaryName\":\"测试子公司1\",\n        \"shopCode\":\"testShop4\",\n        \"shopName\":\"测试门店4\"\n    }]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pre-wdk-rt-cfg.hemaos.com/labor/strategy/commit",
+									"protocol": "https",
+									"host": [
+										"pre-wdk-rt-cfg",
+										"hemaos",
+										"com"
+									],
+									"path": [
+										"labor",
+										"strategy",
+										"commit"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "停用用工策略",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "cookie",
+										"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\":\"nTuXGcSv\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pre-wdk-rt-cfg.hemaos.com/labor/strategy/close",
+									"protocol": "https",
+									"host": [
+										"pre-wdk-rt-cfg",
+										"hemaos",
+										"com"
+									],
+									"path": [
+										"labor",
+										"strategy",
+										"close"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "启用用工策略",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "cookie",
+										"value": "cna=AJCiGBFxKAcCASp4SnbGO8XH; _ati=6205000476381; SSO_LANG_V2=ZH-CN; SSO_EMPID_HASH_V2=cd1fb04b2151cff81bef8e165de68de0; SSO_BU_HASH_V2=b085561fe355d00f4c05864ea9ae8c11; xlly_s=1; WDK_USER_OPEN_ACCOUNT_ID=2210638210024; WDKSESSID=TlHSzD7KTkiz5JU9uDFmb_3_UIk; X-XSRF-TOKEN=61321a2e-c277-4cab-a244-48e420e3f058; WDK_SECRET=2f08d2be5c9477c3f493a3be4490de06; WDK_UA=F74ECAB8901A3F317ACB456E4279217D; WDK_WAREHOUSE_CODE=999999; isg=BNfX8YLjesgGQ_-Sc2aCM1lxZk0hHKt-tnJp8ikEyqYNWPaaMe7JzqY-uvjGsIP2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\":\"nTuXGcSv\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pre-wdk-rt-cfg.hemaos.com/labor/strategy/open",
+									"protocol": "https",
+									"host": [
+										"pre-wdk-rt-cfg",
+										"hemaos",
+										"com"
+									],
+									"path": [
+										"labor",
+										"strategy",
+										"open"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
