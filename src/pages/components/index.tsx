@@ -1,9 +1,10 @@
 import { Layout, Button } from 'antd';
 import { Content, Footer } from 'antd/lib/layout/layout';
-import './index.css';
+import './index.less';
 import logoDark from '../images/logoDark.jpeg';
 import logoIcon from '../images/logoLight.jpg';
 import HomeContent from './homeContent';
+import CarouselContent from './CarouselContent';
 
 const buttonList: Array<string> = [
   '登陆',
@@ -35,9 +36,7 @@ const Container = () => {
       <div className="content">
         <HomeContent />
       </div>
-      {/* <Content> */}
 
-      {/* </Content> */}
       <Footer style={{ textAlign: 'center' }}>
         <img src={logoIcon} className="lightLogo"></img>©2022 Created by Arthur
       </Footer>

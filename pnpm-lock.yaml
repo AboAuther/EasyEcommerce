@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@ant-design/icons': ^4.7.0
   '@modern-js/app-tools': ^1.0.0
   '@modern-js/plugin-jarvis': ^1.0.0
   '@modern-js/plugin-less': ^1.2.1
@@ -13,19 +14,26 @@ specifiers:
   del-cli: ^4.0.1
   react: ^17.0.1
   react-dom: ^17.0.1
+  react-slick: ^0.28.1
+  slick-carousel: ^1.8.1
+  styled-components: ^5.3.3
   typescript: ^4
 
 dependencies:
+  '@ant-design/icons': 4.7.0_react-dom@17.0.2+react@17.0.2
   '@modern-js/plugin-less': 1.2.1
   '@modern-js/runtime': 1.2.3_react-dom@17.0.2+react@17.0.2
   antd: 4.18.9_react-dom@17.0.2+react@17.0.2
   axios: 0.26.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-slick: 0.28.1_react-dom@17.0.2+react@17.0.2
+  slick-carousel: 1.8.1
+  styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
 
 devDependencies:
-  '@modern-js/app-tools': 1.4.1_typescript@4.5.5
-  '@modern-js/plugin-jarvis': 1.2.1_typescript@4.5.5
+  '@modern-js/app-tools': 1.4.1_2c7663ad85fbad36ca71e93dec712ba7
+  '@modern-js/plugin-jarvis': 1.2.1_2c7663ad85fbad36ca71e93dec712ba7
   '@types/node': 14.18.12
   '@types/react': 17.0.39
   '@types/react-dom': 17.0.11
@@ -2464,7 +2472,7 @@ packages:
       make-dir: 3.1.0
     dev: false
 
-  /@modern-js-app/eslint-config/1.2.1_fcc05f93e3d83f3eb4dd91215c67c94c:
+  /@modern-js-app/eslint-config/1.2.1_8db9db0683f63b311ea1a2ed7958d262:
     resolution: {integrity: sha512-UGbtnNJOtbGhVtZfqK4wYkr/TJODsWUuYOerRgYbjbVTiFBLa8BMx0rCehfsY0NphRWQ57gLKNE1qvjEEQjm5g==}
     peerDependencies:
       '@babel/eslint-parser': ^7.15.0
@@ -2487,7 +2495,7 @@ packages:
     dependencies:
       '@babel/eslint-parser': 7.17.0_eslint@7.32.0
       '@babel/eslint-plugin': 7.16.5_515d8656fcd46b03c06d80c44514b8c3
-      '@modern-js/babel-preset-app': 1.2.3
+      '@modern-js/babel-preset-app': 1.2.3_styled-components@5.3.3
       '@typescript-eslint/eslint-plugin': 4.33.0_959502c0ea240e86d4d2ba8b8c0fee45
       '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.5
       eslint: 7.32.0
@@ -2570,7 +2578,7 @@ packages:
       redux: 4.1.2
     dev: false
 
-  /@modern-js/app-tools/1.4.1_typescript@4.5.5:
+  /@modern-js/app-tools/1.4.1_2c7663ad85fbad36ca71e93dec712ba7:
     resolution: {integrity: sha512-J0BaxblfhTub9bvSMclVBM3RDRcGT8XuOFEgbFwJLUulI2yNWPfvjR/HHVjeFH8gCRejPBUQ+LyACGPUpYFB1Q==}
     hasBin: true
     dependencies:
@@ -2582,10 +2590,10 @@ packages:
       '@modern-js/plugin-analyze': 1.3.2_@modern-js+core@1.4.2
       '@modern-js/plugin-fast-refresh': 1.2.1_5e03ca3422a0ba78100dbde3aaf012a9
       '@modern-js/plugin-i18n': 1.2.2
-      '@modern-js/server': 1.4.2_webpack@5.69.1
+      '@modern-js/server': 1.4.2_b0d47486f6ad6e2805ceadcc00b3a63b
       '@modern-js/types': 1.3.2
       '@modern-js/utils': 1.3.1
-      '@modern-js/webpack': 1.3.2_d639634712203f82324af66016d372c1
+      '@modern-js/webpack': 1.3.2_c2c059bfeca6776044a0b87841ed8569
       inquirer: 8.2.0
       webpack: 5.69.1
     transitivePeerDependencies:
@@ -2618,7 +2626,7 @@ packages:
       '@babel/runtime': 7.17.2
       '@types/babel__core': 7.1.18
 
-  /@modern-js/babel-preset-app/1.2.3:
+  /@modern-js/babel-preset-app/1.2.3_styled-components@5.3.3:
     resolution: {integrity: sha512-ai8R4fRDhTr6p8tr7JrjzIsaLNoU2AayJyW+MOPRtUH/Pdg0UfbIB+r9KOD2i+mZDns0SXkukMS8tEve72O/yg==}
     dependencies:
       '@babel/core': 7.16.7
@@ -2628,50 +2636,13 @@ packages:
       '@babel/runtime': 7.17.2
       '@babel/types': 7.17.0
       '@modern-js/babel-chain': 1.2.1
-      '@modern-js/babel-preset-base': 1.2.2_@babel+core@7.16.7
+      '@modern-js/babel-preset-base': 1.2.2_f47cc2c968b96db74e0c0e5f740a9047
       '@modern-js/utils': 1.3.1
       core-js: 3.21.1
       lodash.get: 4.4.2
       regenerator-runtime: 0.13.9
       semver: 7.3.5
     transitivePeerDependencies:
-      - styled-components
-      - supports-color
-    dev: true
-
-  /@modern-js/babel-preset-base/1.2.2_@babel+core@7.16.7:
-    resolution: {integrity: sha512-sOSIuTKSdEwUCXx06ju7U49eTjNEeWwSs+sqmn/kbSg23g+8tmg7TMaFeXZaVuK73lE/gKYCZ4w8aCUut3AFmA==}
-    dependencies:
-      '@babel/plugin-proposal-class-properties': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-decorators': 7.17.2_@babel+core@7.16.7
-      '@babel/plugin-proposal-export-default-from': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-export-namespace-from': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-function-bind': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-nullish-coalescing-operator': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-numeric-separator': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-object-rest-spread': 7.17.3_@babel+core@7.16.7
-      '@babel/plugin-proposal-optional-chaining': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-partial-application': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-pipeline-operator': 7.17.6_@babel+core@7.16.7
-      '@babel/plugin-proposal-private-methods': 7.16.11_@babel+core@7.16.7
-      '@babel/plugin-proposal-private-property-in-object': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-transform-runtime': 7.17.0_@babel+core@7.16.7
-      '@babel/plugin-transform-typescript': 7.16.8_@babel+core@7.16.7
-      '@babel/preset-env': 7.16.11_@babel+core@7.16.7
-      '@babel/preset-react': 7.16.7_@babel+core@7.16.7
-      '@babel/preset-typescript': 7.16.7_@babel+core@7.16.7
-      '@babel/runtime': 7.17.2
-      '@modern-js/babel-chain': 1.2.1
-      '@modern-js/utils': 1.3.1
-      babel-plugin-dynamic-import-node: 2.3.3
-      babel-plugin-import: 1.13.0
-      babel-plugin-lodash: 3.3.4
-      babel-plugin-macros: 2.8.0
-      babel-plugin-styled-components: 1.13.3
-      babel-plugin-transform-modern-regexp: 0.0.6
-      babel-plugin-transform-react-remove-prop-types: 0.4.24
-    transitivePeerDependencies:
-      - '@babel/core'
       - styled-components
       - supports-color
     dev: true
@@ -2711,24 +2682,6 @@ packages:
       - '@babel/core'
       - styled-components
       - supports-color
-    dev: false
-
-  /@modern-js/babel-preset-lib/1.2.1_@babel+core@7.16.7:
-    resolution: {integrity: sha512-h4/asqzgC86Ypmpjl+lnr6gzUvABGLTQcGaNVAh94AptJq+LAhZ64CGWy094lqoxGwCBQY0wUUNRrGGVDzfRvg==}
-    dependencies:
-      '@babel/runtime': 7.17.2
-      '@modern-js/babel-chain': 1.2.1
-      '@modern-js/babel-preset-base': 1.2.2_@babel+core@7.16.7
-      '@modern-js/utils': 1.3.1
-      babel-plugin-module-resolver: 4.1.0
-      babel-plugin-transform-define: 2.0.1
-      babel-plugin-transform-inline-environment-variables: 0.4.3
-      tsconfig-paths: 3.12.0
-    transitivePeerDependencies:
-      - '@babel/core'
-      - styled-components
-      - supports-color
-    dev: true
 
   /@modern-js/babel-preset-lib/1.2.1_f47cc2c968b96db74e0c0e5f740a9047:
     resolution: {integrity: sha512-h4/asqzgC86Ypmpjl+lnr6gzUvABGLTQcGaNVAh94AptJq+LAhZ64CGWy094lqoxGwCBQY0wUUNRrGGVDzfRvg==}
@@ -2745,21 +2698,6 @@ packages:
       - '@babel/core'
       - styled-components
       - supports-color
-    dev: false
-
-  /@modern-js/bff-runtime/1.2.1:
-    resolution: {integrity: sha512-LGGPOdWNh4QDojD5cQPhfNEnaeBKrOosII3cgzKBKDvPq0TYis+1PStieeh0WLZPIBFSYbXM7PQuGfelhn4V4w==}
-    dependencies:
-      '@babel/runtime': 7.17.2
-      '@modern-js/server-utils': 1.2.1
-      farrow-api: 1.11.1
-      farrow-http: 1.11.4
-      farrow-pipeline: 1.11.4
-      farrow-schema: 1.11.1
-    transitivePeerDependencies:
-      - styled-components
-      - supports-color
-    dev: true
 
   /@modern-js/bff-runtime/1.2.1_styled-components@5.3.3:
     resolution: {integrity: sha512-LGGPOdWNh4QDojD5cQPhfNEnaeBKrOosII3cgzKBKDvPq0TYis+1PStieeh0WLZPIBFSYbXM7PQuGfelhn4V4w==}
@@ -2773,13 +2711,12 @@ packages:
     transitivePeerDependencies:
       - styled-components
       - supports-color
-    dev: false
 
-  /@modern-js/bff-utils/1.2.2:
+  /@modern-js/bff-utils/1.2.2_styled-components@5.3.3:
     resolution: {integrity: sha512-2bGgBmGwNaOWwgODhTkyBfZdtIc/QbhY61Dh12U1y+A0N2XcccpXTdsyiOYJiddnhKeHWs27csVNbHWoyVmdcw==}
     dependencies:
       '@babel/runtime': 7.17.2
-      '@modern-js/bff-runtime': 1.2.1
+      '@modern-js/bff-runtime': 1.2.1_styled-components@5.3.3
       '@modern-js/plugin': 1.2.1
       '@modern-js/utils': 1.3.1
       es-module-lexer: 0.4.1
@@ -2938,7 +2875,7 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /@modern-js/eslint-config/1.2.0_fcc05f93e3d83f3eb4dd91215c67c94c:
+  /@modern-js/eslint-config/1.2.0_8db9db0683f63b311ea1a2ed7958d262:
     resolution: {integrity: sha512-MHWtB6usyNReYa0fPB1je4oU8Fs6s1fUI+ioniigUitCNRLBXcnfiqYxqYOnM/B7dTLmIND1f7Vm8s1DGR2HNw==}
     peerDependencies:
       '@babel/eslint-parser': ^7.13.14
@@ -2961,7 +2898,7 @@ packages:
     dependencies:
       '@babel/eslint-parser': 7.17.0_eslint@7.32.0
       '@babel/eslint-plugin': 7.16.5_515d8656fcd46b03c06d80c44514b8c3
-      '@modern-js-app/eslint-config': 1.2.1_fcc05f93e3d83f3eb4dd91215c67c94c
+      '@modern-js-app/eslint-config': 1.2.1_8db9db0683f63b311ea1a2ed7958d262
       '@typescript-eslint/eslint-plugin': 4.33.0_959502c0ea240e86d4d2ba8b8c0fee45
       '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.5
       eslint: 7.32.0
@@ -3114,7 +3051,7 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /@modern-js/plugin-jarvis/1.2.1_typescript@4.5.5:
+  /@modern-js/plugin-jarvis/1.2.1_2c7663ad85fbad36ca71e93dec712ba7:
     resolution: {integrity: sha512-FJaoQPL6eeM4YXhLTQz/pJxlkz/W4yCdQ4MTYAunjmHnzNI+JcZ5S6H9CBTNnExcowOTsGDfw/puRxBwRYLfIw==}
     peerDependencies:
       '@modern-js/core': ^1.3.2
@@ -3122,8 +3059,8 @@ packages:
       '@babel/eslint-parser': 7.17.0_eslint@7.32.0
       '@babel/eslint-plugin': 7.16.5_515d8656fcd46b03c06d80c44514b8c3
       '@babel/runtime': 7.17.2
-      '@modern-js-app/eslint-config': 1.2.1_fcc05f93e3d83f3eb4dd91215c67c94c
-      '@modern-js/eslint-config': 1.2.0_fcc05f93e3d83f3eb4dd91215c67c94c
+      '@modern-js-app/eslint-config': 1.2.1_8db9db0683f63b311ea1a2ed7958d262
+      '@modern-js/eslint-config': 1.2.0_8db9db0683f63b311ea1a2ed7958d262
       '@modern-js/tsconfig': 1.2.0
       '@modern-js/utils': 1.3.1
       '@types/minimist': 1.2.2
@@ -3307,27 +3244,6 @@ packages:
       '@modern-js/plugin': 1.2.1
     dev: true
 
-  /@modern-js/server-utils/1.2.1:
-    resolution: {integrity: sha512-gbkhnErTeB8hoQYditqx6BQvGUb+06uNXua+LZ8M/SJxDdRdY3Ipwr2quxUPUF+nsM2tabQWKtEaDSZ4Nc+WDg==}
-    dependencies:
-      '@babel/compat-data': 7.17.0
-      '@babel/core': 7.16.7
-      '@babel/plugin-proposal-class-properties': 7.16.7_@babel+core@7.16.7
-      '@babel/plugin-proposal-decorators': 7.17.2_@babel+core@7.16.7
-      '@babel/preset-env': 7.16.11_@babel+core@7.16.7
-      '@babel/preset-typescript': 7.16.7_@babel+core@7.16.7
-      '@babel/runtime': 7.17.2
-      '@modern-js/babel-preset-lib': 1.2.1_@babel+core@7.16.7
-      '@modern-js/plugin': 1.2.1
-      '@modern-js/utils': 1.3.1
-      babel-plugin-module-resolver: 4.1.0
-      babel-plugin-transform-typescript-metadata: 0.3.2
-      json5: 2.2.0
-    transitivePeerDependencies:
-      - styled-components
-      - supports-color
-    dev: true
-
   /@modern-js/server-utils/1.2.1_styled-components@5.3.3:
     resolution: {integrity: sha512-gbkhnErTeB8hoQYditqx6BQvGUb+06uNXua+LZ8M/SJxDdRdY3Ipwr2quxUPUF+nsM2tabQWKtEaDSZ4Nc+WDg==}
     dependencies:
@@ -3347,9 +3263,8 @@ packages:
     transitivePeerDependencies:
       - styled-components
       - supports-color
-    dev: false
 
-  /@modern-js/server/1.4.2_webpack@5.69.1:
+  /@modern-js/server/1.4.2_b0d47486f6ad6e2805ceadcc00b3a63b:
     resolution: {integrity: sha512-RfNrXsKx99q07CKnglWjymh9oi5AgjrDinnNBwfcoAB+9z2ap6WItDsRxYOKjQGgxJjZ4EZEm57r6JEo83lYpw==}
     peerDependencies:
       webpack: ^5.54.0
@@ -3360,11 +3275,11 @@ packages:
       '@babel/preset-typescript': 7.16.7_@babel+core@7.16.7
       '@babel/register': 7.17.0_@babel+core@7.16.7
       '@babel/runtime': 7.17.2
-      '@modern-js/bff-utils': 1.2.2
+      '@modern-js/bff-utils': 1.2.2_styled-components@5.3.3
       '@modern-js/core': 1.4.2
       '@modern-js/hmr-client': 1.2.1
       '@modern-js/server-core': 1.2.2
-      '@modern-js/server-utils': 1.2.1
+      '@modern-js/server-utils': 1.2.1_styled-components@5.3.3
       '@modern-js/utils': 1.3.1
       axios: 0.24.0
       babel-plugin-module-resolver: 4.1.0
@@ -3438,14 +3353,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@modern-js/webpack/1.3.2_d639634712203f82324af66016d372c1:
+  /@modern-js/webpack/1.3.2_c2c059bfeca6776044a0b87841ed8569:
     resolution: {integrity: sha512-ZnoRQbHM8xTgQB0WXkHDOCQ2lLjw4NwN6CoQrOKfl9XszK2vDNxk0zfMfhfQtuZCyUNcUDkxEjGTKvNr/jqh7w==}
     peerDependencies:
       '@modern-js/core': ^1.4.2
     dependencies:
       '@babel/runtime': 7.17.2
       '@modern-js/babel-chain': 1.2.1
-      '@modern-js/babel-preset-app': 1.2.3
+      '@modern-js/babel-preset-app': 1.2.3_styled-components@5.3.3
       '@modern-js/core': 1.4.2
       '@modern-js/css-config': 1.2.2
       '@modern-js/utils': 1.3.1
@@ -4629,17 +4544,6 @@ packages:
       - supports-color
     dev: true
 
-  /babel-plugin-styled-components/1.13.3:
-    resolution: {integrity: sha512-meGStRGv+VuKA/q0/jXxrPNWEm4LPfYIqxooDTdmh8kFsP/Ph7jJG5rUPwUPX3QHUvggwdbgdGpo88P/rRYsVw==}
-    peerDependencies:
-      styled-components: '>= 2'
-    dependencies:
-      '@babel/helper-annotate-as-pure': 7.16.7
-      '@babel/helper-module-imports': 7.16.7
-      babel-plugin-syntax-jsx: 6.18.0
-      lodash: 4.17.21
-    dev: true
-
   /babel-plugin-styled-components/1.13.3_styled-components@5.3.3:
     resolution: {integrity: sha512-meGStRGv+VuKA/q0/jXxrPNWEm4LPfYIqxooDTdmh8kFsP/Ph7jJG5rUPwUPX3QHUvggwdbgdGpo88P/rRYsVw==}
     peerDependencies:
@@ -4650,7 +4554,6 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
-    dev: false
 
   /babel-plugin-styled-components/2.0.6_styled-components@5.3.3:
     resolution: {integrity: sha512-Sk+7o/oa2HfHv3Eh8sxoz75/fFvEdHsXV4grdeHufX0nauCmymlnN0rGhIvfpMQSJMvGutJ85gvCGea4iqmDpg==}
@@ -6158,6 +6061,10 @@ packages:
       graceful-fs: 4.2.9
       tapable: 2.2.1
     dev: true
+
+  /enquire.js/2.1.6:
+    resolution: {integrity: sha1-PoeAybi4NQhMP2DhZtvDwqPImBQ=}
+    dev: false
 
   /enquirer/2.3.6:
     resolution: {integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==}
@@ -10403,6 +10310,21 @@ packages:
       react: 17.0.2
     dev: false
 
+  /react-slick/0.28.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-JwRQXoWGJRbUTE7eZI1rGIHaXX/4YuwX6gn7ulfvUZ4vFDVQAA25HcsHSYaUiRCduTr6rskyIuyPMpuG6bbluw==}
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0
+      react-dom: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0
+    dependencies:
+      classnames: 2.3.1
+      enquire.js: 2.1.6
+      json2mq: 0.2.0
+      lodash.debounce: 4.0.8
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      resize-observer-polyfill: 1.5.1
+    dev: false
+
   /react/17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
@@ -10988,6 +10910,12 @@ packages:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
     dev: true
+
+  /slick-carousel/1.8.1:
+    resolution: {integrity: sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==}
+    peerDependencies:
+      jquery: '>=1.8.0'
+    dev: false
 
   /source-list-map/2.0.1:
     resolution: {integrity: sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==}

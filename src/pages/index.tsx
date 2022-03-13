@@ -1,4 +1,4 @@
-import './index.css';
+import './index.less';
 import Container from './components';
 import logo from './images/logoIcon.jpeg';
 
