@@ -1,5 +1,5 @@
 import './index.less';
-import Container from './components';
+import Container from './home/components';
 import logo from './images/logoIcon.jpeg';
 
 const Index = () => (

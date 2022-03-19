@@ -22,6 +22,11 @@ const Container = () => {
           <img className="darkLogo" src={logoDark}></img>
         </span>
         <span className="buttonPos">
+          {/* <Button type="text">登陆</Button>
+          <Button type="text">注册</Button>
+          <Button type="text">我的订单</Button>
+          <Button type="text">我的收藏</Button>
+          <Button type="text">个人中心</Button> */}
           {new Array(buttonList.length).fill(0).map((_, index) => (
             <Button
               key={index}
