@@ -49,13 +49,17 @@ const login = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button">
-              Log in
-            </Button>
-            Or <a href="">新用户注册</a>
+            <div className="buttonGroup">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button">
+                Log in
+              </Button>
+              <a href="" className=" register">
+                新用户注册
+              </a>
+            </div>
           </Form.Item>
         </Form>
       </LoginPage>
