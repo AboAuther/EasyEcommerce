@@ -2,7 +2,7 @@ import './index.less';
 import { Row, Card, Typography } from 'antd';
 // import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import banana from '../images/banana.webp';
+import banana from './images/banana.webp';
 import { productsList } from './mock';
 
 const HotThisWeek = () => {

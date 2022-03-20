@@ -1,10 +1,10 @@
 import { Carousel } from 'antd';
 import './index.less';
 import styled from 'styled-components';
-import yumi from '../images/yumi.webp';
-import apple from '../images/apple.webp';
-import banana from '../images/banana.webp';
-import orange from '../images/orange.webp';
+import banana from './images/banana.webp';
+import orange from './images/orange.webp';
+import apple from './images/apple.webp';
+import yumi from './images/yumi.webp';
 
 const ContentCarousel = styled(Carousel)`
   margin-top: 35px;

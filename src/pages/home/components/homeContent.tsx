@@ -2,7 +2,7 @@ import { Tabs, Menu, Button, Input, Space } from 'antd';
 import Layout, { Content, Header } from 'antd/lib/layout/layout';
 import Search from 'antd/lib/transfer/search';
 import styled from 'styled-components';
-import ShoppingCard from '../images/shoppingCart.png';
+import ShoppingCard from './images/shoppingCart.png';
 import HotThisWeek from './hotThisWeek';
 import CarouselContent from './CarouselContent';
 

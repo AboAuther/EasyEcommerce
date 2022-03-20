@@ -1,20 +1,15 @@
 import { Layout, Button } from 'antd';
 import { Content, Footer } from 'antd/lib/layout/layout';
 import './index.less';
-import logoDark from '../images/logoDark.jpeg';
-import logoIcon from '../images/logoLight.jpg';
+import { NavLink } from '@modern-js/runtime/router';
+import logoDark from './images/logoDark.jpeg';
+import logoIcon from './images/logoLight.jpg';
 import HomeContent from './homeContent';
-import CarouselContent from './CarouselContent';
 
-const buttonList: Array<string> = [
-  '登陆',
-  '注册',
-  '我的订单',
-  '我的收藏',
-  '个人中心',
-];
 const Container = () => {
   const { Header } = Layout;
+
+  const handleClickLogin = () => <NavLink to="/login" />;
   return (
     <Layout>
       <Header>
@@ -22,20 +17,25 @@ const Container = () => {
           <img className="darkLogo" src={logoDark}></img>
         </span>
         <span className="buttonPos">
-          {/* <Button type="text">登陆</Button>
-          <Button type="text">注册</Button>
-          <Button type="text">我的订单</Button>
-          <Button type="text">我的收藏</Button>
-          <Button type="text">个人中心</Button> */}
-          {new Array(buttonList.length).fill(0).map((_, index) => (
-            <Button
-              key={index}
-              type="text"
-              className="headerButton"
-              ghost={true}>
-              {buttonList[index]}
-            </Button>
-          ))}
+          <Button
+            type="text"
+            ghost={true}
+            className="headerButton"
+            onClick={() => handleClickLogin()}>
+            登陆
+          </Button>
+          <Button type="text" className="headerButton">
+            注册
+          </Button>
+          <Button type="text" className="headerButton">
+            我的订单
+          </Button>
+          <Button type="text" className="headerButton">
+            我的收藏
+          </Button>
+          <Button type="text" className="headerButton">
+            个人中心
+          </Button>
         </span>
       </Header>
       <div className="content">
