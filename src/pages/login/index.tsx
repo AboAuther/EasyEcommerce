@@ -2,7 +2,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './index.less';
 import styled from 'styled-components';
-import bg from '../images/loginBack.webp';
+import bg from '../images/testBg.jpg';
 
 const LoginPage = styled.div`
   /* height: 100%; */
@@ -19,7 +19,8 @@ const login = () => {
       style={{
         backgroundImage: `url(${bg})`,
         height: '100vh',
-        opacity: '0.89',
+        opacity: '2',
+        backgroundSize: 'cover',
       }}>
       <LoginPage>
         <Form
@@ -56,7 +57,7 @@ const login = () => {
                 className="login-form-button">
                 Log in
               </Button>
-              <a href="" className=" register">
+              <a href="/register" className=" register">
                 新用户注册
               </a>
             </div>
