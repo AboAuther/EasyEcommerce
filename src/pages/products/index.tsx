@@ -4,7 +4,8 @@ import { productsList, FileList } from '../home/components/mock';
 import './index.less';
 import HeardSearch from '../home/components/heardSearch';
 import banana from '../images/banana.webp';
-import { NavLink } from '@modern-js/runtime/router';
+import { Link, NavLink } from '@modern-js/runtime/router';
+import ProductsDetails from '../productsDetails';
 
 // interface Filter {
 
@@ -64,11 +65,9 @@ const product = () => {
                     key={item.id}
                     bordered={false}
                     cover={
-                      <img
-                        alt=""
-                        src={banana}
-                        onClick={() => console.log('click')}
-                      />
+                      <Link to={`/products/${item.id}`}>
+                        <img alt="" src={banana} style={{ width: '100%' }} />
+                      </Link>
                     }
                   />
                   <Meta
@@ -79,9 +78,9 @@ const product = () => {
                       </Title>
                     }
                     description={
-                      <NavLink to="/" title={item.description}>
+                      <Link to={`/products/${item.id}`}>
                         {item.description}
-                      </NavLink>
+                      </Link>
                     }
                   />
                 </Col>

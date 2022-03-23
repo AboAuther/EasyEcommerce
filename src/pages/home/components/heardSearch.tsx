@@ -1,13 +1,13 @@
 import { Button, Menu, Input, Layout } from 'antd';
 import { NavLink } from '@modern-js/runtime/router';
+import styled from '@modern-js/runtime/styled';
 import logoDark from './images/logoDark.jpeg';
 import './index.less';
-import styled from 'styled-components';
 import ShoppingCard from './images/shoppingCart.png';
 
 const handleClickLogin = () => <NavLink to="/login" />;
 const search = (value: any) => {
-  console.log(value);
+  console.info(value);
 };
 const ShoppingCart = styled.img`
   width: 23px;
