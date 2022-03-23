@@ -59,8 +59,6 @@ const HeardSearch = (props: { currentIndex: string }) => {
               <Menu
                 theme="light"
                 mode="horizontal"
-                // defaultSelectedKeys={['1']}
-                // selectedKeys={['3']}
                 defaultSelectedKeys={[`${currentIndex}`]}
                 style={{ padding: '0 0 0 12%' }}>
                 <TitleMenu key="1">

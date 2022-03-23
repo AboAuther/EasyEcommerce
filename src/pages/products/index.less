@@ -1,16 +1,16 @@
 // @import '~@com/index.less';
 
 .dm_Products {
-    // height: 100vh;
-    // padding-bottom: 30px;
-    // background: #f0f2f5;
-    .home_back {
-    font-size: 14px;
-    color: #94a2b7;
-    margin: 8px 0 8px 30px;
-    }
+    background: #f0f2f5;
+
     .common_width {
       background-color: #fff;
+      margin-top: 30px;
+    box-shadow: 4px 0px 2px 0px #c2cad6;
+      .page-all {
+      margin: 0 180px;
+    }
+
     }
     .filter_title {
         width: 100%;
@@ -26,6 +26,7 @@
             padding-left: 20px;
             font-size: 12px;
             align-self: center;
+            color: #a4b0c2;
         }
     }
     .filter_current {
@@ -44,7 +45,7 @@
         }
     }
     .filter_condition {
-        padding: 0 10px;
+            padding: 0 10px;
         >.ant-row {
             border-bottom: 1px dashed #eee;
             padding: 6px 0;
@@ -59,6 +60,7 @@
                     line-height: 1.6rem;
                     &:hover {
                         cursor: pointer;
+                         color: #72acd4;
                         // color: @font-color-blue;
                     }
                 }
@@ -68,13 +70,14 @@
     .ant-row.all_products {
         width: 100%;
         min-height: 712px;
+        margin-top: 15px;
         .ant-col-6 {
             width: calc(100% / 5);
-            padding: 1%;
-            border: 1px solid #fff;
+            padding: 2%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
             &:hover {
                 box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-                border-color: rgba(0, 0, 0, 0.1);
+                // border-color: rgba(0, 0, 0, 0.1);
             }
             .ant-card {
                 .ant-card-cover {
