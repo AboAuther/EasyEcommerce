@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import './index.less';
 import styled from 'styled-components';
-import bg from '../images/loginBack.webp';
+import bg from '../images/testBg.jpg';
 
 const LoginPage = styled.div`
   /* height: 100%; */
@@ -26,7 +26,8 @@ const login = () => {
       style={{
         backgroundImage: `url(${bg})`,
         height: '100vh',
-        opacity: '0.89',
+        opacity: '2',
+        backgroundSize: 'cover',
       }}>
       <LoginPage>
         <Form

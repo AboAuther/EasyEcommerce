@@ -123,3 +123,46 @@ export const carouselList = [
     bannerPic: 1001,
   },
 ];
+
+export const FileList = {
+  classify: [
+    {
+      label: '蔬菜豆制品',
+      value: '0',
+    },
+    {
+      label: '肉禽蛋奶',
+      value: '1',
+    },
+    {
+      label: '海鲜水产',
+      value: '2',
+    },
+    {
+      label: '水果鲜花',
+      value: '3',
+    },
+    {
+      label: '冷冻食品',
+      value: '4',
+    },
+  ],
+  price: [
+    {
+      label: '0-30',
+      value: 0,
+    },
+    {
+      label: '30-60',
+      value: 1,
+    },
+    {
+      label: '60-90',
+      value: 2,
+    },
+    {
+      label: '100+',
+      value: 3,
+    },
+  ],
+};
