@@ -40,15 +40,15 @@ const CommoditySpecification = (props: { id: string }) => {
           <Title
             level={4}
             title={
-              basicInfo.description ? basicInfo.description : '敬请期待~~~'
+              basicInfo !== undefined ? basicInfo.description : '敬请期待~~~'
             }>
-            {basicInfo.description ? basicInfo.description : '敬请期待~~~'}
+            {basicInfo !== undefined ? basicInfo.description : '敬请期待~~~'}
           </Title>
           <div className="price">
             售价：
             <Title level={3}>
               <span className="unit">￥</span>
-              {basicInfo.price ? Number(basicInfo.price).toFixed(2) : 0}
+              {basicInfo !== undefined ? Number(basicInfo.price).toFixed(2) : 0}
             </Title>
           </div>
           <Fragment>

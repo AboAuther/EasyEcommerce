@@ -10,7 +10,7 @@ const ProductsDetails = ({
   },
 }: RouteComponentProps<{ id: string }>) => (
   <div className="dm_Products">
-    <HeardSearch currentIndex={'2'} />
+    <HeardSearch currentIndex={'2'} isDisplay={false} />
     <div className="common-with">
       <div className="page-all">
         <CommoditySpecification id={id} />

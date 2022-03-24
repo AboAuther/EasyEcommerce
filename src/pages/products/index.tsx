@@ -25,7 +25,7 @@ const product = () => {
   }, []);
   return (
     <div className="dm_Products">
-      <HeardSearch currentIndex="2" />
+      <HeardSearch currentIndex="2" isDisplay={false} />
 
       <div className="common_width">
         <div className="page-all">

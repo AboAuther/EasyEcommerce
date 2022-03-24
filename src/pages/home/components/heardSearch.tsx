@@ -18,10 +18,10 @@ const TitleMenu = styled(Menu.Item)`
   margin-right: 30px;
 `;
 
-const HeardSearch = (props: { currentIndex: string }) => {
+const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
   const { Search } = Input;
   const { Header } = Layout;
-  const { currentIndex } = props;
+  const { currentIndex, isDisplay } = props;
 
   return (
     <>
@@ -38,10 +38,10 @@ const HeardSearch = (props: { currentIndex: string }) => {
             onClick={() => handleClickLogin()}>
             登陆
           </Button>
-          <Button type="text" className="headerButton">
+          <Button type="text" className="headerButton" href="/register">
             注册
           </Button>
-          <Button type="text" className="headerButton">
+          <Button type="text" className="headerButton" href="/orders">
             我的订单
           </Button>
           <Button type="text" className="headerButton">
@@ -60,7 +60,10 @@ const HeardSearch = (props: { currentIndex: string }) => {
                 theme="light"
                 mode="horizontal"
                 defaultSelectedKeys={[`${currentIndex}`]}
-                style={{ padding: '0 0 0 12%' }}>
+                style={{
+                  padding: '0 0 0 12%',
+                  display: isDisplay ? 'none' : '',
+                }}>
                 <TitleMenu key="1">
                   <NavLink to="/" />
                   首页

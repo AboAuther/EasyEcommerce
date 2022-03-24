@@ -7,7 +7,7 @@ import HomeContent from './homeContent';
 
 const Container = () => (
   <Layout>
-    <HeardSearch currentIndex="1" />
+    <HeardSearch currentIndex="1" isDisplay={false} />
     <HomeContent />
     <Footer style={{ textAlign: 'center' }}>
       <img src={logoIcon} className="lightLogo"></img>©2022 Created by Arthur
