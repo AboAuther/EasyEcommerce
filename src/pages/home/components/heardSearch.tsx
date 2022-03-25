@@ -1,5 +1,5 @@
 import { Button, Menu, Input, Layout } from 'antd';
-import { NavLink } from '@modern-js/runtime/router';
+import { Link, NavLink } from '@modern-js/runtime/router';
 import styled from '@modern-js/runtime/styled';
 import logoDark from './images/logoDark.jpeg';
 import './index.less';
@@ -32,7 +32,7 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
         <span className="buttonPos">
           <Button
             type="text"
-            ghost={true}
+            // ghost={true}
             href="/login"
             className="headerButton"
             onClick={() => handleClickLogin()}>
@@ -89,18 +89,21 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
                   width: 'auto',
                 }}
               />
-              <Button
-                type="primary"
-                style={{ position: 'absolute', top: '71px', left: '77%' }}
-                icon={
-                  <ShoppingCart
-                    src={ShoppingCard}
-                    className="shoppingCartImg"
-                  />
-                }
-                size="middle">
-                我的购物车
-              </Button>
+              <Link to="/shoppingCat">
+                <Button
+                  type="primary"
+                  // href="/login"
+                  style={{ position: 'absolute', top: '71px', left: '77%' }}
+                  icon={
+                    <ShoppingCart
+                      src={ShoppingCard}
+                      className="shoppingCartImg"
+                    />
+                  }
+                  size="middle">
+                  我的购物车
+                </Button>
+              </Link>
             </div>
           </Layout>
         </div>
