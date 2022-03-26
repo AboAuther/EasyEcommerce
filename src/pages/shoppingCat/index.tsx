@@ -3,7 +3,6 @@ import HeardSearch from '../home/components/heardSearch';
 import './index.less';
 import { columns } from './data';
 import dataSource from './mock';
-import Item from 'antd/lib/list/Item';
 
 const ShoppingCat = () => {
   const footer = () => {

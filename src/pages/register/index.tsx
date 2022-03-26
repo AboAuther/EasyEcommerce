@@ -39,9 +39,10 @@ const login = () => {
             name="username"
             rules={[
               {
+                type: 'string',
                 required: true,
                 message: '用户名长度应小于 10',
-                len: 10,
+                max: 10,
               },
             ]}>
             <Input
@@ -55,8 +56,11 @@ const login = () => {
             rules={[
               {
                 required: true,
-                message: '密码长度应 小于 10',
-                len: 10,
+                type: 'string',
+                min: 6,
+                max: 20,
+                message: '密码长度应为 6-10 位',
+                // len: 10,
               },
             ]}
             hasFeedback={true}>
@@ -82,9 +86,7 @@ const login = () => {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error(
-                      'The two passwords that you entered do not match!',
-                    ),
+                    new Error('两次输入的密码不通，请重新输入!'),
                   );
                 },
               }),
@@ -101,9 +103,10 @@ const login = () => {
             rules={[
               {
                 required: true,
+                type: 'string',
                 message: '昵称长度应小于10',
                 whitespace: true,
-                len: 10,
+                max: 10,
               },
             ]}>
             <Input placeholder="昵称" prefix={<IdcardOutlined />} />
@@ -113,9 +116,9 @@ const login = () => {
             rules={[
               {
                 required: true,
-                message: '联系方式长度应小于 11',
-                len: 11,
                 type: 'string',
+                message: '联系方式长度应小于 11',
+                max: 11,
               },
             ]}>
             <Input
@@ -125,12 +128,21 @@ const login = () => {
             />
           </Form.Item>
           <Form.Item
-            name="address"
+            name="region"
             rules={[{ required: true, message: 'Please input your Address!' }]}>
             <Input
               prefix={<HomeOutlined />}
               style={{ width: '100%' }}
-              placeholder="地址"
+              placeholder="所在地区"
+            />
+          </Form.Item>
+          <Form.Item
+            name="detail"
+            rules={[{ required: true, message: 'Please input your Address!' }]}>
+            <Input
+              prefix={<HomeOutlined />}
+              style={{ width: '100%' }}
+              placeholder="详细地址"
             />
           </Form.Item>
           <Form.Item>
