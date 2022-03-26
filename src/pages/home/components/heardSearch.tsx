@@ -44,9 +44,9 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
           <Button type="text" className="headerButton" href="/orders">
             我的订单
           </Button>
-          <Button type="text" className="headerButton">
+          {/* <Button type="text" className="headerButton">
             我的收藏
-          </Button>
+          </Button> */}
           <Button type="text" className="headerButton" href="/userCenter">
             个人中心
           </Button>

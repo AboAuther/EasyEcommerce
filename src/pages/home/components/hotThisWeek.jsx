@@ -2,6 +2,7 @@ import './index.less';
 import { Row, Card, Typography } from 'antd';
 // import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
+import { Link } from '@modern-js/runtime/router';
 import banana from './images/banana.webp';
 import { productsList } from './mock';
 
@@ -31,16 +32,14 @@ const HotThisWeek = () => {
                     key={item.id}
                     bordered={false}
                     cover={
-                      <img
-                        alt=""
-                        src={banana}
-                        title={item.productName}
-                        // onClick={() => {
-                        //   this.props.history.push(
-                        //     `/views/products/detail/${item.id}`,
-                        //   );
-                        // }}
-                      />
+                      <Link to={`/products/${item.id}`}>
+                        <img
+                          alt=""
+                          src={banana}
+                          title={item.productName}
+                          style={{ width: '100%' }}
+                        />
+                      </Link>
                     }>
                     <Meta
                       title={
@@ -49,15 +48,11 @@ const HotThisWeek = () => {
                           {item.price ? Number(item.price).toFixed(2) : 0}
                         </Title>
                       }
-                      description={item.description}
-                      // description={
-                      //   // <Link
-                      //   //   to={`/views/products/detail/${item.id}`}
-                      //   //   title={item.description}>
-                      //   //   {item.description}
-                      //   // </Link>
-                      //   {item.description}
-                      // }
+                      description={
+                        <Link to={`/products/${item.id}`}>
+                          {item.description}
+                        </Link>
+                      }
                     />
                   </Card>
                 );
