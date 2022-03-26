@@ -17,7 +17,7 @@ const personalInformation = () => {
       // validateMessages={validateMessages}
     >
       <Form.Item
-        name={['user', 'userName']}
+        name={['user', 'name']}
         label="用户名"
         rules={[
           {
