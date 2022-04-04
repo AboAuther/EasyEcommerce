@@ -1,7 +1,10 @@
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './index.less';
 import styled from 'styled-components';
+import axios from 'axios';
+import { NavLink } from '@modern-js/runtime/router';
+import { useState } from 'react';
 import bg from '../images/testBg.jpg';
 
 const LoginPage = styled.div`
@@ -9,9 +12,29 @@ const LoginPage = styled.div`
   display: flex;
   justify-content: center;
 `;
-const login = () => {
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+
+const Login = () => {
+  const [state, setState] = useState(false);
+  const onFinish = async (values: any) => {
+    await axios({
+      method: 'post',
+      url: 'http://localhost:9090/api/user/login',
+      data: {
+        username: values.username,
+        password: values.password,
+      },
+    })
+      .then(res => {
+        const { success } = res.data.entity.success;
+        if (success) {
+          setState(true);
+        }
+        return <NavLink to={'/'} />;
+      })
+      .catch(error => {
+        message.error('用户名或密码错误，请重新登陆！');
+        setState(false);
+      });
   };
 
   return (
@@ -30,9 +53,7 @@ const login = () => {
           onFinish={onFinish}>
           <Form.Item
             name="username"
-            rules={[
-              { required: true, message: 'Please input your Username!' },
-            ]}>
+            rules={[{ required: true, message: '请输入用户名!' }]}>
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="Username"
@@ -40,9 +61,7 @@ const login = () => {
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[
-              { required: true, message: 'Please input your Password!' },
-            ]}>
+            rules={[{ required: true, message: '请输入密码!' }]}>
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
@@ -54,8 +73,9 @@ const login = () => {
               <Button
                 type="primary"
                 htmlType="submit"
+                href={state ? '/' : '/login'}
                 className="login-form-button">
-                Log in
+                登陆
               </Button>
               <a href="/register" className=" register">
                 新用户注册
@@ -68,4 +88,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

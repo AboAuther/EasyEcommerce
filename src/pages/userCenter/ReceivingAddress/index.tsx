@@ -9,7 +9,6 @@ const receivingAddress = () => {
   const [visible, setVisible] = useState(false);
   const handleOk = value => {
     setVisible(false);
-    console.log(value);
   };
   return (
     <div className="dm_ReceivingAddress">
@@ -26,7 +25,7 @@ const receivingAddress = () => {
           bordered={true}
           dataSource={dataSource}
           columns={columns}
-          scroll={{ x: false, y: false }}
+          // scroll={{ x: false, y: false }}
           rowKey={record => record.id}
           pagination={false}
           size="middle"

@@ -11,7 +11,7 @@ export const columns = [
     key: 'index',
     align: 'center',
     width: '6%',
-    render: (text, record, index) => `${index + 1}`,
+    render: (text, record, index: number) => `${index + 1}`,
   },
   {
     title: '收货人',
