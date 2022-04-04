@@ -11,7 +11,7 @@ function App() {
         <Helmet>
           <title>首页</title>
         </Helmet>
-        <Index />
+        <Container />
       </Route>
       <Route path="/login" exact={true}>
         <Helmet>

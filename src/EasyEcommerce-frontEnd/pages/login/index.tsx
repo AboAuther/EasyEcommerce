@@ -1,9 +1,10 @@
 import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+
 import './index.less';
 import styled from 'styled-components';
 import axios from 'axios';
-import { NavLink } from '@modern-js/runtime/router';
+import { NavLink, useHistory } from '@modern-js/runtime/router';
 import { useState } from 'react';
 import bg from '../images/testBg.jpg';
 
@@ -14,6 +15,7 @@ const LoginPage = styled.div`
 `;
 
 const Login = () => {
+  const history = useHistory();
   const [state, setState] = useState(false);
   const onFinish = async (values: any) => {
     await axios({
@@ -25,15 +27,15 @@ const Login = () => {
       },
     })
       .then(res => {
-        const { success } = res.data.entity.success;
+        const { success } = res.data.entity;
+        console.log(success, 'success');
         if (success) {
+          history.push('/');
           setState(true);
         }
-        return <NavLink to={'/'} />;
       })
-      .catch(error => {
+      .catch(_ => {
         message.error('用户名或密码错误，请重新登陆！');
-        setState(false);
       });
   };
 
@@ -73,7 +75,7 @@ const Login = () => {
               <Button
                 type="primary"
                 htmlType="submit"
-                href={state ? '/' : '/login'}
+                // href={state ? '/' : '/login'}
                 className="login-form-button">
                 登陆
               </Button>
