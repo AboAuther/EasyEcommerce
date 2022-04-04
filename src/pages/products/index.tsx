@@ -1,24 +1,22 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Row, Col, Card, Typography, Pagination, Tag, Empty } from 'antd';
+import { Row, Col, Card, Typography, Pagination, Empty } from 'antd';
+import { Link } from '@modern-js/runtime/router';
 import { productsList, FileList } from '../home/components/mock';
 import './index.less';
 import HeardSearch from '../home/components/heardSearch';
 import banana from '../images/banana.webp';
-import { Link, NavLink } from '@modern-js/runtime/router';
-import ProductsDetails from '../productsDetails';
 
 // interface Filter {
 
 // }
 
-const product = () => {
+const Product = () => {
   const current = 1;
   const total = 10;
   const pageSize = 8;
   const { Meta } = Card;
   const { Title } = Typography;
   const [filter, setFilter] = useState({});
-  const [visible, setVisible] = useState<[]>([]);
 
   useEffect(() => {
     setFilter({});
@@ -107,4 +105,4 @@ const product = () => {
   );
 };
 
-export default product;
+export default Product;

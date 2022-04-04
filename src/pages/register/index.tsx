@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox, Select, Option } from 'antd';
+import { Form, Input, Button } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
@@ -11,16 +11,24 @@ import './index.less';
 import styled from 'styled-components';
 import bg from '../images/testBg.jpg';
 
+interface FinishValue {
+  confirm: string;
+  detail: string;
+  nickname: string;
+  password: string;
+  phone: string;
+  region: string;
+  username: string;
+}
 const LoginPage = styled.div`
   /* height: 100%; */
   display: flex;
   justify-content: center;
 `;
-const login = () => {
-  const onFinish = (values: any) => {
+const Register = () => {
+  const onFinish = (values: FinishValue) => {
     console.log('Received values of form: ', values);
   };
-  const prefixSelector = <Form.Item name="prefix" noStyle={true} />;
   return (
     <div
       style={{
@@ -161,4 +169,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Register;

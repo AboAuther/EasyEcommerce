@@ -1,7 +1,7 @@
 import { Button, Col, Row, Table, Typography } from 'antd';
 import HeardSearch from '../home/components/heardSearch';
 import './index.less';
-import { columns } from './data';
+import { columns, Data } from './data';
 import dataSource from './mock';
 
 const ShoppingCat = () => {
@@ -12,7 +12,7 @@ const ShoppingCat = () => {
       total: item.price,
       size: item.num,
     }));
-    priceList.forEach((item, index) => {
+    priceList.forEach(item => {
       total += item.total;
       size += item.size;
     });
@@ -49,14 +49,12 @@ const ShoppingCat = () => {
                 {/* （当前购物车共有 <i>{allProductsSize}</i> 件商品） */}
               </div>
             </Row>
-            <Table
+            <Table<Data>
               columns={columns}
               dataSource={dataSource}
               pagination={false}
-              scroll={{ x: false, y: 330 }}
               footer={() => footer()}
               bordered={true}
-              // rowSelection={this.rowSelection}
               rowKey={record => record.id}
             />
           </div>

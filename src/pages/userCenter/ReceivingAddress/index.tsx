@@ -5,11 +5,8 @@ import { columns } from './data';
 import dataSource from './mock';
 import AddressModal from './addressModal';
 
-const receivingAddress = () => {
+const ReceivingAddress = () => {
   const [visible, setVisible] = useState(false);
-  const handleOk = value => {
-    setVisible(false);
-  };
   return (
     <div className="dm_ReceivingAddress">
       <Row style={{ paddingBottom: '6px', textAlign: 'right' }}>
@@ -31,15 +28,8 @@ const receivingAddress = () => {
           size="middle"
         />
       </Row>
-      <AddressModal
-        visible={visible}
-        // handleOk={() => handleOk()}
-        handleCancel={() => setVisible(false)}
-        // setForm={setForm}
-        // addressModalData={toJS(addressModalData)}
-        // setAddressModalData={setAddressModalData}
-      />
+      <AddressModal visible={visible} handleCancel={() => setVisible(false)} />
     </div>
   );
 };
-export default receivingAddress;
+export default ReceivingAddress;

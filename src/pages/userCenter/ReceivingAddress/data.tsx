@@ -1,17 +1,19 @@
 import React from 'react';
 import { Popconfirm } from 'antd';
+import { ColumnsType } from 'antd/es/table';
+import { Address } from './mock';
 // 数据
 // import state from './state';
 
 // 表头
-export const columns = [
+export const columns: ColumnsType<Address> = [
   {
     title: '序号',
     dataIndex: 'index',
     key: 'index',
     align: 'center',
     width: '6%',
-    render: (text, record, index: number) => `${index + 1}`,
+    render: (index: number) => `${index + 1}`,
   },
   {
     title: '收货人',
@@ -51,9 +53,8 @@ export const columns = [
     key: 'isDefault',
     align: 'center',
     width: '10%',
-    render: (text, record, index) => {
-      record.isDefault = Number(record.isDefault);
-      return text && text === true ? '是' : '否';
+    render: (text: boolean) => {
+      return text && text ? '是' : '否';
     },
   },
   {
@@ -62,27 +63,12 @@ export const columns = [
     key: 'operation',
     align: 'center',
     width: '148px',
-    render: (text, record, index) => (
+    render: _ => (
       <div className="operation">
-        <Popconfirm
-          title="你确定要删除？"
-          // onConfirm={() =>
-          //   state.delAddressData({
-          //     id: record.id,
-          //   })
-          // }
-        >
+        <Popconfirm title="你确定要删除？">
           <a>删除</a>
         </Popconfirm>
-        <a
-        // onClick={() => {
-        //   // state.setVisible(true);
-        //   // state.setAddressModalData(record);
-        //   // state.setId(record.id);
-        // }}
-        >
-          修改
-        </a>
+        <a>修改</a>
       </div>
     ),
   },

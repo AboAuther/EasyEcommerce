@@ -7,7 +7,7 @@ const AddressModal = (props: {
   handleCancel: any;
 }) => {
   const { visible, handleCancel } = props;
-  const [fields, setFields] = useState<FieldData[]>([{ name: '', value: '' }]);
+  // const [fields, setFields] = useState<FieldData[]>([{ name: '', value: '' }]);
   return (
     <Modal
       width={800}

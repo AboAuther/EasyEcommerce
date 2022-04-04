@@ -1,3 +1,15 @@
+export interface OrdersData {
+  id: number;
+  submitTime: string;
+  ordernum: number;
+  content: Array<{
+    key: number;
+    description: string;
+    price: number;
+    num: number;
+    totalprice: number;
+  }>;
+}
 export const dataSource = [
   {
     id: 1,

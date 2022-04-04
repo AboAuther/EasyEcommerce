@@ -1,10 +1,10 @@
-import { Form, Input, Button, Checkbox, message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import './index.less';
 import styled from 'styled-components';
 import axios from 'axios';
-import { NavLink, useHistory } from '@modern-js/runtime/router';
+import { useHistory } from '@modern-js/runtime/router';
 import { useState } from 'react';
 import bg from '../images/testBg.jpg';
 
@@ -16,7 +16,6 @@ const LoginPage = styled.div`
 
 const Login = () => {
   const history = useHistory();
-  const [state, setState] = useState(false);
   const onFinish = async (values: any) => {
     await axios({
       method: 'post',
@@ -28,10 +27,8 @@ const Login = () => {
     })
       .then(res => {
         const { success } = res.data.entity;
-        console.log(success, 'success');
         if (success) {
           history.push('/');
-          setState(true);
         }
       })
       .catch(_ => {
@@ -75,7 +72,6 @@ const Login = () => {
               <Button
                 type="primary"
                 htmlType="submit"
-                // href={state ? '/' : '/login'}
                 className="login-form-button">
                 登陆
               </Button>

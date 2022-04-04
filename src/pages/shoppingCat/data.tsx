@@ -1,8 +1,16 @@
 import React from 'react';
-import { InputNumber, Popconfirm, Icon } from 'antd';
-import { Link } from 'react-router-dom';
+import { InputNumber } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 
-export const columns = [
+export interface Data {
+  id: number;
+  mainPicture: string;
+  description: string;
+  price: number;
+  num: number;
+  totalprice: number;
+}
+export const columns: ColumnsType<Data> = [
   {
     title: '图片',
     dataIndex: 'mainPicture',
@@ -32,8 +40,7 @@ export const columns = [
     key: 'price',
     align: 'center',
     width: '16%',
-    render: (text, record, index) =>
-      Number(text) ? `￥${Number(text).toFixed(2)}` : 0,
+    render: text => (Number(text) ? `￥${Number(text).toFixed(2)}` : 0),
   },
   {
     title: '数量',
@@ -41,7 +48,7 @@ export const columns = [
     key: 'num',
     align: 'center',
     width: '14%',
-    render: (text, record, index) => (
+    render: text => (
       <InputNumber
         min={1}
         max={99}
@@ -61,8 +68,7 @@ export const columns = [
     key: 'totalprice',
     align: 'center',
     width: '16%',
-    render: (text, record, index) =>
-      text ? `￥${parseFloat(text).toFixed(2)}` : 0,
+    render: text => (text ? `￥${parseFloat(text).toFixed(2)}` : 0),
   },
   {
     title: '操作',
