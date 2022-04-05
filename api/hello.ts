@@ -1,14 +1,6 @@
-import { name, internet } from 'faker';
+import axios from 'axios';
 
-export const get = async () => {
-  const mockData = new Array(20).fill(0).map(() => {
-    const firstName = name.firstName();
-    return {
-      name: firstName,
-      avatar: `https://avatars.dicebear.com/api/identicon/${firstName}.svg`,
-      email: internet.email(),
-    };
-  });
-
-  return { code: 200, data: mockData };
-};
+export const get = async () => 'Hello Modern.js';
+export const post = async () => ({
+  message: 'Hello Modern.js',
+});

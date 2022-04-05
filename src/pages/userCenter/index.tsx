@@ -9,7 +9,7 @@ const UserCenter = () => {
   const { Option } = Select;
   const [key, setKey] = useState(1);
 
-  const handleChange = value => {
+  const handleChange = (value: number) => {
     setKey(value);
   };
   return (

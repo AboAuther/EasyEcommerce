@@ -1,28 +1,14 @@
-import { title } from 'process';
 import React from 'react';
-import { Link } from 'react-router-dom';
-// 全局设置
-import { PUBLIC_URL } from '@config';
 import { Button } from 'antd';
 
-export const columns = [
-  // {
-  //   title: '主图',
-  //   dataIndex: 'mainPicture',
-  //   key: 'mainPicture',
-  //   align: 'center',
-  //   width: '10%',
-  //   // render: (text, record, index) => (
-  //   //   <img className="imgs_style" src={`${PUBLIC_URL}${text}`} alt={text} />
-  //   // ),
-  // },
+export const columns: ColumnsType<OrdersData> = [
   {
     title: '商品详情',
     dataIndex: 'description',
     key: 'description',
     align: 'center',
     width: '34%',
-    render: (text, record, index) => (
+    render: (text, record) => (
       <Button type="text" href={`/products/${record.key}`}>
         <span title={text}>{text}</span>
       </Button>
@@ -34,8 +20,7 @@ export const columns = [
     key: 'price',
     align: 'center',
     width: '16%',
-    render: (text, record, index) =>
-      Number(text) ? `￥${Number(text).toFixed(2)}` : 0,
+    render: text => (Number(text) ? `￥${Number(text).toFixed(2)}` : 0),
   },
   {
     title: '数量',
@@ -43,7 +28,7 @@ export const columns = [
     key: 'num',
     align: 'center',
     width: '14%',
-    render: (text, record, index) => `x${text}`,
+    render: text => `x${text}`,
   },
   {
     title: '小计',
@@ -61,7 +46,7 @@ export const columns = [
     align: 'center',
     // fixed: 'right',
     width: '148px',
-    render: (text, record, index) => (
+    render: (text, record) => (
       <>
         <Button type="link" href={`/products/${record.key}`}>
           详情

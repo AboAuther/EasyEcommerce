@@ -5,10 +5,9 @@ import './index.less';
 const AddressModal = (props: {
   visible: boolean | undefined;
   handleCancel: any;
-  handleOk: any;
 }) => {
-  const { visible, handleCancel, handleOk } = props;
-  const [fields, setFields] = useState<FieldData[]>([{ name: '', value: '' }]);
+  const { visible, handleCancel } = props;
+  // const [fields, setFields] = useState<FieldData[]>([{ name: '', value: '' }]);
   return (
     <Modal
       width={800}

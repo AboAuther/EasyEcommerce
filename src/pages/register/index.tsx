@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox, Select, Option } from 'antd';
+import { Form, Input, Button } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
@@ -9,18 +9,40 @@ import {
 } from '@ant-design/icons';
 import './index.less';
 import styled from 'styled-components';
+import axios from 'axios';
 import bg from '../images/testBg.jpg';
 
+interface FinishValue {
+  confirm: string;
+  detail: string;
+  nickname: string;
+  password: string;
+  phone: string;
+  region: string;
+  username: string;
+}
 const LoginPage = styled.div`
   /* height: 100%; */
   display: flex;
   justify-content: center;
 `;
-const login = () => {
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+const Register = () => {
+  const onFinish = async (values: FinishValue) => {
+    await axios({
+      method: 'post',
+      url: 'http://localhost:9088/api/user/register',
+      data: {
+        username: values.username,
+        nickName: values.nickname,
+        mobile: values.phone,
+        password: values.password,
+        region: values.region,
+        address: values.detail,
+      },
+    }).then(res => {
+      console.log(res);
+    });
   };
-  const prefixSelector = <Form.Item name="prefix" noStyle={true} />;
   return (
     <div
       style={{
@@ -161,4 +183,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Register;

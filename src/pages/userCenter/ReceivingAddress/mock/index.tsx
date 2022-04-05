@@ -1,4 +1,13 @@
-const dataSource = [
+export interface Address {
+  index: number;
+  id: number;
+  name: string;
+  region: string;
+  detail: string;
+  phone: string;
+  isDefault: boolean;
+}
+const dataSource: Array<Address> = [
   {
     index: 1,
     id: 1,

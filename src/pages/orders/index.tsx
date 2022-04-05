@@ -1,20 +1,22 @@
-import { Table, Typography, Row, Col, Popconfirm, Icon } from 'antd';
+import { Table, Typography, Row, Col, Popconfirm } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import HeardSearch from '../home/components/heardSearch';
-import { dataSource, aaa } from './mock';
+import { dataSource } from './mock';
 import './index.less';
 import { columns } from './data';
 
-const orders = () => {
+const Orders = () => {
   const total = 10;
 
-  const title = (submitTime: string, ordernum: number, orderId: number) => (
+  const title = (submitTime: string, ordernum: number) => (
     <Row className="t_header">
       <Col span={6}>{submitTime}</Col>
       <Col span={6}>订单号： {ordernum}</Col>
       <Col span={12}>
         <Popconfirm
           title="你确定要删除这条数据？"
-          icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
+          // icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
+          icon={<QuestionCircleOutlined />}
           // onConfirm={() => {
           //   state.deleteOrderData({
           //     id: orderId,
@@ -54,7 +56,7 @@ const orders = () => {
             columns={columns}
             dataSource={[]}
             pagination={false}
-            scroll={{ x: false, y: false }}
+            // scroll={{ x: false, y: false }}
             bordered={true}
             size="middle"
             className="table_header"
@@ -66,10 +68,10 @@ const orders = () => {
                 dataSource={item.content}
                 rowKey={record => record.key}
                 pagination={false}
-                scroll={{ x: false, y: false }}
+                // scroll={{ x: false, y: false }}
                 bordered={true}
                 showHeader={false}
-                title={() => title(item.submitTime, item.ordernum, item.id)}
+                title={() => title(item.submitTime, item.ordernum)}
                 size="middle"
               />
             </div>
@@ -80,4 +82,4 @@ const orders = () => {
   );
 };
 
-export default orders;
+export default Orders;
