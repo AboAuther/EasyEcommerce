@@ -7,7 +7,7 @@ export interface Address {
   phone: string;
   isDefault: boolean;
 }
-const dataSource: Array<Address> = [
+const addressSource: Array<Address> = [
   {
     index: 1,
     id: 1,
@@ -24,7 +24,7 @@ const dataSource: Array<Address> = [
     region: '上海市徐汇区',
     detail: '古美小区',
     phone: '1124534534',
-    isDefault: true,
+    isDefault: false,
   },
   {
     index: 3,
@@ -33,7 +33,7 @@ const dataSource: Array<Address> = [
     region: '上海市徐汇区',
     detail: '古美小区',
     phone: '1124534534',
-    isDefault: true,
+    isDefault: false,
   },
   {
     index: 4,
@@ -42,7 +42,7 @@ const dataSource: Array<Address> = [
     region: '上海市徐汇区',
     detail: '古美小区',
     phone: '1124534534',
-    isDefault: true,
+    isDefault: false,
   },
 ];
-export default dataSource;
+export default addressSource;

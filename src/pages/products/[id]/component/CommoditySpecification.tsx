@@ -3,14 +3,21 @@ import React, { Fragment, useState } from 'react';
 import './index.less';
 import { imgList, productsList, specs } from '../mock';
 import products1 from '../images/huluobo.png';
+import BuyDrawer from '../../BuyDrawer';
 
 const CommoditySpecification = (props: { id: string }) => {
-  const { Title, Paragraph } = Typography;
+  const { Title } = Typography;
   const [actionIndex, setActionIndex] = useState(1);
-  const itemId = props.id;
-  const basicInfo = productsList.filter(item => item.id === Number(itemId))[0];
-  const { TabPane } = Tabs;
-
+  const [visible, setVisible] = useState(false);
+  const [num, setNum] = useState(1);
+  const { id } = props;
+  const basicInfo = productsList.filter(item => item.id === Number(id))[0];
+  const openDrawer = () => {
+    setVisible(true);
+  };
+  const closeDrawer = () => {
+    setVisible(false);
+  };
   return (
     <div className="CommoditySpecification">
       <Row>
@@ -58,9 +65,9 @@ const CommoditySpecification = (props: { id: string }) => {
                 <InputNumber
                   min={1}
                   max={99}
-                  // value={num}
+                  value={num}
                   precision={0}
-                  // onChange={this.watchNumber}
+                  onChange={value => setNum(value)}
                 />
               </Col>
             </Row>
@@ -71,8 +78,7 @@ const CommoditySpecification = (props: { id: string }) => {
                   type="primary"
                   size="large"
                   ghost={true}
-                  // onClick={this.immediatePurchase}
-                >
+                  onClick={openDrawer}>
                   立即购买
                 </Button>
                 <Button
@@ -87,6 +93,12 @@ const CommoditySpecification = (props: { id: string }) => {
           </Fragment>
         </Col>
       </Row>
+      <BuyDrawer
+        visible={visible}
+        onClose={closeDrawer}
+        basicInfo={basicInfo}
+        num={num}
+      />
     </div>
   );
 };

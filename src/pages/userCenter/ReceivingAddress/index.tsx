@@ -2,7 +2,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { Row, Button, Table } from 'antd';
 import { useState } from 'react';
 import { columns } from './data';
-import dataSource from './mock';
+import addressSource from './mock';
 import AddressModal from './addressModal';
 
 const ReceivingAddress = () => {
@@ -20,7 +20,7 @@ const ReceivingAddress = () => {
       <Row>
         <Table
           bordered={true}
-          dataSource={dataSource}
+          dataSource={addressSource}
           columns={columns}
           // scroll={{ x: false, y: false }}
           rowKey={record => record.id}

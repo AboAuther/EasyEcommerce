@@ -6,10 +6,6 @@ import './index.less';
 import HeardSearch from '../home/components/heardSearch';
 import banana from '../images/banana.webp';
 
-// interface Filter {
-
-// }
-
 const Product = () => {
   const current = 1;
   const total = 10;
