@@ -23,6 +23,5 @@ export const get =  async () => {
   const res = await axios.get(
     'http://localhost:9090/api/product/banner',
   );
-  console.log(res,'data');
   return res.data;
 };

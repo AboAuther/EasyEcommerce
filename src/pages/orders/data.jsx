@@ -36,8 +36,7 @@ export const columns: ColumnsType<OrdersData> = [
     key: 'totalprice',
     align: 'center',
     width: '16%',
-    render: (text, record, index) =>
-      text ? `￥${parseFloat(text).toFixed(2)}` : 0,
+    render: text => (text ? `￥${parseFloat(text).toFixed(2)}` : 0),
   },
   {
     title: '操作',

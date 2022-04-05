@@ -5,7 +5,6 @@ import './index.less';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from '@modern-js/runtime/router';
-import { useState } from 'react';
 import bg from '../images/testBg.jpg';
 
 const LoginPage = styled.div`
