@@ -5,7 +5,7 @@ import { dataSource } from './mock';
 import './index.less';
 import { columns } from './data';
 
-const orders = () => {
+const Orders = () => {
   const total = 10;
 
   const title = (submitTime: string, ordernum: number) => (
@@ -82,4 +82,4 @@ const orders = () => {
   );
 };
 
-export default orders;
+export default Orders;

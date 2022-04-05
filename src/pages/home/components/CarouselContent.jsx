@@ -29,7 +29,7 @@ const CarouselContent = () => {
 
   const [value, setValue] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:9090/api/product/banner').then(res => {
+    axios.get('http://localhost:9088/api/product/banner').then(res => {
       setValue(res.data.entity.data);
     });
   }, []);

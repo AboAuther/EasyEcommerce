@@ -9,6 +9,7 @@ import {
 } from '@ant-design/icons';
 import './index.less';
 import styled from 'styled-components';
+import axios from 'axios';
 import bg from '../images/testBg.jpg';
 
 interface FinishValue {
@@ -26,8 +27,21 @@ const LoginPage = styled.div`
   justify-content: center;
 `;
 const Register = () => {
-  const onFinish = (values: FinishValue) => {
-    console.log('Received values of form: ', values);
+  const onFinish = async (values: FinishValue) => {
+    await axios({
+      method: 'post',
+      url: 'http://localhost:9088/api/user/register',
+      data: {
+        username: values.username,
+        nickName: values.nickname,
+        mobile: values.phone,
+        password: values.password,
+        region: values.region,
+        address: values.detail,
+      },
+    }).then(res => {
+      console.log(res);
+    });
   };
   return (
     <div
