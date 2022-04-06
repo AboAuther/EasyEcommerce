@@ -1,7 +1,11 @@
-import React from 'react';
-import { Button } from 'antd';
+import React, { useState } from 'react';
+import { Button, Popconfirm } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
 export const columns: ColumnsType<OrdersData> = [
+  // {
+  //   title: ''
+  // }
   {
     title: '商品详情',
     dataIndex: 'description',
@@ -47,36 +51,23 @@ export const columns: ColumnsType<OrdersData> = [
     width: '148px',
     render: (text, record) => (
       <>
+        <Button type="link">详情</Button>
+        <Popconfirm
+          title="你确定要删除这条数据？"
+          icon={<QuestionCircleOutlined />}
+          // onConfirm={() => {
+          //   state.deleteOrderData({
+          //     id: orderId,
+          //   });
+          // }}
+          okText="是"
+          cancelText="否">
+          <span style={{ color: '#1890ff' }}>删除</span>
+        </Popconfirm>
         <Button type="link" href={`/products/${record.key}`}>
-          详情
-        </Button>
-        <Button type="link" href={`/products/${record.key}`}>
-          删除
+          评价
         </Button>
       </>
     ),
-    // (
-    //     // <div className="operation">
-    //     //   <Link
-    //     //     to={{
-    //     //       pathname: '/views/products/cart/evaluate',
-    //     //       state: {
-    //     //         id: record.id,
-    //     //       },
-    //     //     }}>
-    //     //     评价
-    //     //   </Link>
-    //     //   <Link
-    //     //     to={{
-    //     //       pathname: '/views/products/cart/orderDetails',
-    //     //       state: {
-    //     //         id: record.orderId,
-    //     //       },
-    //     //     }}>
-    //     //     详情
-    //     //   </Link>
-    //     // </div>
-    //     { text },
-    //   ),
   },
 ];

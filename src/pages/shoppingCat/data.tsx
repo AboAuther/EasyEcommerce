@@ -1,6 +1,8 @@
-import React from 'react';
-import { InputNumber } from 'antd';
+import React, { useState } from 'react';
+import { Button, InputNumber, Popconfirm } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import Icon from '@ant-design/icons';
+import './index.less';
 
 export interface Data {
   id: number;
@@ -10,29 +12,22 @@ export interface Data {
   num: number;
   totalprice: number;
 }
+
 export const columns: ColumnsType<Data> = [
   {
     title: '图片',
     dataIndex: 'mainPicture',
     key: 'mainPicture',
     align: 'center',
-    width: '10%',
-    // render: (text, record, index) => (
-    //   <img className="imgs_style" src={`${PUBLIC_URL}${text}`} alt={text} />
-    // ),
+    width: '16%',
+    render: text => <img className="imgs_style" src={text} alt={text} />,
   },
   {
     title: '商品',
     dataIndex: 'description',
     key: 'description',
     align: 'center',
-    width: '44%',
-    // render: (text, record, index) => (
-    //   <Link className="title_style" to={`/views/products/detail/${record.pid}`}>
-    //     <span title={text}>{text}</span>
-    //     <span className="ellipsis">规格：{record.spec}</span>
-    //   </Link>
-    // ),
+    width: '20%',
   },
   {
     title: '单价',
@@ -54,6 +49,7 @@ export const columns: ColumnsType<Data> = [
         max={99}
         defaultValue={text}
         precision={0}
+        disabled={false}
         // onChange={value => {
         //   const totalPrice = parseFloat(record.price) * value;
         //   state.updatecartData(record.id, value, totalPrice);
@@ -77,25 +73,22 @@ export const columns: ColumnsType<Data> = [
     align: 'center',
     // fixed: 'right',
     width: '148px',
-    // render: (text, record, index) => (
-    //   <div className="operation">
-    //     <Popconfirm
-    //       title="你确定要删除这条数据？"
-    //       icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
-    //       onConfirm={() => {
-    //         state.delcartData([record.id]);
-    //       }}
-    //       okText="是"
-    //       cancelText="否">
-    //       <span>删除</span>
-    //     </Popconfirm>
-    //     <span
-    //       onClick={() => {
-    //         state.addcolsData([record.id], [record]);
-    //       }}>
-    //       加入收藏
-    //     </span>
-    //   </div>
-    // ),
+    render: (text, record, index) => (
+      <div className="operation">
+        <Popconfirm
+          title="你确定要删除这条数据？"
+          icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
+          // onConfirm={() => {
+          //   state.delcartData([record.id]);
+          // }}
+          okText="是"
+          cancelText="否">
+          <span>删除</span>
+        </Popconfirm>
+        <Button type="text" className="changeButton">
+          修改
+        </Button>
+      </div>
+    ),
   },
 ];

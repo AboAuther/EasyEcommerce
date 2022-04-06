@@ -1,7 +1,8 @@
 const dataSource = [
   {
     id: 1,
-    mainPicture: '',
+    mainPicture:
+      'https://i.epochtimes.com/assets/uploads/2021/03/shutterstock_681904576-600x400.jpg',
     description: '这是一件商品',
     price: 12,
     num: 2,
@@ -9,7 +10,8 @@ const dataSource = [
   },
   {
     id: 2,
-    mainPicture: '',
+    mainPicture:
+      'https://i.epochtimes.com/assets/uploads/2021/03/shutterstock_681904576-600x400.jpg',
     description: '这是一件商品',
     price: 12,
     num: 2,
@@ -17,7 +19,8 @@ const dataSource = [
   },
   {
     id: 3,
-    mainPicture: '',
+    mainPicture:
+      'https://i.epochtimes.com/assets/uploads/2021/03/shutterstock_681904576-600x400.jpg',
     description: '这是一件商品',
     price: 12,
     num: 2,
@@ -25,7 +28,8 @@ const dataSource = [
   },
   {
     id: 4,
-    mainPicture: '',
+    mainPicture:
+      'https://i.epochtimes.com/assets/uploads/2021/03/shutterstock_681904576-600x400.jpg',
     description: '这是一件商品',
     price: 12,
     num: 2,

@@ -1,21 +1,28 @@
+/* eslint-disable filenames/match-exported */
 import { Button, Drawer, Space } from 'antd';
 import './buyDrawer.less';
 import addressSource from '../userCenter/ReceivingAddress/mock';
 import AddressMenu from './AddressMenu';
 import MessageChosen from './MessageChosen';
 
-const BuyDrawer = (props: {
+const OrderDrawer = (props: {
   visible: boolean;
   onClose: () => void;
-  basicInfo: {
-    id: number;
+  shoppingCatsList: Array<{
+    key: number;
     price: number;
     mainPicture: string;
     description: string;
-  };
-  num: number | null;
+    num: number;
+    totalprice: number;
+  }>;
+  // total: number;
 }) => {
-  const { visible, onClose, basicInfo, num } = props;
+  const { visible, onClose, shoppingCatsList } = props;
+  let total = 0;
+  shoppingCatsList?.forEach(item => {
+    total += item.price * item.num;
+  });
   return (
     <Drawer
       title="结算"
@@ -32,16 +39,16 @@ const BuyDrawer = (props: {
         </Space>
       }>
       <AddressMenu addressSource={addressSource} />
-      <MessageChosen basicInfo={basicInfo} num={num} />
+      {shoppingCatsList?.map(item => (
+        <MessageChosen basicInfo={item} num={item.num} key={item.key} />
+      ))}
+
       <div className="itemContentPay">
         <div className="priceContent">
           <h4>价格明细</h4>
           <div className="priceContent1">
             <p>商品总价</p>
-            <p>
-              ¥
-              {num !== null ? Number(basicInfo.price * num).toFixed(2) : '0.00'}
-            </p>
+            <p>¥{Number(total).toFixed(2)}</p>
           </div>
         </div>
       </div>
@@ -49,4 +56,4 @@ const BuyDrawer = (props: {
   );
 };
 
-export default BuyDrawer;
+export default OrderDrawer;

@@ -3,7 +3,7 @@ import React, { Fragment, useState } from 'react';
 import './index.less';
 import { imgList, productsList, specs } from '../mock';
 import products1 from '../images/huluobo.png';
-import BuyDrawer from '../../BuyDrawer';
+import BuyDrawer from '@/pages/payment/BuyDrawer';
 
 const CommoditySpecification = (props: { id: string }) => {
   const { Title } = Typography;

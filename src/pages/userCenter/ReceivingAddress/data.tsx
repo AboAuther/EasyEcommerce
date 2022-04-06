@@ -53,9 +53,7 @@ export const columns: ColumnsType<Address> = [
     key: 'isDefault',
     align: 'center',
     width: '10%',
-    render: (text: boolean) => {
-      return text && text ? '是' : '否';
-    },
+    render: (text: boolean) => (text && text ? '是' : '否'),
   },
   {
     title: '操作',
