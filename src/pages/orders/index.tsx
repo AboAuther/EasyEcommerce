@@ -7,17 +7,30 @@ import HeardSearch from '../home/components/heardSearch';
 import { dataSource } from './mock';
 import './index.less';
 import { columns } from './data';
+import Evalution from './evaluation';
 
 const Orders = () => {
   const total = 10;
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
+  const [evaVisible, setEvaVisible] = useState(false); // 评价弹窗
+  const [modalText, setModalText] = useState('');
   const openDialog = (id: number) => {
     setIndex(id);
     setVisible(true);
   };
   const closeDialog = () => {
     setVisible(false);
+  };
+  const handleOk = () => {
+    setEvaVisible(false);
+  };
+  const handleCancel = () => {
+    setEvaVisible(false);
+  };
+  const handleEva = (record: any) => {
+    setEvaVisible(true);
+    setModalText(record.description);
   };
 
   const title = (
@@ -97,7 +110,6 @@ const Orders = () => {
           {dataSource.map(item => (
             <div style={{ marginBottom: '20px' }} key={item.id}>
               <Table
-                // columns={columns}
                 dataSource={item.content}
                 rowKey={record => record.key}
                 pagination={false}
@@ -111,7 +123,7 @@ const Orders = () => {
                   title="图片"
                   dataIndex="mainPicture"
                   key="mainPicture"
-                  // width="34%"
+                  width="34%"
                   render={text => (
                     <img className="imgs_style" src={text} alt={text} />
                   )}
@@ -141,7 +153,7 @@ const Orders = () => {
                   dataIndex="totalprice"
                   key="totalprice"
                   align="center"
-                  width="146"
+                  width="16%"
                 />
                 <Column
                   title="操作"
@@ -151,19 +163,9 @@ const Orders = () => {
                   width="200px"
                   render={(text, record) => (
                     <>
-                      <Popconfirm
-                        title="你确定要删除这条数据？"
-                        icon={<QuestionCircleOutlined />}
-                        // onConfirm={() => {
-                        //   state.deleteOrderData({
-                        //     id: orderId,
-                        //   });
-                        // }}
-                        okText="是"
-                        cancelText="否">
-                        <span style={{ color: '#1890ff' }}>删除</span>
-                      </Popconfirm>
-                      <Button type="link">评价</Button>
+                      <Button type="link" onClick={() => handleEva(record)}>
+                        评价
+                      </Button>
                     </>
                   )}
                 />
@@ -172,6 +174,12 @@ const Orders = () => {
           ))}
         </div>
       </div>
+      <Evalution
+        visible={evaVisible}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        modalText={modalText}
+      />
     </div>
   );
 };

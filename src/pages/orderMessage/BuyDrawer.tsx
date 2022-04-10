@@ -25,19 +25,20 @@ const OrderDrawer = (props: {
   });
   return (
     <Drawer
-      title="结算"
+      title="订单详情"
       placement="right"
       size="default"
       onClose={onClose}
       visible={visible}
-      extra={
-        <Space>
-          <Button onClick={onClose}>取消</Button>
-          <Button type="primary" onClick={onClose}>
-            去结算
-          </Button>
-        </Space>
-      }>
+      // extra={
+      //   <Space>
+      //     <Button onClick={onClose}>取消</Button>
+      //     <Button type="primary" onClick={onClose}>
+      //       去结算
+      //     </Button>
+      //   </Space>
+      // }
+    >
       <AddressMenu addressSource={addressSource} />
       {shoppingCatsList?.map(item => (
         <MessageChosen basicInfo={item} num={item.num} key={item.key} />

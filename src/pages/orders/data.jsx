@@ -3,9 +3,12 @@ import { Button, Popconfirm } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
 export const columns: ColumnsType<OrdersData> = [
-  // {
-  //   title: ''
-  // }
+  {
+    title: '图片',
+    dataIndex: 'mainPicture',
+    key: 'mainPicture',
+    width: '34%',
+  },
   {
     title: '商品详情',
     dataIndex: 'description',
@@ -48,7 +51,7 @@ export const columns: ColumnsType<OrdersData> = [
     key: 'operation',
     align: 'center',
     // fixed: 'right',
-    width: '148px',
+    width: '200px',
     render: (text, record) => (
       <>
         <Button type="link">详情</Button>

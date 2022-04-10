@@ -5,8 +5,8 @@ import AddressMenu from './AddressMenu';
 import MessageChosen from './MessageChosen';
 
 const BuyDrawer = (props: {
-  visible: boolean;
-  onClose: () => void;
+  visible?: boolean;
+  onClose?: () => void;
   basicInfo?: {
     id: number;
     price: number;
@@ -14,7 +14,7 @@ const BuyDrawer = (props: {
     description: string;
   };
   num?: number | null;
-  shoppingCatsList: Array<{
+  shoppingCatsList?: Array<{
     id: number;
     price: number;
     mainPicture: string;
@@ -22,7 +22,7 @@ const BuyDrawer = (props: {
     num: number;
     totalprice: number;
   }>;
-  total: number;
+  total?: number;
 }) => {
   const { visible, onClose, basicInfo, num, shoppingCatsList, total } = props;
   return (

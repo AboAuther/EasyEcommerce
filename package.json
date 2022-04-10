@@ -49,6 +49,7 @@
     "axios": "^0.26.0",
     "express": "^4.17.3",
     "faker": "^6.6.6",
+    "moment": "^2.29.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "6",

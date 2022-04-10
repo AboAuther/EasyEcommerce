@@ -48,12 +48,12 @@ const AddressMenu = (props: { addressSource: Array<Address> }) => {
           {defaultAddress?.phone}
         </div>
       </div>
-      <Dropdown
+      {/* <Dropdown
         overlay={menu}
         placement="bottomRight"
         arrow={{ pointAtCenter: true }}>
         <DownCircleTwoTone className="iconChosen" />
-      </Dropdown>
+      </Dropdown> */}
     </div>
   );
 };

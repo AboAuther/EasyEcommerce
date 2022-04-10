@@ -133,3 +133,34 @@ export const buyList = [
     count: 2,
   },
 ];
+export interface Comment {
+  id: number;
+  useName: string;
+  content: string;
+  rate: number;
+  time: number;
+}
+
+export const comment = [
+  {
+    id: 1,
+    useName: '曹慧珺',
+    content: '这个胡萝卜很新鲜，味道很好',
+    rate: 3,
+    time: 2,
+  },
+  {
+    id: 1,
+    useName: '曹哈哈',
+    content: '这个胡萝卜很新鲜，下次还会购买',
+    rate: 5,
+    time: 1,
+  },
+  {
+    id: 1,
+    useName: '曹嘿嘿',
+    content: '这个胡萝卜很新鲜，味道很好',
+    rate: 5,
+    time: 1,
+  },
+];

@@ -12,12 +12,10 @@ const CommodityDetails = () => {
         // onChange={this.tabsChange}
       >
         <TabPane tab={<span className="tab_title">商品介绍</span>} key={1}>
-          <p>评价</p>
           {/* <Parameter params={params} /> */}
           {/* <Pictures detailsPic={detailsPic} /> */}
         </TabPane>
         <TabPane tab={<span className="tab_title">商品评价</span>} key={2}>
-          <p>介绍</p>
           {/* {key == 2 ? : ''} */}
           <CommodityEvaluation />
         </TabPane>
