@@ -31,25 +31,7 @@ const UserCenter = () => {
             </Row>
             <Row style={{ padding: '10px 0' }}>
               {/* 个人资料 */}
-              {key === 1 ? (
-                <PersonalInformation
-                // personalInformation={toJS(personalInformation)}
-                // setPersonalInformation={setPersonalInformation}
-                // avatar={toJS(avatar)}
-                />
-              ) : (
-                ''
-              )}
-              {/* 修改登录密码
-              {key == 2 ? (
-                <LoginPassword
-                  {...this.props}
-                  loginPassword={toJS(state.loginPassword)}
-                  setLoginPassword01={state.setLoginPassword01}
-                />
-              ) : (
-                ''
-              )} */}
+              {key === 1 ? <PersonalInformation /> : ''}
               {/* 收货地址 */}
               {key === 2 ? <ReceivingAddress /> : ''}
             </Row>

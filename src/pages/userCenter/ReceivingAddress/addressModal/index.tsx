@@ -1,12 +1,37 @@
-import { Modal, Form, Row, Col, Input, Radio } from 'antd';
+import { Modal, Form, Row, Col, Input, Radio, Button } from 'antd';
 import './index.less';
+import { useEffect } from 'react';
+import { Address } from '../mock';
 
 const AddressModal = (props: {
   visible: boolean | undefined;
   handleCancel: any;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  address: Address | {};
 }) => {
-  const { visible, handleCancel } = props;
-  // const [fields, setFields] = useState<FieldData[]>([{ name: '', value: '' }]);
+  const { visible, handleCancel, address } = props;
+  const [form] = Form.useForm();
+  useEffect(() => {
+    if (Object.keys(address).length === 0) {
+      form.resetFields();
+    } else {
+      form.setFieldsValue({
+        name: address.name,
+        region: address.region,
+        detail: address.detail,
+        phone: address.phone,
+        isDefault: address.isDefault,
+      });
+    }
+  }, [address]);
+
+  const handleFinish = (value: any) => {
+    // console.log(value);
+  };
+
+  const handleReset = () => {
+    form.resetFields();
+  };
   return (
     <Modal
       width={800}
@@ -15,8 +40,9 @@ const AddressModal = (props: {
       // onOk={value => handleOk(value)}
       onCancel={handleCancel}
       destroyOnClose={true}
+      footer={null}
       className="dm_ReceivingAddress_modal">
-      <Form layout="inline">
+      <Form form={form} onFinish={handleFinish}>
         <Row>
           <Col span={12}>
             <Form.Item
@@ -77,7 +103,7 @@ const AddressModal = (props: {
             </Form.Item>
           </Col>
         </Row>
-        <Col span={12} className="radio">
+        <Row className="radio">
           <Form.Item
             label="设为默认地址"
             name="isDefault"
@@ -88,11 +114,29 @@ const AddressModal = (props: {
               },
             ]}>
             <Radio.Group>
-              <Radio value={1}>是</Radio>
-              <Radio value={0}>否</Radio>
+              <Radio value={true}>是</Radio>
+              <Radio value={false}>否</Radio>
             </Radio.Group>
           </Form.Item>
-        </Col>
+        </Row>
+        <Row style={{ margin: '0 200px' }}>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{ margin: '0 8px' }}>
+              保存
+            </Button>
+            {address === {} && (
+              <Button
+                htmlType="button"
+                onClick={handleReset}
+                style={{ margin: '0 8px' }}>
+                重置
+              </Button>
+            )}
+          </Form.Item>
+        </Row>
       </Form>
     </Modal>
   );
