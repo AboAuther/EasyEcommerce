@@ -6,8 +6,7 @@ import { Address } from '../mock';
 const AddressModal = (props: {
   visible: boolean | undefined;
   handleCancel: any;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  address: Address | {};
+  address: Address;
 }) => {
   const { visible, handleCancel, address } = props;
   const [form] = Form.useForm();
@@ -15,17 +14,18 @@ const AddressModal = (props: {
     if (Object.keys(address).length === 0) {
       form.resetFields();
     } else {
+      const { name, region, detail, phone, isDefault } = address;
       form.setFieldsValue({
-        name: address.name,
-        region: address.region,
-        detail: address.detail,
-        phone: address.phone,
-        isDefault: address.isDefault,
+        name,
+        region,
+        detail,
+        phone,
+        isDefault,
       });
     }
   }, [address]);
 
-  const handleFinish = (value: any) => {
+  const handleFinish = () => {
     // console.log(value);
   };
 
@@ -127,7 +127,7 @@ const AddressModal = (props: {
               style={{ margin: '0 8px' }}>
               保存
             </Button>
-            {address === {} && (
+            {address && (
               <Button
                 htmlType="button"
                 onClick={handleReset}

@@ -1,17 +1,39 @@
-import { Row, Select, Typography } from 'antd';
+import { Row, Select, Typography, Button, Popover } from 'antd';
 import { useState } from 'react';
+import styled from 'styled-components';
 import HeardSearch from '../home/components/heardSearch';
 import './index.less';
 import PersonalInformation from './PersonalInformation';
 import ReceivingAddress from './ReceivingAddress';
+import Join from './join';
 
+const JoinButton = styled(Button)`
+  position: absolute;
+  right: 300px;
+  border-radius: 10px;
+  background-color: #00003f;
+`;
 const UserCenter = () => {
   const { Option } = Select;
   const [key, setKey] = useState(1);
+  const [visible, setVisible] = useState(false);
+
+  const openDraw = () => {
+    setVisible(true);
+  };
+
+  const closeDraw = () => {
+    setVisible(false);
+  };
 
   const handleChange = (value: number) => {
     setKey(value);
   };
+  const content = (
+    <div>
+      <p>提交信息，注册成为商家</p>
+    </div>
+  );
   return (
     <div className="content">
       <div className="orderHead">
@@ -28,6 +50,11 @@ const UserCenter = () => {
                 <Option value={1}>个人资料</Option>
                 <Option value={2}>收货地址</Option>
               </Select>
+              <Popover content={content}>
+                <JoinButton type="primary" onClick={() => openDraw()}>
+                  成为商家
+                </JoinButton>
+              </Popover>
             </Row>
             <Row style={{ padding: '10px 0' }}>
               {/* 个人资料 */}
@@ -38,6 +65,7 @@ const UserCenter = () => {
           </div>
         </div>
       </div>
+      <Join visible={visible} closeDraw={closeDraw} />
     </div>
   );
 };
