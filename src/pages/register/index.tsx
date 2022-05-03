@@ -11,6 +11,7 @@ import './index.less';
 import styled from 'styled-components';
 import axios from 'axios';
 import bg from '../images/testBg.jpg';
+import { DOMAIN } from '@/constants';
 
 interface FinishValue {
   confirm: string;
@@ -30,7 +31,7 @@ const Register = () => {
   const onFinish = async (values: FinishValue) => {
     await axios({
       method: 'post',
-      url: 'http://localhost:9088/api/user/register',
+      url: `${DOMAIN}/user/register`,
       data: {
         username: values.username,
         nickName: values.nickname,

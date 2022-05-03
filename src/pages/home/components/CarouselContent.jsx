@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { get as banner } from '@api/banner';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from '@modern-js/runtime/router';
+import { DOMAIN } from '@/constants';
 
 const ContentCarousel = styled(Carousel)`
   margin-top: 35px;
@@ -19,17 +21,9 @@ const ContentImg = styled.img`
   border-radius: 2%;
 `;
 const CarouselContent = () => {
-  // const contentStyle = {
-  //   color: '#fff',
-  //   lineHeight: '160px',
-  //   textAlign: 'center',
-  //   background: '#364d79',
-  //   width: '100%',
-  // };
-
   const [value, setValue] = useState([]);
   useEffect(async () => {
-    await axios.get('http://localhost:9088/api/product/banner').then(res => {
+    await axios.get(`${DOMAIN}/product/banner`).then(res => {
       setValue(res.data.entity.data);
     });
   }, []);
@@ -38,11 +32,13 @@ const CarouselContent = () => {
       <ContentCarousel autoplay={true}>
         {value.length !== 0 &&
           value.map((item: Object) => (
-            <>
+            <div key={item.bannerID}>
               <div>
-                <ContentImg src={item.url} />
+                <Link to={`/products/${item.bannerID}`}>
+                  <ContentImg src={item.url} key={item.bannerID} />
+                </Link>
               </div>
-            </>
+            </div>
           ))}
       </ContentCarousel>
     </div>

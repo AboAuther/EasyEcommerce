@@ -9,7 +9,7 @@ import Join from './join';
 
 const JoinButton = styled(Button)`
   position: absolute;
-  right: 300px;
+  right: 350px;
   border-radius: 10px;
   background-color: #00003f;
 `;

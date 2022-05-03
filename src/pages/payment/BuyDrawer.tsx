@@ -8,10 +8,11 @@ const BuyDrawer = (props: {
   visible?: boolean;
   onClose?: () => void;
   basicInfo?: {
-    id: number;
-    price: number;
-    mainPicture: string;
-    description: string;
+    productCoverImg: string;
+    productName: string;
+    productIntro: string;
+    sellingPrice: number;
+    categoryId: number;
   };
   num?: number | null;
   shoppingCatsList?: Array<{
@@ -59,7 +60,7 @@ const BuyDrawer = (props: {
               <p>
                 ¥
                 {num !== null
-                  ? Number(basicInfo.price * num).toFixed(2)
+                  ? Number(basicInfo.sellingPrice * num).toFixed(2)
                   : '0.00'}
               </p>
             </div>

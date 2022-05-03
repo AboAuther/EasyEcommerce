@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from '@modern-js/runtime/router';
 import bg from '../images/testBg.jpg';
+import { DOMAIN } from '@/constants';
 
 const LoginPage = styled.div`
   /* height: 100%; */
@@ -18,7 +19,7 @@ const Login = () => {
   const onFinish = async (values: any) => {
     await axios({
       method: 'post',
-      url: 'http://localhost:9088/api/user/login',
+      url: `${DOMAIN}/user/login`,
       data: {
         username: values.username,
         password: values.password,

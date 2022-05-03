@@ -3,8 +3,11 @@ import { Row, Card, Typography } from 'antd';
 // import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { Link } from '@modern-js/runtime/router';
+// import { productsList } from './mock';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import banana from './images/banana.webp';
-import { productsList } from './mock';
+import { DOMAIN } from '@/constants';
 
 const HotThisWeek = () => {
   const { Meta } = Card;
@@ -17,6 +20,13 @@ const HotThisWeek = () => {
     slidesToScroll: 5,
     slidesToShow: 5,
   };
+  const [productsList, setProductsList] = useState([]);
+  useEffect(async () => {
+    await axios.get(`${DOMAIN}/product/list`).then(res => {
+      setProductsList(res.data.entity.data);
+    });
+  }, []);
+
   return (
     <div className="dm_HotThisWeek">
       <Row className="title">热门推荐</Row>
@@ -25,19 +35,19 @@ const HotThisWeek = () => {
           {productsList.length ? (
             <Slider {...settings}>
               {productsList.map(item => {
-                const price =
-                  parseFloat(item.price) && parseFloat(item.price).toFixed(2);
+                const id = Number(item.productId);
                 return (
                   <Card
-                    key={item.id}
+                    key={id}
                     bordered={false}
                     cover={
-                      <Link to={`/products/${item.id}`}>
+                      <Link to={`/products/${id}`}>
                         <img
                           alt=""
-                          src={banana}
+                          src={item.productCoverImg}
                           title={item.productName}
                           style={{ width: '100%' }}
+                          height={135}
                         />
                       </Link>
                     }>
@@ -45,13 +55,13 @@ const HotThisWeek = () => {
                       title={
                         <Title level={4}>
                           <span className="unit">￥</span>
-                          {item.price ? Number(item.price).toFixed(2) : 0}
+                          {item.sellingPrice
+                            ? Number(item.sellingPrice).toFixed(2)
+                            : 0}
                         </Title>
                       }
                       description={
-                        <Link to={`/products/${item.id}`}>
-                          {item.description}
-                        </Link>
+                        <Link to={`/products/${id}`}>{item.productIntro}</Link>
                       }
                     />
                   </Card>

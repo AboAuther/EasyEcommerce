@@ -1,14 +1,16 @@
 import { Button, Menu, Input, Layout } from 'antd';
-import { Link, NavLink } from '@modern-js/runtime/router';
+import { Link, NavLink, useHistory } from '@modern-js/runtime/router';
 import styled from '@modern-js/runtime/styled';
 import logoDark from './images/logoDark.jpeg';
 import './index.less';
 import ShoppingCard from './images/shoppingCart.png';
+import axios from 'axios';
+import { DOMAIN } from '@/constants';
+import { useModel } from '@modern-js/runtime/model';
+import stateModel from '@/store/store';
 
 const handleClickLogin = () => <NavLink to="/login" />;
-const search = (value: any) => {
-  console.info(value);
-};
+
 const ShoppingCart = styled.img`
   width: 23px;
   margin: 0 7px 2px 0;
@@ -22,6 +24,21 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
   const { Search } = Input;
   const { Header } = Layout;
   const { currentIndex, isDisplay } = props;
+  const history = useHistory();
+  const [state, actions] = useModel(stateModel);
+  const search = async (value: string) => {
+    if (value === '') {
+      await axios.get(`${DOMAIN}/product/name/''`).then(res => {
+        actions.setAllList(res.data.entity.data);
+        history.push('/products');
+      });
+    } else {
+      await axios.get(`${DOMAIN}/product/name/${value}`).then(res => {
+        actions.setAllList(res.data.entity.data);
+        history.push('/products');
+      });
+    }
+  };
 
   return (
     <>
@@ -32,7 +49,6 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
         <span className="buttonPos">
           <Button
             type="text"
-            // ghost={true}
             href="/login"
             className="headerButton"
             onClick={() => handleClickLogin()}>
@@ -44,9 +60,6 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
           <Button type="text" className="headerButton" href="/orders">
             我的订单
           </Button>
-          {/* <Button type="text" className="headerButton">
-            我的收藏
-          </Button> */}
           <Button type="text" className="headerButton" href="/userCenter">
             个人中心
           </Button>
