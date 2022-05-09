@@ -4,7 +4,7 @@ export const Notifications = () => {
   const styles = {
     noticeItem: {
       display: 'flex',
-      flexDirection: 'column',
+      // flexDirection: 'column',
       flexBasis: '50%',
       padding: '20px',
     },
@@ -15,7 +15,7 @@ export const Notifications = () => {
     },
     noticeItemBody: {
       display: 'flex',
-      flexWrap: 'wrap',
+      // flexWrap: 'wrap',
     },
     bodyItem: {
       display: 'flex',

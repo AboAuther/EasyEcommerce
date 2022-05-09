@@ -12,7 +12,10 @@ const ProductsDetails = ({
     params: { id },
   },
 }: RouteComponentProps<{ id: string }>) => {
-  const [message, setMessage] = useState([]);
+  const [message, setMessage] = useState<{
+    product: any;
+    evaluation: any;
+  }>();
   useEffect(() => {
     const getList = async () => {
       await axios.get(`${DOMAIN}/product/id/${id}`).then(res => {
@@ -26,10 +29,10 @@ const ProductsDetails = ({
       <HeardSearch currentIndex={'2'} isDisplay={false} />
       <div className="common-with">
         <div className="page-all">
-          <CommoditySpecification basicInfo={message.product} />
+          <CommoditySpecification basicInfo={message ? message.product : null} />
           <CommodityDetails
-            comment={message.evaluation}
-            basicInfo={message.product}
+            comment={message ? message.evaluation: null}
+            basicInfo={message ? message.product: null}
           />
         </div>
       </div>

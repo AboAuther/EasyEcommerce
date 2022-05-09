@@ -1,13 +1,13 @@
 export interface Address {
-  index: number;
-  id: number;
-  name: string;
-  region: string;
-  detail: string;
-  phone: string;
-  isDefault: boolean;
+  index?: number;
+  id?: number;
+  name?: string;
+  region?: string;
+  detail?: string;
+  phone?: string;
+  isDefault?: boolean;
 }
-const addressSource: Array<Address> = [
+const addressSource = [
   {
     index: 1,
     id: 1,

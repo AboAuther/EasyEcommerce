@@ -16,7 +16,7 @@ interface type {
   star: number | undefined;
   CreatedAt: moment.DurationInputArg1;
 }
-const CommodityEvaluation = ({ comment }) => {
+const CommodityEvaluation = ({ comment } : any) => {
   const data = comment
     ? comment.map((item: type) => ({
         author: item.createUser,

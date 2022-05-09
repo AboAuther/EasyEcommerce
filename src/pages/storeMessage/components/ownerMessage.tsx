@@ -19,7 +19,7 @@ const OwnerMessage = () => {
       height: '72px',
       display: 'flex',
       flexBasis: '50%',
-      flexDirection: 'column',
+      // flexDirection: 'column',
       justifyContent: 'space-between',
     },
     unitTitle: {

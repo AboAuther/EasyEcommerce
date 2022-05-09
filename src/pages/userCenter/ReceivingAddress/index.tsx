@@ -1,7 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Row, Button, Table, Popconfirm } from 'antd';
 import { useState } from 'react';
-// import { columns } from './data';
 import { ColumnsType } from 'antd/es/table';
 import addressSource, { Address } from './mock';
 import AddressModal from './addressModal';
@@ -102,8 +101,7 @@ const ReceivingAddress = () => {
           bordered={true}
           dataSource={addressSource}
           columns={columns}
-          // scroll={{ x: false, y: false }}
-          rowKey={record => record.id}
+          rowKey={record => record.id ? record.id : -1}
           pagination={false}
           size="middle"
         />

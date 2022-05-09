@@ -2,7 +2,7 @@ import { Tabs } from 'antd';
 import CommodityEvaluation from './CommodityEvaluation';
 import './index.less';
 
-const CommodityDetails = ({ comment, basicInfo }) => {
+const CommodityDetails = ({ comment, basicInfo } : any) => {
   const { TabPane } = Tabs;
   return (
     <div className="CommodityDetails">

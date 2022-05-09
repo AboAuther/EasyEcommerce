@@ -4,7 +4,14 @@ import { useState } from 'react';
 import './buyDrawer.less';
 import { Address } from '../userCenter/ReceivingAddress/mock';
 
-const AddressMenu = (props: { addressSource: Array<Address> }) => {
+const AddressMenu = (props: { addressSource: Array<{
+          id: number;
+          region: string;
+          detail: string;
+          name: string;
+          phone: string;
+          isDefault: boolean
+}> }) => {
   const { addressSource } = props;
   const [defaultAddress, setDefaultAddress] = useState(
     addressSource.find((item: { isDefault: boolean }) => item.isDefault),

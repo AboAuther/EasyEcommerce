@@ -22,8 +22,8 @@ const Product = () => {
   // const [map, setMap] = useState({});
   const [state, actions] = useModel(stateModel);
   const [searchList, setSearchList] = useState(state.allList);
-  const [classify, setClassify] = useState();
-  const [price, setPrice] = useState();
+  const [classify, setClassify] = useState<number>();
+  const [price, setPrice] = useState<number>();
 
   useEffect(() => {
     const getList = async () => {
@@ -52,7 +52,7 @@ const Product = () => {
           if (res.data.entity.code === 200) {
             setProductsList(res.data.entity.data);
           } else {
-            setProductsList(null);
+            setProductsList([]);
           }
         });
       setPrice(undefined);
@@ -64,7 +64,7 @@ const Product = () => {
           if (res.data.entity.code === 200) {
             setProductsList(res.data.entity.data);
           } else {
-            setProductsList(null);
+            setProductsList([]);
           }
         });
     }
@@ -80,7 +80,7 @@ const Product = () => {
           if (res.data.entity.code === 200) {
             setProductsList(res.data.entity.data);
           } else {
-            setProductsList(null);
+            setProductsList([]);
           }
         });
       setClassify(undefined);
@@ -91,7 +91,7 @@ const Product = () => {
           if (res.data.entity.code === 200) {
             setProductsList(res.data.entity.data);
           } else {
-            setProductsList(null);
+            setProductsList([]);
           }
         });
       setPrice(value);

@@ -2,16 +2,22 @@ import { DownCircleTwoTone, EnvironmentTwoTone } from '@ant-design/icons';
 import { Dropdown, Menu } from 'antd';
 import { useState } from 'react';
 import './buyDrawer.less';
-import { Address } from '../userCenter/ReceivingAddress/mock';
 
-const AddressMenu = (props: { addressSource: Array<Address> }) => {
+const AddressMenu = (props: { addressSource: Array<{
+  id: number;
+          region: string;
+          detail: string;
+          name: string;
+          phone: string;
+          isDefault: boolean
+}> }) => {
   const { addressSource } = props;
   const [defaultAddress, setDefaultAddress] = useState(
     addressSource.find((item: { isDefault: boolean }) => item.isDefault),
   );
   const handleClick = (id: string) => {
     const chosen = addressSource.find(
-      (address: { id: number }) => address.id === Number(id),
+      (address: { id?: number }) => address.id === Number(id),
     );
     setDefaultAddress(chosen);
   };

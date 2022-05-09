@@ -22,6 +22,11 @@ const BuyDrawer = (props: {
     description: string;
     num: number;
     totalprice: number;
+    // productCoverImg: string;
+    // productName: string;
+    // productIntro: string;
+    // sellingPrice: number;
+    // categoryId: number;
   }>;
   total?: number;
 }) => {
