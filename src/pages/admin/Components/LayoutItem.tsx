@@ -1,18 +1,19 @@
-/* eslint-disable import/order */
-import { Layout, Menu, Breadcrumb, MenuProps } from 'antd';
+import { Layout, Menu, MenuProps } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
   ContainerOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
+import { useHistory } from '@modern-js/runtime/router';
+
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
-import './layout.less';
-import { useHistory } from '@modern-js/runtime/router';
-import StoreDataMessage from './storeDataMessage';
-import OwnerMessage from './ownerMessage';
-import LicenseMessage from './licenseMessage';
+import './index.less';
+import RealTimeOverview from './RealTimeOverview';
+// eslint-disable-next-line import/no-named-as-default
+import Notifications from './Notifications';
+import PerformanceChart from './PerformanceChart';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -36,6 +37,7 @@ function getItem(
 
 const LayoutItem = () => {
   const [collapsed, setCollapsed] = useState(false);
+
   const history = useHistory();
 
   const onCollapse = (collapsed: boolean) => {
@@ -60,6 +62,7 @@ const LayoutItem = () => {
       history.push('./goodsList');
     }
   };
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -68,7 +71,7 @@ const LayoutItem = () => {
         </div>
         <Menu
           theme="dark"
-          defaultSelectedKeys={['4']}
+          defaultSelectedKeys={['1']}
           mode="inline"
           items={items}
           onClick={hanldeOnclick}
@@ -80,9 +83,9 @@ const LayoutItem = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}>
-            <StoreDataMessage />
-            <OwnerMessage />
-            <LicenseMessage />
+            <RealTimeOverview />
+            <Notifications />
+            <PerformanceChart />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
@@ -93,5 +96,4 @@ const LayoutItem = () => {
     </Layout>
   );
 };
-
 export default LayoutItem;

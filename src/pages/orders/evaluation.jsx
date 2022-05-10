@@ -1,23 +1,50 @@
 /* eslint-disable filenames/match-exported */
-import { Button, Form, Modal, Rate } from 'antd';
+import { Button, Form, message, Modal, Rate } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
+import axios from 'axios';
 import styled from 'styled-components';
+import { DOMAIN } from '@/constants';
 
 const Title = styled.p`
   font-size: 18px;
 `;
-const Evalution = (props: {
-  visible: boolean;
-  handleOk: () => void;
-  handleCancel: () => void;
-  modalText: string;
-}) => {
+const Evalution = (
+  props,
+  //   : {
+  //   visible: boolean;
+  //   handleOk: () => void;
+  //   handleCancel: () => void;
+  //   modalText: Object<>;
+  // }
+) => {
   const [form] = Form.useForm();
-  const { visible, handleOk, handleCancel, modalText } = props;
-  const handleSubmit = (value: any) => {
-    console.log(value);
-    handleOk();
-    form.resetFields();
+  const {
+    visible,
+    handleOk,
+    handleCancel,
+    createUser,
+    productId,
+    orderId,
+    title,
+  } = props;
+  const handleSubmit = async (value: any) => {
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/order/addEvaluation`,
+      data: {
+        createUser,
+        productId,
+        orderId,
+        evaluation: value.content,
+        star: value.rate,
+      },
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('评价成功');
+        handleOk();
+        form.resetFields();
+      }
+    });
   };
   return (
     <Modal
@@ -25,9 +52,8 @@ const Evalution = (props: {
       footer={null}
       visible={visible}
       onOk={handleOk}
-      // confirmLoading={confirmLoading}
       onCancel={handleCancel}>
-      <Title>{modalText}</Title>
+      <Title>{title}</Title>
       <Form onFinish={handleSubmit} form={form}>
         <Form.Item
           name="content"

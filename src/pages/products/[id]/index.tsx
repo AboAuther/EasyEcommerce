@@ -29,11 +29,15 @@ const ProductsDetails = ({
       <HeardSearch currentIndex={'2'} isDisplay={false} />
       <div className="common-with">
         <div className="page-all">
-          <CommoditySpecification basicInfo={message ? message.product : null} />
-          <CommodityDetails
-            comment={message ? message.evaluation: null}
-            basicInfo={message ? message.product: null}
-          />
+          {message !== undefined && (
+            <>
+              <CommoditySpecification basicInfo={message?.product} />
+              <CommodityDetails
+                comment={message.evaluation}
+                basicInfo={message.product}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>

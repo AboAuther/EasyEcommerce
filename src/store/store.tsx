@@ -6,6 +6,7 @@ const stateModel = model('foo').define(() => {
     state: {
       banner: [],
       allList: [],
+      userID: 'liruiguo',
     },
     actions: {
       setAllList(state, list) {

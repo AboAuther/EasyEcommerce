@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable import/order */
 import { Button, Menu, Input, Layout } from 'antd';
 import { Link, NavLink, useHistory } from '@modern-js/runtime/router';
 import styled from '@modern-js/runtime/styled';
@@ -43,7 +46,7 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
   return (
     <>
       <Header>
-        <span>
+        <span onClick={() => history.push('/')}>
           <img className="darkLogo" src={logoDark}></img>
         </span>
         <span className="buttonPos">

@@ -1,11 +1,11 @@
-import LayoutItem from "./Components/Layout";
+import LayoutItem from './Components/LayoutItem';
 
 const Admin = () => {
   return (
-   <div>
-     <LayoutItem/>
-   </div>
-  )
-}
+    <div>
+      <LayoutItem />
+    </div>
+  );
+};
 
 export default Admin;

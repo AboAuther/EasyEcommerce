@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable import/order */
 /* eslint-disable no-nested-ternary */
 import React, { Fragment, useEffect, useState } from 'react';
 import { Row, Col, Card, Typography, Pagination, Empty } from 'antd';
@@ -5,7 +8,6 @@ import { Link } from '@modern-js/runtime/router';
 import { FileList } from '../home/components/mock';
 import './index.less';
 import HeardSearch from '../home/components/heardSearch';
-// eslint-disable-next-line import/order
 import axios from 'axios';
 import { DOMAIN } from '@/constants';
 import { useModel } from '@modern-js/runtime/model';
@@ -20,11 +22,11 @@ const Product = () => {
   // const [filter, setFilter] = useState({});
   const [productsList, setProductsList] = useState([]);
   // const [map, setMap] = useState({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [state, actions] = useModel(stateModel);
   const [searchList, setSearchList] = useState(state.allList);
   const [classify, setClassify] = useState<number>();
   const [price, setPrice] = useState<number>();
-
   useEffect(() => {
     const getList = async () => {
       await axios.get(`${DOMAIN}/product/listByCategory`).then(res => {
@@ -33,6 +35,10 @@ const Product = () => {
     };
     getList();
   }, []);
+
+  useEffect(() => {
+    setSearchList(state.allList);
+  }, [state.allList]);
 
   // const handleList = () => { // 分页
   //   const len = productsList.length;
@@ -98,7 +104,6 @@ const Product = () => {
     }
   };
   const tarArr =
-    // eslint-disable-next-line no-nested-ternary
     searchList.length !== 0
       ? searchList
       : productsList !== null
@@ -140,6 +145,7 @@ const Product = () => {
                 <Col span={22}>
                   {FileList.price.map((item, index) => (
                     <span
+                      // eslint-disable-next-line react/no-array-index-key
                       key={index}
                       onClick={() => handlePriceClick(item.value)}>
                       {item.label}
@@ -209,6 +215,7 @@ const Product = () => {
               current={current}
               pageSize={pageSize}
               total={total}
+              // eslint-disable-next-line no-console
               onChange={() => console.log('change')}
               showTotal={total => `共 ${total}条`}
             />
