@@ -93,6 +93,7 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
                   公告
                 </TitleMenu>
                 <TitleMenu key="4" style={{ margin: '0 50% 0 0' }}>
+                <NavLink to="/comments" />
                   留言
                 </TitleMenu>
               </Menu>
