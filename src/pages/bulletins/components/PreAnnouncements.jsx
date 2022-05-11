@@ -2,9 +2,9 @@ import '../index.less';
 import { Col, Row } from 'antd';
 import moment from 'moment';
 import bg from '../images/bgImg.jpg';
-import noticeMessage from '../mock';
 
-const PreAnnouncements = () => {
+const PreAnnouncements = props => {
+  const { noticeMessage } = props;
   const noticeLeft = noticeMessage.length > 2 ? noticeMessage[1] : null;
   const noticeRight = noticeMessage.length > 2 ? noticeMessage[2] : null;
   return (

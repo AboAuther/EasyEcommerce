@@ -49,59 +49,31 @@ const Product = () => {
   // }
 
   const handleFileClick = async (value: number) => {
-    if (price !== undefined) {
-      await axios
-        .get(
-          `${DOMAIN}/product/listByCategory?category=${value}&price=${price}`,
-        )
-        .then(res => {
-          if (res.data.entity.code === 200) {
-            setProductsList(res.data.entity.data);
-          } else {
-            setProductsList([]);
-          }
-        });
-      setPrice(undefined);
-    } else {
-      setClassify(value);
-      await axios
-        .get(`${DOMAIN}/product/listByCategory?category=${value}`)
-        .then(res => {
-          if (res.data.entity.code === 200) {
-            setProductsList(res.data.entity.data);
-          } else {
-            setProductsList([]);
-          }
-        });
-    }
+    setPrice(undefined);
+    setClassify(value);
+    await axios
+      .get(`${DOMAIN}/product/listByCategory?category=${value}`)
+      .then(res => {
+        if (res.data.entity.code === 200) {
+          setProductsList(res.data.entity.data);
+        } else {
+          setProductsList([]);
+        }
+      });
   };
 
   const handlePriceClick = async (value: number) => {
-    if (classify !== undefined) {
-      await axios
-        .get(
-          `${DOMAIN}/product/listByCategory?price=${value}&category=${classify}`,
-        )
-        .then(res => {
-          if (res.data.entity.code === 200) {
-            setProductsList(res.data.entity.data);
-          } else {
-            setProductsList([]);
-          }
-        });
-      setClassify(undefined);
-    } else {
-      await axios
-        .get(`${DOMAIN}/product/listByCategory?price=${value}`)
-        .then(res => {
-          if (res.data.entity.code === 200) {
-            setProductsList(res.data.entity.data);
-          } else {
-            setProductsList([]);
-          }
-        });
-      setPrice(value);
-    }
+    setClassify(undefined);
+    setPrice(value);
+    await axios
+      .get(`${DOMAIN}/product/listByCategory?price=${value}`)
+      .then(res => {
+        if (res.data.entity.code === 200) {
+          setProductsList(res.data.entity.data);
+        } else {
+          setProductsList([]);
+        }
+      });
   };
   const tarArr =
     searchList.length !== 0
@@ -134,6 +106,9 @@ const Product = () => {
                   {FileList.classify.map(item => (
                     <span
                       key={item.value}
+                      style={{
+                        color: classify === item.value ? '#1890ff' : '',
+                      }}
                       onClick={() => handleFileClick(item.value)}>
                       {item.label}
                     </span>
@@ -147,6 +122,9 @@ const Product = () => {
                     <span
                       // eslint-disable-next-line react/no-array-index-key
                       key={index}
+                      style={{
+                        color: price === item.value ? '#1890ff' : '',
+                      }}
                       onClick={() => handlePriceClick(item.value)}>
                       {item.label}
                     </span>

@@ -1,9 +1,9 @@
 import '../index.less';
 import moment from 'moment';
-import noticeMessage from '../mock';
 import topic from '../images/topic.png';
 
-const TopicNotice = () => {
+const TopicNotice = props => {
+  const { noticeMessage } = props;
   const topicNotice = noticeMessage.length > 0 ? noticeMessage[0] : null;
 
   return topicNotice !== null ? (
