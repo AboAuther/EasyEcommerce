@@ -27,7 +27,7 @@ const UserLine = () => {
   }, []);
 
   return (
-    <div style={{padding: '15px 10px'}}>
+    <div style={{ padding: '15px 10px' }}>
       <div ref={container} />
     </div>
   );

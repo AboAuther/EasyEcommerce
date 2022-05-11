@@ -22,5 +22,5 @@
     "config",
     "modern.config.ts",
     "api"
-  ]
+, "modern.config.js"  ]
 }

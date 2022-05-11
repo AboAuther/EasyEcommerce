@@ -1,18 +1,4 @@
-const MessageChosen = (props: {
-  basicInfo:  any;
-  // {
-  //   // id: number;
-  //   // price: number;
-  //   // mainPicture: string;
-  //   // description: string;
-  //   // productCoverImg: string;
-  //   // productName: string;
-  //   // productIntro: string;
-  //   // sellingPrice: number;
-  //   // categoryId: number;
-  // };
-  num: number | null;
-}) => {
+const MessageChosen = (props: { basicInfo: any; num: number | null }) => {
   const { basicInfo, num } = props;
   return (
     <div className="itemContentMessage">

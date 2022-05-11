@@ -4,8 +4,8 @@ export interface Address {
   name?: string;
   region?: string;
   detail?: string;
-  phone?: string;
-  isDefault?: boolean;
+  mobile?: string;
+  default?: boolean;
 }
 const addressSource = [
   {

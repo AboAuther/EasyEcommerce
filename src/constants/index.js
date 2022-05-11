@@ -1,1 +1,1 @@
-export const DOMAIN = 'http://localhost:9088/api';
+export const DOMAIN = '/api';

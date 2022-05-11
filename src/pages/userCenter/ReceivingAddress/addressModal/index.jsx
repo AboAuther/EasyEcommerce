@@ -1,32 +1,85 @@
-import { Modal, Form, Row, Col, Input, Radio, Button } from 'antd';
+import { Modal, Form, Row, Col, Input, Radio, Button, message } from 'antd';
 import './index.less';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useModel } from '@modern-js/runtime/model';
 import { Address } from '../mock';
+import { DOMAIN } from '@/constants';
+import stateModel from '@/store/store';
 
 const AddressModal = (props: {
-  visible: boolean | undefined;
-  handleCancel: any;
-  address: Address;
+  visible: boolean | undefined,
+  handleCancel: any,
+  address: Address,
+  getAddress: () => {},
 }) => {
-  const { visible, handleCancel, address } = props;
+  const { visible, handleCancel, address, getAddress } = props;
   const [form] = Form.useForm();
+  const [state, actions] = useModel(stateModel);
+  const [isUpdate, setIsUpdate] = useState(false);
   useEffect(() => {
     if (Object.keys(address).length === 0) {
       form.resetFields();
     } else {
-      const { name, region, detail, phone, isDefault } = address;
+      const { name, region, detail, mobile } = address;
       form.setFieldsValue({
         name,
         region,
         detail,
-        phone,
-        isDefault,
+        mobile,
+        default: address.default,
       });
+      setIsUpdate(true);
     }
   }, [address]);
 
-  const handleFinish = () => {
-    // console.log(value);
+  const handleFinish = async (value: {
+    name: string,
+    region: string,
+    detail: string,
+    mobile: string,
+    default: boolean,
+  }) => {
+    if (isUpdate) {
+      await axios({
+        method: 'post',
+        url: `${DOMAIN}/user/addAddress`,
+        data: {
+          createUser: state.userID,
+          name: value.name,
+          region: value.region,
+          detail: value.detail,
+          mobile: value.mobile,
+          default: value.default,
+          ID: address.ID,
+        },
+      }).then(res => {
+        if (res.data.entity.success) {
+          message.success('修改成功！');
+          getAddress();
+          handleCancel();
+        }
+      });
+    } else {
+      await axios({
+        method: 'post',
+        url: `${DOMAIN}/user/addAddress`,
+        data: {
+          createUser: state.userID,
+          name: value.name,
+          region: value.region,
+          detail: value.detail,
+          mobile: value.mobile,
+          default: value.default,
+        },
+      }).then(res => {
+        if (res.data.entity.success) {
+          message.success('添加成功！');
+          getAddress();
+          handleCancel();
+        }
+      });
+    }
   };
 
   const handleReset = () => {
@@ -91,7 +144,7 @@ const AddressModal = (props: {
           <Col span={12}>
             <Form.Item
               label="联系电话"
-              name="phone"
+              name="mobile"
               rules={[
                 {
                   required: true,
@@ -106,7 +159,7 @@ const AddressModal = (props: {
         <Row className="radio">
           <Form.Item
             label="设为默认地址"
-            name="isDefault"
+            name="default"
             rules={[
               {
                 required: true,

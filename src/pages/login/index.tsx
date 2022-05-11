@@ -5,8 +5,10 @@ import './index.less';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from '@modern-js/runtime/router';
+import { useModel } from '@modern-js/runtime/model';
 import bg from '../images/testBg.jpg';
 import { DOMAIN } from '@/constants';
+import stateModel from '@/store/store';
 
 const LoginPage = styled.div`
   /* height: 100%; */
@@ -16,18 +18,21 @@ const LoginPage = styled.div`
 
 const Login = () => {
   const history = useHistory();
+  const [state, actions] = useModel(stateModel);
   const onFinish = async (values: any) => {
     await axios({
       method: 'post',
       url: `${DOMAIN}/user/login`,
       data: {
-        username: values.username,
+        userID: values.username,
         password: values.password,
       },
     })
       .then(res => {
         const { success } = res.data.entity;
         if (success) {
+          actions.setUserId(res.data.entity.data);
+
           history.push('/');
         }
       })
@@ -35,7 +40,6 @@ const Login = () => {
         message.error('用户名或密码错误，请重新登陆！');
       });
   };
-
   return (
     <div
       style={{

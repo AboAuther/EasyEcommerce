@@ -12,6 +12,13 @@ const stateModel = model('foo').define(() => {
       setAllList(state, list) {
         state.allList = list;
       },
+      setUserId(state, userID) {
+        // return {
+        //   ...state,
+        //   userID,
+        // };
+        state.userID = userID;
+      },
     },
   };
 });

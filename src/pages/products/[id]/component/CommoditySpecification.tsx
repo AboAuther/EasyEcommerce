@@ -89,7 +89,7 @@ const CommoditySpecification = (props: {
           </Col>
         </Row>
       ) : (
-        <p>zanwushuju</p>
+        <p>暂无数据</p>
       )}
 
       <BuyDrawer

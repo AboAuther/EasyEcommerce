@@ -1,5 +1,6 @@
-import { Row, Col } from "antd";
-import './Layout.less';
+import { Row, Col } from 'antd';
+import './index.less';
+
 const RealTimeOverview = () => {
   const styles = {
     dataItem: {
@@ -33,89 +34,91 @@ const RealTimeOverview = () => {
       fontSize: '12px',
     },
   };
-  return(
+  return (
     <div className="real-content">
-      <span><p className="title">实时概况</p></span>
-       <Row wrap>
-          <Col span="12">
-            <div style={styles.dataItem}>
-              <img
-                src={require('./images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png')}
-                alt=""
-                style={styles.dataItemImg}
-              />
-              <div style={styles.dataItemUnit} >
-                <div style={styles.unitTitle}>门店销售额(元)</div>
-                <div style={styles.unitAmount}>982.00</div>
-                <div style={styles.unitFooter}>昨日：680.00</div>
-              </div>
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>门店支付订单数</div>
-                <div style={styles.unitAmount}>80</div>
-                <div style={styles.unitFooter}>昨日：60</div>
-              </div>
+      <span>
+        <p className="title">实时概况</p>
+      </span>
+      <Row wrap>
+        <Col span="12">
+          <div style={styles.dataItem}>
+            <img
+              src={require('./images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png')}
+              alt=""
+              style={styles.dataItemImg}
+            />
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>门店销售额(元)</div>
+              <div style={styles.unitAmount}>982.00</div>
+              <div style={styles.unitFooter}>昨日：680.00</div>
             </div>
-          </Col>
-          <Col span="12" >
-            <div style={styles.dataItem}>
-              <img
-                src={require('./images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png')}
-                alt=""
-                style={styles.dataItemImg}
-              />
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>网店销售额(元)</div>
-                <div style={styles.unitAmount}>381.00</div>
-                <div style={styles.unitFooter}>昨日：123.00</div>
-              </div>
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>网店支付订单数</div>
-                <div style={styles.unitAmount}>120</div>
-                <div style={styles.unitFooter}>昨日：128</div>
-              </div>
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>门店支付订单数</div>
+              <div style={styles.unitAmount}>80</div>
+              <div style={styles.unitFooter}>昨日：60</div>
             </div>
-          </Col>
-          <Col span="12" >
-            <div style={styles.dataItem}>
-              <img
-                src={require('./images/TB1Py4_ceuSBuNjy1XcXXcYjFXa-142-140.png')}
-                alt=""
-                style={styles.dataItemImg}
-              />
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>新增客户数</div>
-                <div style={styles.unitAmount}>182</div>
-                <div style={styles.unitFooter}>昨日：123</div>
-              </div>
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>支付客户数</div>
-                <div style={styles.unitAmount}>96</div>
-                <div style={styles.unitFooter}>昨日：90</div>
-              </div>
+          </div>
+        </Col>
+        <Col span="12">
+          <div style={styles.dataItem}>
+            <img
+              src={require('./images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png')}
+              alt=""
+              style={styles.dataItemImg}
+            />
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>网店销售额(元)</div>
+              <div style={styles.unitAmount}>381.00</div>
+              <div style={styles.unitFooter}>昨日：123.00</div>
             </div>
-          </Col>
-          <Col span="12" >
-            <div style={styles.dataItem}>
-              <img
-                src={require('./images/TB1Ni4_ceuSBuNjy1XcXXcYjFXa-142-140.png')}
-                alt=""
-                style={styles.dataItemImg}
-              />
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>新增会员数</div>
-                <div style={styles.unitAmount}>89</div>
-                <div style={styles.unitFooter}>昨日：78</div>
-              </div>
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>新增储值金额(元)</div>
-                <div style={styles.unitAmount}>568.00</div>
-                <div style={styles.unitFooter}>昨日：693.00</div>
-              </div>
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>网店支付订单数</div>
+              <div style={styles.unitAmount}>120</div>
+              <div style={styles.unitFooter}>昨日：128</div>
             </div>
-          </Col>
-        </Row>
+          </div>
+        </Col>
+        <Col span="12">
+          <div style={styles.dataItem}>
+            <img
+              src={require('./images/TB1Py4_ceuSBuNjy1XcXXcYjFXa-142-140.png')}
+              alt=""
+              style={styles.dataItemImg}
+            />
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>新增客户数</div>
+              <div style={styles.unitAmount}>182</div>
+              <div style={styles.unitFooter}>昨日：123</div>
+            </div>
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>支付客户数</div>
+              <div style={styles.unitAmount}>96</div>
+              <div style={styles.unitFooter}>昨日：90</div>
+            </div>
+          </div>
+        </Col>
+        <Col span="12">
+          <div style={styles.dataItem}>
+            <img
+              src={require('./images/TB1Ni4_ceuSBuNjy1XcXXcYjFXa-142-140.png')}
+              alt=""
+              style={styles.dataItemImg}
+            />
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>新增会员数</div>
+              <div style={styles.unitAmount}>89</div>
+              <div style={styles.unitFooter}>昨日：78</div>
+            </div>
+            <div style={styles.dataItemUnit}>
+              <div style={styles.unitTitle}>新增储值金额(元)</div>
+              <div style={styles.unitAmount}>568.00</div>
+              <div style={styles.unitFooter}>昨日：693.00</div>
+            </div>
+          </div>
+        </Col>
+      </Row>
     </div>
-  )
-}
+  );
+};
 
 export default RealTimeOverview;

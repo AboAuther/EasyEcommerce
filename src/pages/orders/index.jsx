@@ -34,13 +34,12 @@ const Orders = () => {
   useEffect(() => {
     getData();
   }, []);
-
   const getData = async () => {
     await axios
       .get(`${DOMAIN}/order/getOrder?userID=${state.userID}`)
       .then(res => {
         const arr = res.data.entity.data;
-        const result = map;
+        const result = {};
         arr.map((item: { orderId: string | number }) => {
           if (!result[item.orderId]) {
             result[item.orderId] = [item];
@@ -50,7 +49,7 @@ const Orders = () => {
             result[item.orderId] = tar;
           }
         });
-        setMap({ ...result });
+        setMap(result);
       });
   };
   const openDialog = (id: number) => {
@@ -61,8 +60,8 @@ const Orders = () => {
     setVisible(false);
   };
   const handleOk = () => {
-    setEvaVisible(false);
     getData();
+    setEvaVisible(false);
   };
   const handleCancel = () => {
     setEvaVisible(false);
@@ -72,7 +71,7 @@ const Orders = () => {
     setModalText(record);
   };
 
-  const title = (ordernum: number, index: number, key) => {
+  const title = (ordernum: number) => {
     return (
       <>
         <Row className="t_header">
@@ -89,10 +88,7 @@ const Orders = () => {
               onConfirm={async () => {
                 await axios({
                   method: 'post',
-                  url: `${DOMAIN}/order/deleteOrder`,
-                  data: {
-                    order_id: ordernum,
-                  },
+                  url: `${DOMAIN}/order/deleteOrder?order_id=${ordernum}`,
                 }).then(res => {
                   if (res.data.entity.success) {
                     message.success('订单删除成功！');
@@ -115,7 +111,6 @@ const Orders = () => {
       </>
     );
   };
-
   return (
     <div className="content">
       <div className="orderHead">
@@ -138,7 +133,6 @@ const Orders = () => {
             size="middle"
             className="table_header"
           />
-
           {Object.keys(map).map((item, index) => (
             <div style={{ marginBottom: '20px' }} key={index}>
               <Table
@@ -219,7 +213,7 @@ const Orders = () => {
         visible={evaVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        createUser={modalText.userID}
+        createUser={modalText.userId}
         productId={modalText.productId}
         orderId={modalText.orderId}
         title={modalText.description}
