@@ -88,7 +88,10 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
                   <NavLink to="/products" />
                   杂货铺
                 </TitleMenu>
-                <TitleMenu key="3">网站说明</TitleMenu>
+                <TitleMenu key="3">
+                  <NavLink to="/bulletins" />
+                  公告
+                </TitleMenu>
                 <TitleMenu key="4" style={{ margin: '0 50% 0 0' }}>
                   留言
                 </TitleMenu>
