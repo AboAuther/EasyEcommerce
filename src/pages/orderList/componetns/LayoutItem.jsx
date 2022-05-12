@@ -16,7 +16,7 @@ const { Header, Content, Footer, Sider } = Layout;
 import './layout.less'
 
 import { useHistory } from '@modern-js/runtime/router';
-import TableList from './tableList';
+import TableList from './tablelist';
 
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -74,7 +74,7 @@ const LayoutItem = () => {
           <div className="logo" >
             <img src={logo} width={135} style={{margin: '0 0 0 35px'}}  />
           </div>
-          <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" items={items} onClick={hanldeOnclick} />
+          <Menu theme="dark" defaultSelectedKeys={['3']} mode="inline" items={items} onClick={hanldeOnclick} />
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} />
