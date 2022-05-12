@@ -89,14 +89,33 @@ const ShoppingCat = () => {
     });
   };
 
-  const  handleChosen = (id) => {
+  const handleChosen = id => {
     const result = chosenMap;
     if (!result[id]) {
       result[id] = true;
     } else {
       delete result[id];
     }
-  }
+    setChosenMap(result);
+  };
+  const handleDeleteSomeCarts = async () => {
+    // 批量删除
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/order/deleteCart`,
+      data: Object.keys(chosenMap).map(item => {
+        return {
+          id: Number(item),
+        };
+      }),
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('删除成功！');
+        getSource();
+      }
+    });
+  };
+
   const columns: ColumnsType<Data> = [
     {
       title: '图片',
@@ -106,10 +125,15 @@ const ShoppingCat = () => {
       width: '23%',
       render: (text, record) => {
         return (
-          <Checkbox>
-            <img className="imgs_style" src={text} alt={text} height={110} />
+          <Checkbox onChange={() => handleChosen(record.ID)}>
+            <img
+              className="imgs_style"
+              src={text}
+              alt={text}
+              height={110}
+              width={110}
+            />
           </Checkbox>
-
         );
       },
     },
@@ -125,7 +149,7 @@ const ShoppingCat = () => {
       dataIndex: 'productPrice',
       key: 'productPrice',
       align: 'center',
-      width: '16%',
+      width: '13%',
       render: text => (Number(text) ? `￥${Number(text).toFixed(2)}` : 0),
     },
     {
@@ -150,7 +174,7 @@ const ShoppingCat = () => {
       dataIndex: 'totalprice',
       key: 'totalprice',
       align: 'center',
-      width: '16%',
+      width: '13%',
       render: (text, record) => {
         const num = record.productPrice * record.productNum;
         return `￥${num.toFixed(2)}`;
@@ -199,7 +223,7 @@ const ShoppingCat = () => {
       <>
         <Row>
           <Col span={12} className="left">
-            {/* <Button>批量删除</Button> */}
+            <Button onClick={handleDeleteSomeCarts}>批量删除</Button>
           </Col>
           <Col span={12} className="right">
             <span className="num">
@@ -223,7 +247,7 @@ const ShoppingCat = () => {
       </>
     );
   };
-
+  console.log(chosenMap);
   return (
     <div className="content">
       <div className="orderHead">

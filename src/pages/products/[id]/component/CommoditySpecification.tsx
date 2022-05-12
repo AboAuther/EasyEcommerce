@@ -39,7 +39,7 @@ const CommoditySpecification = (props: {
         userID: state.userID,
         productId: basicInfo.productId,
         productCoverImg: basicInfo.productCoverImg,
-        description: basicInfo.description,
+        description: basicInfo.productIntro,
         productPrice: basicInfo.sellingPrice,
         productNum: num,
       },
