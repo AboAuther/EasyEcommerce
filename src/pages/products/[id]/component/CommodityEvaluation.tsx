@@ -14,7 +14,7 @@ interface type {
     | null
     | undefined;
   star: number | undefined;
-  CreatedAt: moment.DurationInputArg1;
+  CreatedAt: string;
 }
 const CommodityEvaluation = ({ comment }: any) => {
   const data = comment

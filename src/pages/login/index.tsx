@@ -1,4 +1,4 @@
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, Radio, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import './index.less';
@@ -9,6 +9,7 @@ import { useModel } from '@modern-js/runtime/model';
 import bg from '../images/testBg.jpg';
 import { DOMAIN } from '@/constants';
 import stateModel from '@/store/store';
+import { SetStateAction, useState } from 'react';
 
 const LoginPage = styled.div`
   /* height: 100%; */
@@ -19,6 +20,7 @@ const LoginPage = styled.div`
 const Login = () => {
   const history = useHistory();
   const [state, actions] = useModel(stateModel);
+  const [checkdValue, setCheckedValue] = useState();
   const onFinish = async (values: any) => {
     await axios({
       method: 'post',
@@ -40,6 +42,9 @@ const Login = () => {
         message.error('用户名或密码错误，请重新登陆！');
       });
   };
+  const handleChange = (e: any) => {
+    setCheckedValue(e.target.checked)
+  }
   return (
     <div
       style={{
@@ -70,6 +75,9 @@ const Login = () => {
               type="password"
               placeholder="Password"
             />
+          </Form.Item>
+          <Form.Item>
+           <Checkbox onChange={handleChange}><span style={{color: '#fff'}}>商家请勾选</span></Checkbox>
           </Form.Item>
           <Form.Item>
             <div className="buttonGroup">

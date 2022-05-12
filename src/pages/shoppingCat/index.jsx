@@ -1,5 +1,6 @@
 import {
   Button,
+  Checkbox,
   Col,
   InputNumber,
   message,
@@ -24,6 +25,7 @@ const ShoppingCat = () => {
   const [changeVisible, setChangeVisible] = useState(-1);
   const [state, actions] = useModel(stateModel);
   const [source, setSource] = useState([]);
+  const [chosenMap, setChosenMap] = useState({});
   const getSource = async () => {
     await axios
       .get(`${DOMAIN}/order/getCart?userID=${state.userID}`)
@@ -87,6 +89,14 @@ const ShoppingCat = () => {
     });
   };
 
+  const  handleChosen = (id) => {
+    const result = chosenMap;
+    if (!result[id]) {
+      result[id] = true;
+    } else {
+      delete result[id];
+    }
+  }
   const columns: ColumnsType<Data> = [
     {
       title: '图片',
@@ -96,7 +106,10 @@ const ShoppingCat = () => {
       width: '23%',
       render: (text, record) => {
         return (
-          <img className="imgs_style" src={text} alt={text} height={110} />
+          <Checkbox>
+            <img className="imgs_style" src={text} alt={text} height={110} />
+          </Checkbox>
+
         );
       },
     },
