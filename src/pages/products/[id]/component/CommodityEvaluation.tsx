@@ -16,7 +16,7 @@ interface type {
   star: number | undefined;
   CreatedAt: moment.DurationInputArg1;
 }
-const CommodityEvaluation = ({ comment } : any) => {
+const CommodityEvaluation = ({ comment }: any) => {
   const data = comment
     ? comment.map((item: type) => ({
         author: item.createUser,
@@ -28,8 +28,8 @@ const CommodityEvaluation = ({ comment } : any) => {
           </div>
         ),
         datetime: (
-          <Tooltip title={item.CreatedAt}>
-            <span>{item.CreatedAt}</span>
+          <Tooltip title={moment(item.CreatedAt).format('YYYY-MM-DD HH:MM:SS')}>
+            <span>{moment(item.CreatedAt).format('YYYY-MM-DD HH:MM:SS')}</span>
           </Tooltip>
         ),
       }))

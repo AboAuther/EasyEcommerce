@@ -9,7 +9,15 @@ import { DOMAIN } from '@/constants';
 import stateModel from '@/store/store';
 
 const BuyDrawer = props => {
-  const { visible, onClose, basicInfo, num, shoppingCatsList, total } = props;
+  const {
+    visible,
+    onClose,
+    basicInfo,
+    num,
+    shoppingCatsList,
+    total,
+    getSource,
+  } = props;
   const [addressList, setAddressList] = useState();
   const [state, actions] = useModel(stateModel);
   const [chosenAddress, setChosenAddress] = useState();
@@ -26,31 +34,57 @@ const BuyDrawer = props => {
           mobile: chosenAddress.mobile,
           userAddress: `${chosenAddress.region}${chosenAddress.detail}`,
         },
-        products: handleBasicInfo(basicInfo),
+        products: handleBasicInfo(shoppingCatsList),
       },
     }).then(res => {
       if (res.data.entity.success) {
         message.success('购买成功');
         onClose();
+        deleteCart();
       }
     });
   };
   const handleBasicInfo = content => {
     const tar =
       content !== null &&
-      [content].map(item => {
+      content.map(item => {
         const map = {
           productId: item.productId,
-          productIntro: item.productIntro,
+          productIntro: item.description,
           productImg: item.productCoverImg,
-          sellingPrice: item.sellingPrice,
-          buyNum: num,
+          sellingPrice: item.productPrice,
+          buyNum: item.productNum,
         };
         return map;
       });
     return tar;
   };
+  const handleDeleteID = content => {
+    const tar =
+      content !== null &&
+      content.map(item => {
+        const map = {
+          id: item.ID,
+        };
+        return map;
+      });
+    return tar;
+  };
+  const deleteCart = async () => {
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/order/deleteCart`,
+      data: handleDeleteID(shoppingCatsList),
+    }).then(res => {
+      if (!res.data.entity.success) {
+        message.error('刷新失败！');
+      } else {
+        getSource();
+      }
+    });
+  };
   const getAddressList = async () => {
+    // 获得收货地址
     await axios
       .get(`${DOMAIN}/user/getAddress?userID=${state.userID}`)
       .then(res => {
@@ -64,6 +98,7 @@ const BuyDrawer = props => {
   const handleChangeAddress = content => {
     setChosenAddress(content);
   };
+
   return (
     <Drawer
       title="结算"
@@ -89,7 +124,7 @@ const BuyDrawer = props => {
         </>
       ) : (
         shoppingCatsList?.map(item => (
-          <MessageChosen basicInfo={item} num={item.num} key={item.id} />
+          <MessageChosen basicInfo={item} num={item.productNum} key={item.ID} />
         ))
       )}
       {basicInfo !== undefined && num !== undefined ? (

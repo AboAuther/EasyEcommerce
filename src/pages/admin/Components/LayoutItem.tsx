@@ -40,9 +40,8 @@ const LayoutItem = () => {
 
   const history = useHistory();
 
-  const onCollapse = (collapsed: boolean) => {
-    console.log(collapsed);
-    setCollapsed(collapsed);
+  const onCollapse = (tar: boolean) => {
+    setCollapsed(tar);
   };
 
   const items: MenuItem[] = [

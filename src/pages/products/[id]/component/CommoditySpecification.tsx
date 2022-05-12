@@ -1,7 +1,11 @@
-import { Row, Col, Typography, InputNumber, Button } from 'antd';
+import { Row, Col, Typography, InputNumber, Button, message } from 'antd';
 import React, { Fragment, useState } from 'react';
 import './index.less';
+import axios from 'axios';
+import { useModel } from '@modern-js/runtime/model';
 import BuyDrawer from '@/pages/payment/BuyDrawer';
+import { DOMAIN } from '@/constants';
+import stateModel from '@/store/store';
 
 const CommoditySpecification = (props: {
   basicInfo: {
@@ -10,11 +14,14 @@ const CommoditySpecification = (props: {
     productIntro: string;
     sellingPrice: number;
     categoryId: number;
+    productId: string;
+    description: string;
   };
 }) => {
   const { Title } = Typography;
   const [visible, setVisible] = useState(false);
   const [num, setNum] = useState(1);
+  const [state, actions] = useModel(stateModel);
   const { basicInfo } = props;
 
   const openDrawer = () => {
@@ -22,6 +29,27 @@ const CommoditySpecification = (props: {
   };
   const closeDrawer = () => {
     setVisible(false);
+  };
+
+  const handleAddCart = async () => {
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/order/addCart`,
+      data: {
+        userID: state.userID,
+        productId: basicInfo.productId,
+        productCoverImg: basicInfo.productCoverImg,
+        description: basicInfo.description,
+        productPrice: basicInfo.sellingPrice,
+        productNum: num,
+      },
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('成功加入购物车！');
+      } else {
+        message.error('加入购物车失败！');
+      }
+    });
   };
   return (
     <div className="CommoditySpecification">
@@ -76,11 +104,7 @@ const CommoditySpecification = (props: {
                     onClick={openDrawer}>
                     立即购买
                   </Button>
-                  <Button
-                    type="primary"
-                    size="large"
-                    // onClick={this.handleAddCart}
-                  >
+                  <Button type="primary" size="large" onClick={handleAddCart}>
                     加入购物车
                   </Button>
                 </Col>

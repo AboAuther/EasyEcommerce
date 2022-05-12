@@ -2,45 +2,103 @@ import {
   Button,
   Col,
   InputNumber,
+  message,
   Popconfirm,
+  Radio,
   Row,
   Table,
   Typography,
 } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icon from '@ant-design/icons';
-import { ColumnsType } from 'antd/lib/table';
+import { effects, useModel } from '@modern-js/runtime/model';
 import HeardSearch from '../home/components/heardSearch';
 import './index.less';
-import BuyDrawer from '../payment/BuyDrawer';
-// import { columns, Data } from './data';
-import dataSource from './mock';
+import BuyDrawer from '../paymentByCats/BuyDrawer';
+import axios from 'axios';
+import { DOMAIN } from '@/constants';
+import stateModel from '@/store/store';
 
-export interface Data {
-  id: number;
-  mainPicture: string;
-  description: string;
-  price: number;
-  num: number;
-  totalprice: number;
-}
 const ShoppingCat = () => {
   const [visible, setVisible] = useState(false);
   const [changeVisible, setChangeVisible] = useState(-1);
+  const [state, actions] = useModel(stateModel);
+  const [source, setSource] = useState([]);
+  const getSource = async () => {
+    await axios
+      .get(`${DOMAIN}/order/getCart?userID=${state.userID}`)
+      .then(res => {
+        if (res.data.entity.success) {
+          setSource(res.data.entity.data);
+        }
+      });
+  };
+  useEffect(() => {
+    getSource();
+  }, []);
   const openDialog = () => {
     setVisible(true);
   };
   const closeDialog = () => {
     setVisible(false);
   };
+  const handleChange = id => {
+    if (changeVisible === id) {
+      setChangeVisible(-1);
+    } else {
+      setChangeVisible(id);
+    }
+  };
+  const handleNumChange = async (value, id) => {
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/order/editCart`,
+      data: {
+        id,
+        productNum: value,
+      },
+    }).then(res => {
+      if (res.data.entity.success) {
+        getSource();
+        message.success('修改成功！');
+      }
+    });
+  };
+  const handleMakeOrder = () => {
+    if (source.length !== 0) {
+      openDialog();
+    } else {
+      message.error('加入购物车后，才可结算哦');
+    }
+  };
+  const handleDeleteCart = async id => {
+    // 删除单个
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/order/deleteCart`,
+      data: [{ id }],
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('商品删除成功！');
+        getSource();
+      } else {
+        message.error('删除失败！');
+      }
+    });
+  };
+
   const columns: ColumnsType<Data> = [
     {
       title: '图片',
-      dataIndex: 'mainPicture',
-      key: 'mainPicture',
+      dataIndex: 'productCoverImg',
+      key: 'productCoverImg',
       align: 'center',
-      width: '16%',
-      render: text => <img className="imgs_style" src={text} alt={text} />,
+      width: '23%',
+      render: (text, record) => {
+        return (
+          <img className="imgs_style" src={text} alt={text} height={110} />
+        );
+      },
     },
     {
       title: '商品',
@@ -51,16 +109,16 @@ const ShoppingCat = () => {
     },
     {
       title: '单价',
-      dataIndex: 'price',
-      key: 'price',
+      dataIndex: 'productPrice',
+      key: 'productPrice',
       align: 'center',
       width: '16%',
       render: text => (Number(text) ? `￥${Number(text).toFixed(2)}` : 0),
     },
     {
       title: '数量',
-      dataIndex: 'num',
-      key: 'num',
+      dataIndex: 'productNum',
+      key: 'productNum',
       align: 'center',
       width: '14%',
       render: (text, record) => (
@@ -69,12 +127,8 @@ const ShoppingCat = () => {
           max={99}
           defaultValue={text}
           precision={0}
-          disabled={record.id !== changeVisible}
-          // onChange={value => {
-          //   const totalPrice = parseFloat(record.price) * value;
-          //   state.updatecartData(record.id, value, totalPrice);
-          //   state.setPriceList02(index, 'totalP', [value, totalPrice]);
-          // }}
+          disabled={record.ID !== changeVisible}
+          onChange={value => handleNumChange(value, record.ID)}
         />
       ),
     },
@@ -84,23 +138,25 @@ const ShoppingCat = () => {
       key: 'totalprice',
       align: 'center',
       width: '16%',
-      render: text => (text ? `￥${parseFloat(text).toFixed(2)}` : 0),
+      render: (text, record) => {
+        const num = record.productPrice * record.productNum;
+        return `￥${num.toFixed(2)}`;
+      },
     },
     {
       title: '操作',
       dataIndex: 'operation',
       key: 'operation',
       align: 'center',
-      // fixed: 'right',
       width: '148px',
       render: (text, record, index) => (
         <div className="operation">
           <Popconfirm
             title="你确定要删除这条数据？"
             icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
-            // onConfirm={() => {
-            //   state.delcartData([record.id]);
-            // }}
+            onConfirm={() => {
+              handleDeleteCart(record.ID);
+            }}
             okText="是"
             cancelText="否">
             <span>删除</span>
@@ -108,8 +164,8 @@ const ShoppingCat = () => {
           <Button
             type="text"
             className="changeButton"
-            onClick={() => setChangeVisible(record.id)}>
-            修改
+            onClick={() => handleChange(record.ID)}>
+            {changeVisible === record.ID ? '保存' : '修改'}
           </Button>
         </div>
       ),
@@ -118,21 +174,19 @@ const ShoppingCat = () => {
   const footer = () => {
     let total = 0;
     let size = 0;
-    const priceList = dataSource.map(item => ({
-      total: item.price * item.num,
-      size: item.num,
+    const priceList = source.map(item => ({
+      total: item.productPrice * item.productNum,
+      size: item.productNum,
     }));
     priceList.forEach(item => {
       total += item.total;
       size += item.size;
     });
-
     return (
       <>
         <Row>
           <Col span={12} className="left">
-            <Button>批量删除</Button>
-            <Button>批量加入收藏</Button>
+            {/* <Button>批量删除</Button> */}
           </Col>
           <Col span={12} className="right">
             <span className="num">
@@ -141,7 +195,7 @@ const ShoppingCat = () => {
             <div>
               总价：<span>¥{total.toFixed(2)}</span>
             </div>
-            <span className="go-pay" onClick={openDialog}>
+            <span className="go-pay" onClick={handleMakeOrder}>
               去结算
             </span>
           </Col>
@@ -150,7 +204,8 @@ const ShoppingCat = () => {
           visible={visible}
           onClose={closeDialog}
           total={total}
-          shoppingCatsList={dataSource}
+          shoppingCatsList={source}
+          getSource={getSource}
         />
       </>
     );
@@ -167,16 +222,16 @@ const ShoppingCat = () => {
             <Row className="table_title">
               <Typography.Title level={4}>我的购物车</Typography.Title>
               <div>
-                {/* （当前购物车共有 <i>{allProductsSize}</i> 件商品） */}
+                （当前购物车共有 <i>{source.length}</i> 件商品）
               </div>
             </Row>
-            <Table<Data>
+            <Table
               columns={columns}
-              dataSource={dataSource}
+              dataSource={source}
               pagination={false}
               footer={() => footer()}
               bordered={true}
-              rowKey={record => record.id}
+              rowKey={record => record.ID}
             />
           </div>
         </div>

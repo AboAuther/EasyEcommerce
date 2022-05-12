@@ -1,5 +1,7 @@
 import { Row, Col } from 'antd';
 import './index.less';
+import pic from './images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png';
+import pic2 from './images/TB1Py4_ceuSBuNjy1XcXXcYjFXa-142-140.png';
 
 const RealTimeOverview = () => {
   const styles = {
@@ -42,17 +44,13 @@ const RealTimeOverview = () => {
       <Row wrap>
         <Col span="12">
           <div style={styles.dataItem}>
-            <img
-              src={require('./images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png')}
-              alt=""
-              style={styles.dataItemImg}
-            />
-            <div style={styles.dataItemUnit}>
+            <img src={pic} alt="" style={styles.dataItemImg} />
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>门店销售额(元)</div>
               <div style={styles.unitAmount}>982.00</div>
               <div style={styles.unitFooter}>昨日：680.00</div>
             </div>
-            <div style={styles.dataItemUnit}>
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>门店支付订单数</div>
               <div style={styles.unitAmount}>80</div>
               <div style={styles.unitFooter}>昨日：60</div>
@@ -61,17 +59,13 @@ const RealTimeOverview = () => {
         </Col>
         <Col span="12">
           <div style={styles.dataItem}>
-            <img
-              src={require('./images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png')}
-              alt=""
-              style={styles.dataItemImg}
-            />
-            <div style={styles.dataItemUnit}>
+            <img src={pic} alt="" style={styles.dataItemImg} />
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>网店销售额(元)</div>
               <div style={styles.unitAmount}>381.00</div>
               <div style={styles.unitFooter}>昨日：123.00</div>
             </div>
-            <div style={styles.dataItemUnit}>
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>网店支付订单数</div>
               <div style={styles.unitAmount}>120</div>
               <div style={styles.unitFooter}>昨日：128</div>
@@ -80,17 +74,13 @@ const RealTimeOverview = () => {
         </Col>
         <Col span="12">
           <div style={styles.dataItem}>
-            <img
-              src={require('./images/TB1Py4_ceuSBuNjy1XcXXcYjFXa-142-140.png')}
-              alt=""
-              style={styles.dataItemImg}
-            />
-            <div style={styles.dataItemUnit}>
+            <img src={pic2} alt="" style={styles.dataItemImg} />
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>新增客户数</div>
               <div style={styles.unitAmount}>182</div>
               <div style={styles.unitFooter}>昨日：123</div>
             </div>
-            <div style={styles.dataItemUnit}>
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>支付客户数</div>
               <div style={styles.unitAmount}>96</div>
               <div style={styles.unitFooter}>昨日：90</div>
@@ -99,17 +89,13 @@ const RealTimeOverview = () => {
         </Col>
         <Col span="12">
           <div style={styles.dataItem}>
-            <img
-              src={require('./images/TB1Ni4_ceuSBuNjy1XcXXcYjFXa-142-140.png')}
-              alt=""
-              style={styles.dataItemImg}
-            />
-            <div style={styles.dataItemUnit}>
+            <img src={pic2} alt="" style={styles.dataItemImg} />
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>新增会员数</div>
               <div style={styles.unitAmount}>89</div>
               <div style={styles.unitFooter}>昨日：78</div>
             </div>
-            <div style={styles.dataItemUnit}>
+            <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>新增储值金额(元)</div>
               <div style={styles.unitAmount}>568.00</div>
               <div style={styles.unitFooter}>昨日：693.00</div>
