@@ -52,11 +52,11 @@ const OwnerMessage = () => {
                 alt=""
                 style={styles.dataItemImg}
               />
-              <div style={styles.dataItemUnit}>
+              <div className='dataItemOwner' >
                 <div style={styles.unitTitle}>身份证号码</div>
                 <div style={styles.shopItem}>{Owner[0].id}</div>
               </div>
-              <div style={styles.dataItemUnit}>
+              <div className='dataItemOwner'>
                 <div style={styles.unitTitle}>联系方式</div>
                 <div style={styles.shopItem}>{Owner[0].phone}</div>
               </div>
@@ -70,7 +70,7 @@ const OwnerMessage = () => {
                 alt=""
                 style={styles.dataItemImg}
               />
-              <div style={styles.dataItemUnit}>
+              <div className='dataItemOwner'>
                 <div style={styles.unitTitle}>个人地址</div>
                 <div style={styles.shopItem}>{Owner[0].address}</div>
               </div>

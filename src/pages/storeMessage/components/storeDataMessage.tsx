@@ -51,11 +51,11 @@ const StoreDataMessage = () => {
                 alt=""
                 style={styles.dataItemImg}
               />
-              <div style={styles.dataItemUnit}>
-                <div style={styles.unitTitle}>商店名字</div>
+              <div className='dataItemUnitShop' >
+                <div style={styles.unitTitle}>商店名称</div>
                 <div style={styles.shopItem}>{StoreMessage[0].storeName}</div>
               </div>
-              <div style={styles.dataItemUnit}>
+              <div className='dataItemUnitShop'>
                 <div style={styles.unitTitle}>注册时间</div>
                 <div style={styles.shopItem}>{StoreMessage[0].regimes}</div>
               </div>
@@ -68,11 +68,11 @@ const StoreDataMessage = () => {
                 alt=""
                 style={styles.dataItemImg}
               />
-              <div style={styles.dataItemUnit}>
+              <div className='dataItemUnitShop'>
                 <div style={styles.unitTitle}>店长昵称</div>
                 <div style={styles.shopItem}>{StoreMessage[0].ownerName}</div>
               </div>
-              <div style={styles.dataItemUnit}>
+              <div className='dataItemUnitShop'>
                 <div style={styles.unitTitle}>门店总销售额</div>
                 <div style={styles.unitAmount}>¥ {StoreMessage[0].amountSales}</div>
                 <div style={styles.unitFooter}>昨日：¥ 32000</div>
@@ -86,7 +86,7 @@ const StoreDataMessage = () => {
                 alt=""
                 style={styles.dataItemImg}
               />
-              <div style={styles.dataItemUnit}>
+              <div className='dataItemUnitShop'>
                 <div style={styles.unitTitle}>注册地址</div>
                 <div style={styles.shopItem}>{StoreMessage[0].address}</div>
               </div>

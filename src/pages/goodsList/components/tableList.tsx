@@ -1,3 +1,4 @@
+import { PlusOutlined, PlusSquareFilled } from "@ant-design/icons";
 import { Button, Table } from "antd";
 import { useState } from "react";
 import GoodsList from "../mock/GoodsList";
@@ -5,42 +6,17 @@ import './layout.less';
 import MessageDialog from "./messageDialog";
 
 const TableList = () => {
-  const styles = {
-    complexTabTableOperation: {
-      lineHeight: '28px',
-    },
-    titleWrapper: {
-      display: 'flex',
-      flexDirection: 'row',
-    },
-    title: {
-      marginLeft: '10px',
-      lineHeight: '20px',
-    },
-    operation: {
-      marginRight: '12px',
-      textDecoration: 'none',
-    },
-    tabExtra: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    search: {
-      marginLeft: 10,
-    },
-    tabCount: {
-      marginLeft: '5px',
-      color: '#3080FE',
-    },
-    pagination: {
-      textAlign: 'right',
-      paddingTop: '26px',
-    },
-  };
-
   const [dialogVisile, setDialogVisible] = useState(false);
+  const [actionType, setActionType] = useState(1);
+  const [changeproduct, setChangeProduct] = useState<null | object | unknown>(null);
 
-  const handleOpen = () => {
+  const handleOpen = (type : string, record: object | null | unknown) => {
+    if ( type === 'add' && record !== null) {
+      setActionType(1); // 增加
+    } else {
+      setActionType(2);// 修改
+      setChangeProduct(record);
+    }
    setDialogVisible(true);
   }
 
@@ -50,6 +26,9 @@ const TableList = () => {
 
   return (
     <div className="real-content">
+      <Button type="primary" className="addButton" onClick={() =>handleOpen('add', null)}>
+      <PlusOutlined />添加商品
+      </Button>
       <Table
             dataSource={GoodsList}
             className="basic-table"
@@ -68,10 +47,6 @@ const TableList = () => {
               width={150}
             />
             <Table.Column title="商品种类" dataIndex="productCategoryName" width={85} />
-            <Table.Column
-              title="品类"
-              width={100}
-            />
             <Table.Column
               title="市场价"
               dataIndex="originalPrice"
@@ -93,17 +68,14 @@ const TableList = () => {
               width={150}
               render={(text, record) => (
                 <>
-                  <Button type="link" onClick={handleOpen}>
+                  <Button type="link" onClick={() => handleOpen('chanage', record)}>
                     修改
-                  </Button>
-                  <Button type="link" onClick={handleOpen}>
-                    详情
                   </Button>
                 </>
               )}
             />
           </Table>
-          <MessageDialog visible={dialogVisile} handleClose={handleClose} />
+          <MessageDialog visible={dialogVisile} handleClose={handleClose} type={actionType} message={changeproduct}/>
     </div>
   )
 }

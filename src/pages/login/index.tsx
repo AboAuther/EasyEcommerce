@@ -76,8 +76,9 @@ const Login = () => {
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item>
-           <Checkbox onChange={handleChange}><span style={{color: '#fff'}}>商家请勾选</span></Checkbox>
+          <Form.Item  rules={[{ required: true, message: '请选择身份!' }]}>
+           <Checkbox onChange={handleChange}><span style={{color: '#fff'}}>商家</span></Checkbox>
+           <Checkbox onChange={handleChange}><span style={{color: '#fff'}}>用户</span></Checkbox>
           </Form.Item>
           <Form.Item>
             <div className="buttonGroup">

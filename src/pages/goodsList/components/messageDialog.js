@@ -1,126 +1,100 @@
-import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Space } from 'antd';
-import React, { Component } from 'react';
-
-export class MessageDialog extends Component {
-  render() {
-    const { Option } = Select;
-
-    return (
-      <div>
-        <Drawer
-          title="Create a new account"
-          width={720}
-          onClose={this.onClose}
-          visible={this.props.visible}
-          bodyStyle={{ paddingBottom: 80 }}
-          extra={
-            <Space>
-              <Button onClick={this.onClose}>Cancel</Button>
-              <Button onClick={this.onClose} type="primary">
-                Submit
-              </Button>
-            </Space>
-            }
-        >
-          <Form layout="vertical" hideRequiredMark>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item
-                  name="name"
-                  label="Name"
-                  rules={[{ required: true, message: 'Please enter user name' }]}
-                >
-                  <Input placeholder="Please enter user name" />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item
-                  name="url"
-                  label="Url"
-                  rules={[{ required: true, message: 'Please enter url' }]}
-                >
-                  <Input
-                    style={{ width: '100%' }}
-                    addonBefore="http://"
-                    addonAfter=".com"
-                    placeholder="Please enter url"
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item
-                  name="owner"
-                  label="Owner"
-                  rules={[{ required: true, message: 'Please select an owner' }]}
-                >
-                  <Select placeholder="Please select an owner">
-                    <Option value="xiao">Xiaoxiao Fu</Option>
-                    <Option value="mao">Maomao Zhou</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item
-                  name="type"
-                  label="Type"
-                  rules={[{ required: true, message: 'Please choose the type' }]}
-                >
-                  <Select placeholder="Please choose the type">
-                    <Option value="private">Private</Option>
-                    <Option value="public">Public</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item
-                  name="approver"
-                  label="Approver"
-                  rules={[{ required: true, message: 'Please choose the approver' }]}
-                >
-                  <Select placeholder="Please choose the approver">
-                    <Option value="jack">Jack Ma</Option>
-                    <Option value="tom">Tom Liu</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item
-                  name="dateTime"
-                  label="DateTime"
-                  rules={[{ required: true, message: 'Please choose the dateTime' }]}
-                >
-                  <DatePicker.RangePicker
-                    style={{ width: '100%' }}
-                    getPopupContainer={trigger => trigger.parentElement}
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={24}>
-                <Form.Item
-                  name="description"
-                  label="Description"
-                  rules={[
-                      {
-                        required: true,
-                        message: 'please enter url description',
-                      },
-                    ]}
-                >
-                  <Input.TextArea rows={4} placeholder="please enter url description" />
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </Drawer>
-      </div>
-    );
+import { UpCircleOutlined } from '@ant-design/icons';
+import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Space, Upload } from 'antd';
+import React, { Component, useState } from 'react';
+const MessageDialog = (props) => {
+  const { Option } = Select;
+  const { visible, handleClose, type, message} = props;
+  const [fields, setFields ] = useState([]);
+  const handleSubmit = (value) => {
+    console.log(value);
   }
+  return (
+    <div>
+    <Drawer
+      title={type === 1 ? '添加' : '修改'}
+      onClose={handleClose}
+      visible={visible}
+      extra={
+        <Space>
+          <Button onClick={handleClose}>取消</Button>
+        </Space>
+        }
+    >
+      <Form layout="vertical" hideRequiredMark
+      onFinish={handleSubmit}
+      initialValues={message}
+      >
+         <Form.Item
+              name="name"
+              label="商品名称"
+              rules={[{ required: true, message: '请输入名称' }]}
+            >
+              <Input placeholder="请输入商品名称" />
+          </Form.Item>
+          <Form.Item
+              name="productCategoryName"
+              label="商品种类"
+              rules={[{ required: true, message: '请输入商品种类' }]}
+            >
+              <Input placeholder="请输入商品种类" />
+          </Form.Item>
+          <Form.Item
+              name="originalPrice"
+              label="市场价"
+              rules={[{ required: true, message: '请输入市场价' }]}
+            >
+              <Input placeholder="请输入市场价" />
+          </Form.Item>
+          <Form.Item
+              name="promotionPrice"
+              label="促销价"
+              rules={[{ required: true, message: '请输入促销价' }]}
+            >
+              <Input placeholder="请输入促销价" />
+          </Form.Item>
+          <Form.Item
+              name="stock"
+              label="库存"
+              rules={[{ required: true, message: '请输入库存' }]}
+            >
+              <Input placeholder="请输入库存" />
+          </Form.Item>
+          {
+            type ===1 ?
+            <Form.Item
+            name='pic'
+            label='图片'
+          >
+           <Upload  action="/upload.do" listType="picture" maxCount={1}>
+              <Button icon={<UpCircleOutlined />} >
+                上传商品图片
+              </Button>
+          </Upload>
+          </Form.Item>
+          :
+          <Form.Item
+            name='pic'
+            label='图片'
+          >
+           <img src={message.pic} width={100} height={100} style={{display: 'block', margin: '0 0 20px 0'}}/>
+           <Upload  action="/upload.do" listType="picture" maxCount={1}>
+              <Button icon={<UpCircleOutlined />} >
+                上传商品图片
+              </Button>
+          </Upload>
+          </Form.Item>
+          }
 
-};
+          <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              提交
+            </Button>
+      </Form.Item>
+
+      </Form>
+    </Drawer>
+  </div>
+  )
+}
+
 export default MessageDialog;
