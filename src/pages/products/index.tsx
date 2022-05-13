@@ -7,7 +7,7 @@ import { Row, Col, Card, Typography, Pagination, Empty } from 'antd';
 import { Link } from '@modern-js/runtime/router';
 import { FileList } from '../home/components/mock';
 import './index.less';
-import HeardSearch from '../home/components/heardSearch';
+import HeadSearch from '../home/components/headSearch';
 import axios from 'axios';
 import { DOMAIN } from '@/constants';
 import { useModel } from '@modern-js/runtime/model';
@@ -84,7 +84,7 @@ const Product = () => {
 
   return (
     <div className="dm_Products">
-      <HeardSearch currentIndex="2" isDisplay={false} />
+      <HeadSearch currentIndex="2" isDisplay={false} />
 
       <div className="common_width">
         <div className="page-all">

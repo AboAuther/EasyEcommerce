@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from 'react';
 import Icon from '@ant-design/icons';
 import { effects, useModel } from '@modern-js/runtime/model';
-import HeardSearch from '../home/components/heardSearch';
+import HeadSearch from '../home/components/headSearch';
 import './index.less';
 import BuyDrawer from '../paymentByCats/BuyDrawer';
 import axios from 'axios';
@@ -251,7 +251,7 @@ const ShoppingCat = () => {
   return (
     <div className="content">
       <div className="orderHead">
-        <HeardSearch currentIndex={''} isDisplay={true} />
+        <HeadSearch currentIndex={''} isDisplay={true} />
       </div>
       <div className="orderContent">
         <div className="content_card">

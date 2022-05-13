@@ -12,8 +12,6 @@ import { DOMAIN } from '@/constants';
 import { useModel } from '@modern-js/runtime/model';
 import stateModel from '@/store/store';
 
-const handleClickLogin = () => <NavLink to="/login" />;
-
 const ShoppingCart = styled.img`
   width: 23px;
   margin: 0 7px 2px 0;
@@ -23,8 +21,8 @@ const TitleMenu = styled(Menu.Item)`
   margin-right: 30px;
 `;
 
-const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
-  const { Search } = Input;
+const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
+  const { Search } = Input;//组件
   const { Header } = Layout;
   const { currentIndex, isDisplay } = props;
   const history = useHistory();
@@ -47,61 +45,61 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
     <>
       <Header>
         <span onClick={() => history.push('/')}>
-          <img className="darkLogo" src={logoDark}></img>
+          <img className='darkLogo' src={logoDark} />
         </span>
-        <span className="buttonPos">
+        <span className='buttonPos'>
           <Button
-            type="text"
-            href="/login"
-            className="headerButton"
-            onClick={() => handleClickLogin()}>
+            type='text'
+            href='/login'
+            className='headerButton'
+          >
             登陆
           </Button>
-          <Button type="text" className="headerButton" href="/register">
+          <Button type='text' className='headerButton' href='/register'>
             注册
           </Button>
-          <Button type="text" className="headerButton" href="/orders">
+          <Button type='text' className='headerButton' href='/orders'>
             我的订单
           </Button>
-          <Button type="text" className="headerButton" href="/userCenter">
+          <Button type='text' className='headerButton' href='/userCenter'>
             个人中心
           </Button>
         </span>
       </Header>
-      <div className="content">
-        <div className="contentTab">
+      <div className='content'>
+        <div className='contentTab'>
           <Layout>
             <div>
               <Menu
-                theme="light"
-                mode="horizontal"
+                theme='light'
+                mode='horizontal'
                 defaultSelectedKeys={[`${currentIndex}`]}
                 style={{
                   padding: '0 0 0 12%',
                   display: isDisplay ? 'none' : '',
                 }}>
-                <TitleMenu key="1">
-                  <NavLink to="/" />
+                <TitleMenu key='1'>
+                  <NavLink to='/' />
                   首页
                 </TitleMenu>
-                <TitleMenu key="2">
-                  <NavLink to="/products" />
+                <TitleMenu key='2'>
+                  <NavLink to='/products' />
                   杂货铺
                 </TitleMenu>
-                <TitleMenu key="3">
-                  <NavLink to="/bulletins" />
+                <TitleMenu key='3'>
+                  <NavLink to='/bulletins' />
                   公告
                 </TitleMenu>
-                <TitleMenu key="4" style={{ margin: '0 50% 0 0' }}>
-                <NavLink to="/comments" />
+                <TitleMenu key='4' style={{ margin: '0 50% 0 0' }}>
+                  <NavLink to='/comments' />
                   留言
                 </TitleMenu>
               </Menu>
               <Search
-                placeholder="请输入需要的商品"
+                placeholder='请输入需要的商品'
                 onSearch={(value: string) => search(value)}
                 enterButton={true}
-                size="middle"
+                size='middle'
                 style={{
                   position: 'absolute',
                   top: '71px',
@@ -109,18 +107,17 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
                   width: 'auto',
                 }}
               />
-              <Link to="/shoppingCat">
+              <Link to='/shoppingCat'>
                 <Button
-                  type="primary"
-                  // href="/login"
+                  type='primary'
                   style={{ position: 'absolute', top: '71px', left: '77%' }}
                   icon={
                     <ShoppingCart
                       src={ShoppingCard}
-                      className="shoppingCartImg"
+                      className='shoppingCartImg'
                     />
                   }
-                  size="middle">
+                  size='middle'>
                   我的购物车
                 </Button>
               </Link>
@@ -131,4 +128,4 @@ const HeardSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
     </>
   );
 };
-export default HeardSearch;
+export default HeadSearch;

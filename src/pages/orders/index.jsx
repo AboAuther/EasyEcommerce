@@ -17,7 +17,7 @@ import Column from 'antd/lib/table/Column';
 import axios from 'axios';
 import { useModel } from '@modern-js/runtime/model';
 import OrderDrawer from '../orderMessage/BuyDrawer';
-import HeardSearch from '../home/components/heardSearch';
+import HeadSearch from '../home/components/headSearch';
 import './index.less';
 import { columns } from './data';
 import Evalution from './evaluation';
@@ -114,7 +114,7 @@ const Orders = () => {
   return (
     <div className="content">
       <div className="orderHead">
-        <HeardSearch currentIndex={'2'} isDisplay={true} />
+        <HeadSearch currentIndex={'2'} isDisplay={true} />
       </div>
       <div className="orderContent">
         <div className="common_width dm_MyOrder">

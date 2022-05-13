@@ -1,7 +1,7 @@
 import { RouteComponentProps } from '@modern-js/runtime/router';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import HeardSearch from '../../home/components/heardSearch';
+import HeadSearch from '../../home/components/headSearch';
 import CommodityDetails from './component/CommodityDetails';
 import CommoditySpecification from './component/CommoditySpecification';
 import { DOMAIN } from '@/constants';
@@ -26,7 +26,7 @@ const ProductsDetails = ({
   }, []);
   return (
     <div className="dm_Products">
-      <HeardSearch currentIndex={'2'} isDisplay={false} />
+      <HeadSearch currentIndex={'2'} isDisplay={false} />
       <div className="common-with">
         <div className="page-all">
           {message !== undefined && (

@@ -1,7 +1,7 @@
 import { Row, Select, Typography, Button, Popover } from 'antd';
 import { useState } from 'react';
 import styled from 'styled-components';
-import HeardSearch from '../home/components/heardSearch';
+import HeadSearch from '../home/components/headSearch';
 import './index.less';
 import PersonalInformation from './PersonalInformation';
 import ReceivingAddress from './ReceivingAddress';
@@ -37,7 +37,7 @@ const UserCenter = () => {
   return (
     <div className="content">
       <div className="orderHead">
-        <HeardSearch currentIndex={''} isDisplay={true} />
+        <HeadSearch currentIndex={''} isDisplay={true} />
       </div>
       <div className="orderContent">
         <div className="content_card">

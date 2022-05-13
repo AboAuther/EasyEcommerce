@@ -1,11 +1,11 @@
-import HeardSearch from '../home/components/heardSearch';
+import HeadSearch from '../home/components/headSearch';
 import BulletinContent from './components/BulletinContent';
 import './index.less';
 
 const Index = () => {
   return (
     <div className="bulletin">
-      <HeardSearch currentIndex="3" isDisplay={false} />
+      <HeadSearch currentIndex="3" isDisplay={false} />
       <BulletinContent />
     </div>
   );
