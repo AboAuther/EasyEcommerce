@@ -1,4 +1,4 @@
-import { Row, Select, Typography, Button, Popover } from 'antd';
+import { Row, Select, Typography, Button, Popover, Alert } from 'antd';
 import { useState } from 'react';
 import styled from 'styled-components';
 import HeadSearch from '../home/components/headSearch';
@@ -6,6 +6,7 @@ import './index.less';
 import PersonalInformation from './PersonalInformation';
 import ReceivingAddress from './ReceivingAddress';
 import Join from './join';
+import nullImage from '@/images/nullImage.png';
 
 const JoinButton = styled(Button)`
   position: absolute;
@@ -39,32 +40,41 @@ const UserCenter = () => {
       <div className="orderHead">
         <HeadSearch currentIndex={''} isDisplay={true} />
       </div>
-      <div className="orderContent">
-        <div className="content_card">
-          <div className="common_width dm_UserCenter">
-            <Row className="table_title">
-              <Typography.Title level={4}>用户中心</Typography.Title>
-              <Select
-                defaultValue={key}
-                onChange={value => handleChange(value)}>
-                <Option value={1}>个人资料</Option>
-                <Option value={2}>收货地址</Option>
-              </Select>
-              <Popover content={content}>
-                <JoinButton type="primary" onClick={() => openDraw()}>
-                  成为商家
-                </JoinButton>
-              </Popover>
-            </Row>
-            <Row style={{ padding: '10px 0' }}>
-              {/* 个人资料 */}
-              {key === 1 ? <PersonalInformation /> : ''}
-              {/* 收货地址 */}
-              {key === 2 ? <ReceivingAddress /> : ''}
-            </Row>
+      {!localStorage.getItem('userId') ? (
+        <div>
+          <Alert description="请登录后查看" type="warning" showIcon closable />
+          <div className="nullPage">
+            <img src={nullImage} className="nullImage" />
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="orderContent">
+          <div className="content_card">
+            <div className="common_width dm_UserCenter">
+              <Row className="table_title">
+                <Typography.Title level={4}>用户中心</Typography.Title>
+                <Select
+                  defaultValue={key}
+                  onChange={value => handleChange(value)}>
+                  <Option value={1}>个人资料</Option>
+                  <Option value={2}>收货地址</Option>
+                </Select>
+                <Popover content={content}>
+                  <JoinButton type="primary" onClick={() => openDraw()}>
+                    成为商家
+                  </JoinButton>
+                </Popover>
+              </Row>
+              <Row style={{ padding: '10px 0' }}>
+                {/* 个人资料 */}
+                {key === 1 ? <PersonalInformation /> : ''}
+                {/* 收货地址 */}
+                {key === 2 ? <ReceivingAddress /> : ''}
+              </Row>
+            </div>
+          </div>
+        </div>
+      )}
       <Join visible={visible} closeDraw={closeDraw} />
     </div>
   );

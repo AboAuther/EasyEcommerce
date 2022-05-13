@@ -30,24 +30,28 @@ const CommoditySpecification = (props: {
 
   const handleAddCart = async () => {
     const id = localStorage.getItem('userId');
-    await axios({
-      method: 'post',
-      url: `${DOMAIN}/order/addCart`,
-      data: {
-        userID: id,
-        productId: basicInfo.productId,
-        productCoverImg: basicInfo.productCoverImg,
-        description: basicInfo.productIntro,
-        productPrice: basicInfo.sellingPrice,
-        productNum: num,
-      },
-    }).then(res => {
-      if (res.data.entity.success) {
-        message.success('成功加入购物车！');
-      } else {
-        message.error('加入购物车失败！');
-      }
-    });
+    if (!id) {
+      message.error('请登录！！');
+    } else {
+      await axios({
+        method: 'post',
+        url: `${DOMAIN}/order/addCart`,
+        data: {
+          userID: id,
+          productId: basicInfo.productId,
+          productCoverImg: basicInfo.productCoverImg,
+          description: basicInfo.productIntro,
+          productPrice: basicInfo.sellingPrice,
+          productNum: num,
+        },
+      }).then(res => {
+        if (res.data.entity.success) {
+          message.success('成功加入购物车！');
+        } else {
+          message.error('加入购物车失败！');
+        }
+      });
+    }
   };
   return (
     <div className="CommoditySpecification">

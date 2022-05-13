@@ -5,35 +5,32 @@ import {
   InputNumber,
   message,
   Popconfirm,
-  Radio,
   Row,
   Table,
   Typography,
+  Alert,
 } from 'antd';
 import { useEffect, useState } from 'react';
 import Icon from '@ant-design/icons';
-import { effects, useModel } from '@modern-js/runtime/model';
 import HeadSearch from '../home/components/headSearch';
 import './index.less';
 import BuyDrawer from '../paymentByCats/BuyDrawer';
 import axios from 'axios';
 import { DOMAIN } from '@/constants';
-import stateModel from '@/store/store';
+import nullImage from '@/images/nullImage.png';
 
 const ShoppingCat = () => {
   const [visible, setVisible] = useState(false);
   const [changeVisible, setChangeVisible] = useState(-1);
-  const [state, actions] = useModel(stateModel);
   const [source, setSource] = useState([]);
   const [chosenMap, setChosenMap] = useState({});
   const getSource = async () => {
-    await axios
-      .get(`${DOMAIN}/order/getCart?userID=${state.userID}`)
-      .then(res => {
-        if (res.data.entity.success) {
-          setSource(res.data.entity.data);
-        }
-      });
+    const id = localStorage.getItem('userId');
+    await axios.get(`${DOMAIN}/order/getCart?userID=${id}`).then(res => {
+      if (res.data.entity.success) {
+        setSource(res.data.entity.data);
+      }
+    });
   };
   useEffect(() => {
     getSource();
@@ -247,32 +244,40 @@ const ShoppingCat = () => {
       </>
     );
   };
-  console.log(chosenMap);
   return (
     <div className="content">
       <div className="orderHead">
         <HeadSearch currentIndex={''} isDisplay={true} />
       </div>
-      <div className="orderContent">
-        <div className="content_card">
-          <div className="common_width dm_MyShoppingCart">
-            <Row className="table_title">
-              <Typography.Title level={4}>我的购物车</Typography.Title>
-              <div>
-                （当前购物车共有 <i>{source.length}</i> 件商品）
-              </div>
-            </Row>
-            <Table
-              columns={columns}
-              dataSource={source}
-              pagination={false}
-              footer={() => footer()}
-              bordered={true}
-              rowKey={record => record.ID}
-            />
+      {!localStorage.getItem('userId') ? (
+        <div>
+          <Alert description="请登录后查看" type="warning" showIcon closable />
+          <div className="nullPage">
+            <img src={nullImage} className="nullImage" />
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="orderContent">
+          <div className="content_card">
+            <div className="common_width dm_MyShoppingCart">
+              <Row className="table_title">
+                <Typography.Title level={4}>我的购物车</Typography.Title>
+                <div>
+                  （当前购物车共有 <i>{source.length}</i> 件商品）
+                </div>
+              </Row>
+              <Table
+                columns={columns}
+                dataSource={source}
+                pagination={false}
+                footer={() => footer()}
+                bordered={true}
+                rowKey={record => record.ID}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

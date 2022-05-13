@@ -109,6 +109,7 @@ const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
                   left: '60%',
                   width: 'auto',
                 }}
+                disabled={!localStorage.getItem('userId')}
               />
               <Link to="/shoppingCat">
                 <Button

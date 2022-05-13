@@ -97,7 +97,11 @@ const ShowMessage = () => {
         header={
           <div className="header">
             <span>{data.length} 条留言</span>{' '}
-            <Button type="text" className="gotoAdd" onClick={handleOpen}>
+            <Button
+              type="text"
+              className="gotoAdd"
+              onClick={handleOpen}
+              disabled={!localStorage.getItem('userId')}>
               去留言
             </Button>
           </div>

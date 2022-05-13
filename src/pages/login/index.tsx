@@ -1,4 +1,4 @@
-import { Form, Input, Button, message, Radio, Checkbox } from 'antd';
+import { Form, Input, Button, message, Radio } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import './index.less';
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from '@modern-js/runtime/router';
 import { useModel } from '@modern-js/runtime/model';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import bg from '../images/testBg.jpg';
 import { DOMAIN } from '@/constants';
 import stateModel from '@/store/store';
@@ -19,7 +19,7 @@ const LoginPage = styled.div`
 
 const Login = () => {
   const history = useHistory();
-  const [state, actions] = useModel(stateModel);
+  const [, actions] = useModel(stateModel);
   const [checkdValue, setCheckedValue] = useState();
   const onFinish = async (values: any) => {
     await axios({
@@ -77,12 +77,22 @@ const Login = () => {
             />
           </Form.Item>
           <Form.Item rules={[{ required: true, message: '请选择身份!' }]}>
-            <Checkbox onChange={handleChange}>
-              <span style={{ color: '#fff' }}>商家</span>
-            </Checkbox>
-            <Checkbox onChange={handleChange}>
-              <span style={{ color: '#fff' }}>用户</span>
-            </Checkbox>
+            <div className="radioGroup">
+              <Radio.Group>
+                <Radio
+                  value={1}
+                  style={{ color: '#fff' }}
+                  onChange={handleChange}>
+                  商家
+                </Radio>
+                <Radio
+                  value={2}
+                  style={{ color: '#fff' }}
+                  onChange={handleChange}>
+                  商家
+                </Radio>
+              </Radio.Group>
+            </div>
           </Form.Item>
           <Form.Item>
             <div className="buttonGroup">

@@ -52,14 +52,14 @@ const LayoutItem = () => {
 
   const hanldeOnclick = (item: { key: string }) => {
     const { key } = item;
-    if( Number(key) === 1) {
+    if (Number(key) === 1) {
       history.push('/admin');
-    } else if( Number(key) === 4) {
-      history.push('/storeMessage')
-    } else if( Number(key) === 2) {
-      history.push('./goodsList')
-    } else if( Number(key) === 3) {
-      history.push('/orderlist')
+    } else if (Number(key) === 4) {
+      history.push('/storeMessage');
+    } else if (Number(key) === 2) {
+      history.push('./goodsList');
+    } else if (Number(key) === 3) {
+      history.push('/orderlist');
     }
   };
   return (
