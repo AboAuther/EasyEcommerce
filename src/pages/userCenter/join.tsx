@@ -1,12 +1,12 @@
-/* eslint-disable no-console */
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Drawer, Form, Input, Upload } from 'antd';
+import { DOMAIN } from '@/constants';
 
 const Join = (props: { visible: boolean; closeDraw: () => void }) => {
   const { visible, closeDraw } = props;
 
   const handleSubmit = (value: any) => {
-    console.log(value);
+    // console.log(value);
   };
   return (
     <Drawer visible={visible} onClose={closeDraw} size="large" title="商家申请">
@@ -21,7 +21,10 @@ const Join = (props: { visible: boolean; closeDraw: () => void }) => {
           <Input />
         </Form.Item>
         <Form.Item label="文件上传" name="upLoad" required>
-          <Upload name="logo" action="/upload.do" listType="picture">
+          <Upload
+            name="file"
+            action={`${DOMAIN}/seller/upload`}
+            listType="picture">
             <Button icon={<UploadOutlined />}>
               上传商业许可证即生产环境照片
             </Button>

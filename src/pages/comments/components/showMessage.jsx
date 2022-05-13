@@ -18,9 +18,7 @@ import moment from 'moment';
 // import message from '../mock';
 import '../index.less';
 import axios from 'axios';
-import { useModel } from '@modern-js/runtime/model';
 import { DOMAIN } from '@/constants';
-import stateModel from '@/store/store';
 
 const getData = record => {
   const data = record.map(item => {
@@ -53,7 +51,6 @@ const getData = record => {
 const ShowMessage = () => {
   const [visible, setVisible] = useState(false);
   const [dataSource, setDataSource] = useState([]);
-  const [state, actions] = useModel(stateModel);
   const getSource = async () => {
     await axios.get(`${DOMAIN}/message/board?is_verify=true`).then(res => {
       if (res.data.entity.success) {
@@ -73,11 +70,12 @@ const ShowMessage = () => {
     setVisible(false);
   };
   const handleSubmit = async (value: any) => {
+    const id = localStorage.getItem('userId');
     await axios({
       method: 'post',
       url: `${DOMAIN}/message/addMessage`,
       data: {
-        userID: state.userID,
+        userID: id,
         nickname: 'xiaojun',
         topic: value.topic,
         content: value.content,

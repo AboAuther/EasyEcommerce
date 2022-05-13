@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from '@modern-js/runtime/router';
 import { useModel } from '@modern-js/runtime/model';
+import { SetStateAction, useState } from 'react';
 import bg from '../images/testBg.jpg';
 import { DOMAIN } from '@/constants';
 import stateModel from '@/store/store';
-import { SetStateAction, useState } from 'react';
 
 const LoginPage = styled.div`
   /* height: 100%; */
@@ -34,7 +34,7 @@ const Login = () => {
         const { success } = res.data.entity;
         if (success) {
           actions.setUserId(res.data.entity.data);
-
+          localStorage.setItem('userId', res.data.entity.data);
           history.push('/');
         }
       })
@@ -43,8 +43,8 @@ const Login = () => {
       });
   };
   const handleChange = (e: any) => {
-    setCheckedValue(e.target.checked)
-  }
+    setCheckedValue(e.target.checked);
+  };
   return (
     <div
       style={{
@@ -76,9 +76,13 @@ const Login = () => {
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item  rules={[{ required: true, message: '请选择身份!' }]}>
-           <Checkbox onChange={handleChange}><span style={{color: '#fff'}}>商家</span></Checkbox>
-           <Checkbox onChange={handleChange}><span style={{color: '#fff'}}>用户</span></Checkbox>
+          <Form.Item rules={[{ required: true, message: '请选择身份!' }]}>
+            <Checkbox onChange={handleChange}>
+              <span style={{ color: '#fff' }}>商家</span>
+            </Checkbox>
+            <Checkbox onChange={handleChange}>
+              <span style={{ color: '#fff' }}>用户</span>
+            </Checkbox>
           </Form.Item>
           <Form.Item>
             <div className="buttonGroup">

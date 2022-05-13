@@ -2,10 +2,8 @@ import { Row, Col, Typography, InputNumber, Button, message } from 'antd';
 import React, { Fragment, useState } from 'react';
 import './index.less';
 import axios from 'axios';
-import { useModel } from '@modern-js/runtime/model';
 import BuyDrawer from '@/pages/payment/BuyDrawer';
 import { DOMAIN } from '@/constants';
-import stateModel from '@/store/store';
 
 const CommoditySpecification = (props: {
   basicInfo: {
@@ -21,7 +19,6 @@ const CommoditySpecification = (props: {
   const { Title } = Typography;
   const [visible, setVisible] = useState(false);
   const [num, setNum] = useState(1);
-  const [state, actions] = useModel(stateModel);
   const { basicInfo } = props;
 
   const openDrawer = () => {
@@ -32,11 +29,12 @@ const CommoditySpecification = (props: {
   };
 
   const handleAddCart = async () => {
+    const id = localStorage.getItem('userId');
     await axios({
       method: 'post',
       url: `${DOMAIN}/order/addCart`,
       data: {
-        userID: state.userID,
+        userID: id,
         productId: basicInfo.productId,
         productCoverImg: basicInfo.productCoverImg,
         description: basicInfo.productIntro,

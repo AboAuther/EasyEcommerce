@@ -3,7 +3,6 @@ import './index.less';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useModel } from '@modern-js/runtime/model';
-import { Address } from '../mock';
 import { DOMAIN } from '@/constants';
 import stateModel from '@/store/store';
 
@@ -40,12 +39,13 @@ const AddressModal = (props: {
     mobile: string,
     default: boolean,
   }) => {
+    const id = localStorage.getItem('userId');
     if (isUpdate) {
       await axios({
         method: 'post',
         url: `${DOMAIN}/user/addAddress`,
         data: {
-          createUser: state.userID,
+          createUser: id,
           name: value.name,
           region: value.region,
           detail: value.detail,

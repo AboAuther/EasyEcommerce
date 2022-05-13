@@ -2,25 +2,21 @@ import { PlusOutlined, QuestionCircleFilled } from '@ant-design/icons';
 import { Row, Button, Table, Popconfirm, Popover, message } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useModel } from '@modern-js/runtime/model';
 import AddressModal from './addressModal';
 import { DOMAIN } from '@/constants';
-import stateModel from '@/store/store';
 
 const ReceivingAddress = () => {
   const [visible, setVisible] = useState(false);
   const [address, setAddress] = useState({});
-  const [state, action] = useModel(stateModel);
   const [dataSource, setDataSource] = useState([]);
   useEffect(() => {
     getSource();
   }, []);
   const getSource = async () => {
-    await axios
-      .get(`${DOMAIN}/user/getAddress?userID=${state.userID}`)
-      .then(res => {
-        setDataSource(res.data.entity.data);
-      });
+    const id = localStorage.getItem('userId');
+    await axios.get(`${DOMAIN}/user/getAddress?userID=${id}`).then(res => {
+      setDataSource(res.data.entity.data);
+    });
   };
   const handleChangeMess = (record: Address) => {
     setVisible(true);

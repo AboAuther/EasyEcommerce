@@ -17,12 +17,13 @@ const BuyDrawer = props => {
     getAddressList();
   }, []);
   const handleMakeOrder = async () => {
+    const id = localStorage.getItem('userId');
     await axios({
       method: 'post',
       url: `${DOMAIN}/order/makeOrder`,
       data: {
         extra: {
-          userID: state.userID,
+          userID: id,
           mobile: chosenAddress.mobile,
           userAddress: `${chosenAddress.region}${chosenAddress.detail}`,
         },
