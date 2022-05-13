@@ -6,6 +6,9 @@ import CommodityDetails from './component/CommodityDetails';
 import CommoditySpecification from './component/CommoditySpecification';
 import { DOMAIN } from '@/constants';
 import './index.less';
+import { Alert } from 'antd';
+import noContent from '@/images/noContent.png';
+
 
 const ProductsDetails = ({
   match: {
@@ -27,6 +30,16 @@ const ProductsDetails = ({
   return (
     <div className="dm_Products">
       <HeadSearch currentIndex={'2'} isDisplay={false} />
+      {
+        !localStorage.getItem('userId') ?
+        <div>
+        <Alert description="请登录后查看" type="warning" showIcon closable />
+        <div className="nullPage">
+          <img src={noContent} className="nullImage" />
+        </div>
+      </div>
+      :
+
       <div className="common-with">
         <div className="page-all">
           {message !== undefined && (
@@ -40,6 +53,8 @@ const ProductsDetails = ({
           )}
         </div>
       </div>
+      }
+
     </div>
   );
 };

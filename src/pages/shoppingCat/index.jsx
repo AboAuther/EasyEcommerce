@@ -17,7 +17,7 @@ import './index.less';
 import BuyDrawer from '../paymentByCats/BuyDrawer';
 import axios from 'axios';
 import { DOMAIN } from '@/constants';
-import nullImage from '@/images/nullImage.png';
+import nullImage from '@/images/noContent.png';
 
 const ShoppingCat = () => {
   const [visible, setVisible] = useState(false);

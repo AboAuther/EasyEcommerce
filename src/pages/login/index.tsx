@@ -89,7 +89,7 @@ const Login = () => {
                   value={2}
                   style={{ color: '#fff' }}
                   onChange={handleChange}>
-                  商家
+                  用户
                 </Radio>
               </Radio.Group>
             </div>

@@ -10,7 +10,7 @@ import { useHistory } from '@modern-js/runtime/router';
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
 import './index.less';
-import TableList from './tableList';
+import Release from './release';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -66,7 +66,7 @@ const LayoutItem = () => {
         </div>
         <Menu
           theme="dark"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['3']}
           mode="inline"
           items={items}
           onClick={hanldeOnclick}
@@ -78,7 +78,7 @@ const LayoutItem = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}>
-           <TableList />
+            <Release />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

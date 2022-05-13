@@ -41,6 +41,10 @@ const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.setItem('userId', '');
+  }
+
   return (
     <>
       <Header>
@@ -58,7 +62,9 @@ const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
               </Button>
             </>
           ) : (
-            ''
+            <Button type="text" className="headerButton" onClick={handleLogout}>
+            登出
+          </Button>
           )}
 
           <Button type="text" className="headerButton" href="/orders">
@@ -67,6 +73,8 @@ const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
           <Button type="text" className="headerButton" href="/userCenter">
             个人中心
           </Button>
+
+
         </span>
       </Header>
       <div className="content">

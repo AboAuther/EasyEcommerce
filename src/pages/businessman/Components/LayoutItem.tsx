@@ -10,7 +10,10 @@ import { useHistory } from '@modern-js/runtime/router';
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
 import './index.less';
-import TableList from './tableList';
+import RealTimeOverview from './RealTimeOverview';
+// eslint-disable-next-line import/no-named-as-default
+import Notifications from './Notifications';
+import PerformanceChart from './PerformanceChart';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -42,19 +45,22 @@ const LayoutItem = () => {
   };
 
   const items: MenuItem[] = [
-    getItem('留言审核', '1', <PieChartOutlined />),
-    getItem('商家审核', '2', <DesktopOutlined />),
-    getItem('发布公告', '3', <ContainerOutlined />),
+    getItem('数据', '1', <PieChartOutlined />),
+    getItem('商品列表', '2', <DesktopOutlined />),
+    getItem('订单', '3', <ContainerOutlined />),
+    getItem('店铺信息', '4', <ContainerOutlined />),
   ];
 
   const hanldeOnclick = (item: { key: string }) => {
     const { key } = item;
     if( Number(key) === 1) {
       history.push('/admin');
+    } else if( Number(key) === 4) {
+      history.push('/storeMessage')
     } else if( Number(key) === 2) {
-      history.push('./auditInforamtion')
+      history.push('./goodsList')
     } else if( Number(key) === 3) {
-      history.push('/annouce')
+      history.push('/orderlist')
     }
   };
 
@@ -78,7 +84,9 @@ const LayoutItem = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}>
-           <TableList />
+            <RealTimeOverview />
+            <Notifications />
+            <PerformanceChart />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

@@ -8,10 +8,10 @@ import MessageDialog from "./messageDialog";
 const TableList = () => {
   const [dialogVisile, setDialogVisible] = useState(false);
   const [actionType, setActionType] = useState(1);
-  const [changeproduct, setChangeProduct] = useState<null | object | unknown>(null);
+  const [changeproduct, setChangeProduct] = useState(null);
 
-  const handleOpen = (type : string, record: object | null | unknown) => {
-    if ( type === 'add' && record !== null) {
+  const handleOpen = (type : string, record) => {
+    if ( type === 'add') {
       setActionType(1); // 增加
     } else {
       setActionType(2);// 修改

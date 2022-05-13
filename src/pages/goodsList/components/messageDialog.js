@@ -5,6 +5,7 @@ const MessageDialog = (props) => {
   const { Option } = Select;
   const { visible, handleClose, type, message} = props;
   const [fields, setFields ] = useState([]);
+  console.log(message)
   const handleSubmit = (value) => {
     console.log(value);
   }
@@ -76,7 +77,7 @@ const MessageDialog = (props) => {
             name='pic'
             label='图片'
           >
-           <img src={message.pic} width={100} height={100} style={{display: 'block', margin: '0 0 20px 0'}}/>
+           <img src={message.pic ? message.pic : ''} width={100} height={100} style={{display: 'block', margin: '0 0 20px 0'}}/>
            <Upload  action="/upload.do" listType="picture" maxCount={1}>
               <Button icon={<UpCircleOutlined />} >
                 上传商品图片

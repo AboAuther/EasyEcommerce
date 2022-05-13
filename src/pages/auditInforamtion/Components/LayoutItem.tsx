@@ -66,7 +66,7 @@ const LayoutItem = () => {
         </div>
         <Menu
           theme="dark"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['2']}
           mode="inline"
           items={items}
           onClick={hanldeOnclick}
@@ -78,7 +78,7 @@ const LayoutItem = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}>
-           <TableList />
+            <TableList />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
