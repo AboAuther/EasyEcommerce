@@ -1,97 +1,128 @@
-import { PlusOutlined, PlusSquareFilled } from "@ant-design/icons";
-import { Button, Popconfirm, Table, Tag } from "antd";
-import { text } from "express";
-import { useState } from "react";
+/* eslint-disable no-nested-ternary */
+import { Button, message, Popconfirm, Table, Tag } from 'antd';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 // import './layout.less';
 
-import message from '../mock/index'
+import moment from 'moment';
+// import message from '../mock';
+import { DOMAIN } from '@/constants';
+
 const TableList = () => {
-  const handleComfirm = () => {
-    console.log('1')
-  }
+  const [source, setSource] = useState([]);
+  const handleComfirm = async (text, record) => {
+    // 通过
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/admin/verifyMessage`,
+      data: {
+        id: `${record.ID}`,
+        verify: true,
+      },
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('已通过');
+        getSource();
+      }
+    });
+  };
+  const handleReduseComfirm = async record => {
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/admin/verifyMessage`,
+      data: {
+        id: `${record.ID}`,
+        verify: false,
+      },
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('已拒绝');
+        getSource();
+      }
+    });
+  };
+  const getSource = async () => {
+    await axios.get(`${DOMAIN}/message/board?is_verify=false`).then(res => {
+      if (res.data.entity.success) {
+        setSource(res.data.entity.data);
+      }
+    });
+  };
+  useEffect(() => {
+    getSource();
+  }, []);
   return (
     <div className="real-content">
-      <Table
-            dataSource={message}
-            className="basic-table"
-          >
-            <Table.Column
-              title="留言类型"
-              dataIndex="topic"
-              width={60}
-              key={text => text.id}
-              align="center"
-              render={((record, text) => {
-                return (
-                  <div>
-                  {record === 'praise' ? (
-                    <Tag color="green">表扬👍</Tag>
-                  ) : record === 'critique' ? (
-                    <Tag color="orange">批评一下</Tag>
-                  ) : (
-                    <Tag color="purple">建议</Tag>
-                  )}
-                  </div>
-                )
-              })}
-            />
-            <Table.Column
-              title="留言内容"
-              dataIndex="content"
-              align="center"
-              width={300}
-              key={text => text.id}
-
-            />
-            <Table.Column
-              title="留言用户"
-              dataIndex="nickname"
-              align="center"
-              width={100}
-              key={text => text.id}
-
-            />
-            <Table.Column
-              title="留言时间"
-              dataIndex="create_at"
-              align="center"
-              width={100}
-              key={text => text.id}
-
-            />
-            <Table.Column
-              title="操作"
-              dataIndex="operation"
-              width={100}
-              align="center"
-              key={text => text.id}
-              render={(text, record) => (
-                <>
-                <Popconfirm
+      <Table dataSource={source} className="basic-table">
+        <Table.Column
+          title="留言类型"
+          dataIndex="Topic"
+          width={60}
+          align="center"
+          key={record => record.ID}
+          render={(record, text) => {
+            return (
+              <div>
+                {record === 'praise' ? (
+                  <Tag color="green">表扬👍</Tag>
+                ) : record === 'critique' ? (
+                  <Tag color="orange">批评一下</Tag>
+                ) : (
+                  <Tag color="purple">建议</Tag>
+                )}
+              </div>
+            );
+          }}
+        />
+        <Table.Column
+          title="留言内容"
+          dataIndex="Content"
+          align="center"
+          width={300}
+          key={record => record.ID}
+        />
+        <Table.Column
+          title="留言用户"
+          dataIndex="Nickname"
+          align="center"
+          width={100}
+          key={record => record.ID}
+        />
+        <Table.Column
+          title="留言时间"
+          dataIndex="CreatedAt"
+          align="center"
+          width={150}
+          key={record => record.ID}
+          render={text => moment(text).format('YYYY-MM-DD HH:MM:SS')}
+        />
+        <Table.Column
+          title="操作"
+          dataIndex="operation"
+          width={100}
+          align="center"
+          render={(text, record) => (
+            <>
+              <Popconfirm
                 title="确定通过这条留言吗？"
-                onConfirm={() =>handleComfirm(text)}
+                onConfirm={() => handleComfirm(text, record)}
                 okText="是"
-                cancelText="否"
-                >
-                <Button type="link">
-                    通过
-                  </Button>
-                </Popconfirm>
-                <Popconfirm
+                cancelText="否">
+                <Button type="link">通过</Button>
+              </Popconfirm>
+              <Popconfirm
                 title="确定不通过这条留言吗？"
+                onConfirm={() => handleReduseComfirm(record)}
                 okText="是"
-                cancelText="否"
-                >
-                <Button type="link">
-                    不通过
-                  </Button>
-                </Popconfirm>
-                </>
-              )}
-            />
-          </Table>
+                cancelText="否">
+                <Button type="link">不通过</Button>
+              </Popconfirm>
+            </>
+          )}
+        />
+      </Table>
     </div>
-  )
-}
+  );
+};
 
 export default TableList;

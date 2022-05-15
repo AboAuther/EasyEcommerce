@@ -1,3 +1,4 @@
+/* eslint-disable max-params */
 import { Layout, Menu, MenuProps } from 'antd';
 import {
   DesktopOutlined,
@@ -49,12 +50,12 @@ const LayoutItem = () => {
 
   const hanldeOnclick = (item: { key: string }) => {
     const { key } = item;
-    if( Number(key) === 1) {
+    if (Number(key) === 1) {
       history.push('/admin');
-    } else if( Number(key) === 2) {
-      history.push('./auditInforamtion')
-    } else if( Number(key) === 3) {
-      history.push('/annouce')
+    } else if (Number(key) === 2) {
+      history.push('./auditInforamtion');
+    } else if (Number(key) === 3) {
+      history.push('/annouce');
     }
   };
 
@@ -78,7 +79,7 @@ const LayoutItem = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}>
-           <TableList />
+            <TableList />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

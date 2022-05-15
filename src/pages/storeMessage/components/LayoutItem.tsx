@@ -5,7 +5,7 @@ import {
   PieChartOutlined,
   ContainerOutlined,
 } from '@ant-design/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
 import './layout.less';
@@ -13,6 +13,8 @@ import { useHistory } from '@modern-js/runtime/router';
 import StoreDataMessage from './storeDataMessage';
 import OwnerMessage from './ownerMessage';
 import LicenseMessage from './licenseMessage';
+import axios from 'axios';
+import { DOMAIN } from '@/constants';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -37,7 +39,21 @@ function getItem(
 const LayoutItem = () => {
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
-
+  const [source, setSource] = useState(null);
+  const getSource = async () => {
+    await axios
+      .get(
+        `${DOMAIN}/seller/getMessage?userID=${localStorage.getItem('userId')}`,
+      )
+      .then(res => {
+        if (res.data.entity.success) {
+          setSource(res.data.entity.data);
+        }
+      });
+  };
+  useEffect(() => {
+    getSource();
+  }, []);
   const onCollapse = (collapsed: boolean) => {
     console.log(collapsed);
     setCollapsed(collapsed);
@@ -82,9 +98,9 @@ const LayoutItem = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}>
-            <StoreDataMessage />
-            <OwnerMessage />
-            <LicenseMessage />
+            <StoreDataMessage source={source} />
+            <OwnerMessage source={source} />
+            <LicenseMessage source={source} />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

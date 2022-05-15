@@ -20,31 +20,41 @@ const LoginPage = styled.div`
 const Login = () => {
   const history = useHistory();
   const [, actions] = useModel(stateModel);
-  const [checkdValue, setCheckedValue] = useState();
+  const [checkdValue, setCheckedValue] = useState(undefined);
   const onFinish = async (values: any) => {
-    await axios({
-      method: 'post',
-      url: `${DOMAIN}/user/login`,
-      data: {
-        userID: values.username,
-        password: values.password,
-      },
-    })
-      .then(res => {
-        const { success } = res.data.entity;
-        if (success) {
-          actions.setUserId(res.data.entity.data);
-          localStorage.setItem('userId', res.data.entity.data);
-          history.push('/');
-        }
+    if (checkdValue === undefined) {
+      message.error('请选择身份');
+    } else {
+      await axios({
+        method: 'post',
+        url: `${DOMAIN}/user/login`,
+        data: {
+          userID: values.username,
+          password: values.password,
+          is_seller: checkdValue === 1,
+        },
       })
-      .catch(_ => {
-        message.error('用户名或密码错误，请重新登陆！');
-      });
+        .then(res => {
+          const { success } = res.data.entity;
+          if (success) {
+            actions.setUserId(res.data.entity.data);
+            localStorage.setItem('userId', res.data.entity.data);
+            if (checkdValue === 1) {
+              history.push('/businessman');
+            } else {
+              history.push('/');
+            }
+          }
+        })
+        .catch(_ => {
+          message.error('用户名或密码错误，请重新登陆！');
+        });
+    }
   };
   const handleChange = (e: any) => {
-    setCheckedValue(e.target.checked);
+    setCheckedValue(e.target.value);
   };
+
   return (
     <div
       style={{
@@ -76,23 +86,23 @@ const Login = () => {
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item rules={[{ required: true, message: '请选择身份!' }]}>
-            <div className="radioGroup">
-              <Radio.Group>
-                <Radio
-                  value={1}
-                  style={{ color: '#fff' }}
-                  onChange={handleChange}>
-                  商家
-                </Radio>
-                <Radio
-                  value={2}
-                  style={{ color: '#fff' }}
-                  onChange={handleChange}>
-                  用户
-                </Radio>
-              </Radio.Group>
-            </div>
+          <Form.Item rules={[{ required: true, message: '请输入密码!' }]}>
+            {/* <div className="radioGroup"> */}
+            <Radio.Group style={{ margin: '0  105px' }}>
+              <Radio
+                value={1}
+                style={{ color: '#fff' }}
+                onChange={handleChange}>
+                商家
+              </Radio>
+              <Radio
+                value={2}
+                style={{ color: '#fff' }}
+                onChange={handleChange}>
+                用户
+              </Radio>
+            </Radio.Group>
+            {/* </div> */}
           </Form.Item>
           <Form.Item>
             <div className="buttonGroup">

@@ -1,113 +1,127 @@
-import { PlusOutlined, PlusSquareFilled } from "@ant-design/icons";
-import { Button, Image, Popconfirm, Table, Tag } from "antd";
-import { text } from "express";
-import { useState } from "react";
+/* eslint-disable no-shadow */
+import { PlusOutlined, PlusSquareFilled } from '@ant-design/icons';
+import { Button, Image, message, Popconfirm, Table } from 'antd';
+import axios from 'axios';
+import { text } from 'express';
+import { useEffect, useState } from 'react';
 // import './layout.less';
 
-import message from '../mock/index'
+import { DOMAIN } from '@/constants';
+
 const TableList = () => {
-  const handleComfirm = () => {
-    console.log('1')
-  }
+  const [source, setSource] = useState([]);
+  useEffect(() => {
+    getSource();
+  }, []);
+  const getSource = async () => {
+    await axios.get(`${DOMAIN}/admin/getSeller`).then(res => {
+      if (res.data.entity.success) {
+        setSource(res.data.entity.data);
+      }
+    });
+  };
+  const handleComfirm = async record => {
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/admin/verifySeller`,
+      data: {
+        id: record.userID,
+        verify: true,
+      },
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('审核成功！');
+        getSource();
+      }
+    });
+  };
+
+  const handleRefuseComfirm = async record => {
+    await axios({
+      method: 'post',
+      url: `${DOMAIN}/admin/verifySeller`,
+      data: {
+        id: record.userID,
+        verify: false,
+      },
+    }).then(res => {
+      if (res.data.entity.success) {
+        message.success('拒绝成功');
+        getSource();
+      }
+    });
+  };
   return (
     <div className="real-content">
-      <Table
-            dataSource={message}
-            className="basic-table"
-          >
-            <Table.Column
-              title="店长昵称"
-              dataIndex="name"
-              width={100}
-              key={text => text.id}
-              align="center"
-            />
-            <Table.Column
-              title="身份证号"
-              dataIndex="userId"
-              align="center"
-              width={150}
-              key={text => text.id}
-
-            />
-            <Table.Column
-              title="详细地址"
-              dataIndex="address"
-              align="center"
-              width={120}
-              key={text => text.id}
-
-            />
-            <Table.Column
-              title="营业执照"
-              dataIndex="businessLicense"
-              align="center"
-              width={100}
-              render={(text, record) => {
-                return (
-                  <Image
-                  width={100}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
-                  preview={{
-                    src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                  }}
-                />
-                )
-              }}
-
-            />
-              <Table.Column
-              title="卫生许可证"
-              dataIndex="healthPermit"
-              align="center"
-              width={100}
-              key={text => text.id}
-              render={(text, record) => {
-                return (
-                  <Image
-                  width={100}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
-                  preview={{
-                    src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                  }}
-                />
-                )
-              }}
-
-            />
-            <Table.Column
-              title="操作"
-              dataIndex="operation"
-              width={100}
-              align="center"
-              key={text => text.id}
-              render={(text, record) => (
-                <>
-                <Popconfirm
+      <Table dataSource={source} className="basic-table">
+        <Table.Column
+          title="店铺名称"
+          dataIndex="shopName"
+          width={100}
+          key={text => text.id}
+          align="center"
+        />
+        <Table.Column
+          title="身份证号"
+          dataIndex="identity"
+          align="center"
+          width={150}
+          key={text => text.id}
+        />
+        <Table.Column
+          title="详细地址"
+          dataIndex="registerAddress"
+          align="center"
+          width={120}
+          key={text => text.id}
+        />
+        <Table.Column
+          title="营业执照"
+          dataIndex="licenseUrl"
+          align="center"
+          width={100}
+          render={text => {
+            return <Image width={100} src={text} />;
+          }}
+        />
+        <Table.Column
+          title="卫生许可证"
+          dataIndex="hygieneUrl"
+          align="center"
+          width={100}
+          key={text => text.id}
+          render={text => {
+            return <Image width={100} src={text} />;
+          }}
+        />
+        <Table.Column
+          title="操作"
+          dataIndex="operation"
+          width={100}
+          align="center"
+          key={text => text.id}
+          render={(text, record) => (
+            <>
+              <Popconfirm
                 title="确定通过这条留言吗？"
-                onConfirm={() =>handleComfirm(text)}
+                onConfirm={() => handleComfirm(record)}
                 okText="是"
-                cancelText="否"
-                >
-                <Button type="link">
-                    通过
-                  </Button>
-                </Popconfirm>
-                <Popconfirm
+                cancelText="否">
+                <Button type="link">通过</Button>
+              </Popconfirm>
+              <Popconfirm
                 title="确定不通过这条留言吗？"
+                onConfirm={() => handleRefuseComfirm(record)}
                 okText="是"
-                cancelText="否"
-                >
-                <Button type="link">
-                    不通过
-                  </Button>
-                </Popconfirm>
-                </>
-              )}
-            />
-          </Table>
+                cancelText="否">
+                <Button type="link">不通过</Button>
+              </Popconfirm>
+            </>
+          )}
+        />
+      </Table>
     </div>
-  )
-}
+  );
+};
 
 export default TableList;

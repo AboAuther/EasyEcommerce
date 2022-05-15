@@ -1,11 +1,11 @@
-import LayoutItem from "./componetns/LayoutItem";
+import LayoutItem from './componetns/LayoutItem';
 
 const GoodsList = () => {
   return (
-   <div>
-     <LayoutItem/>
-   </div>
-  )
-}
+    <div>
+      <LayoutItem />
+    </div>
+  );
+};
 
 export default GoodsList;

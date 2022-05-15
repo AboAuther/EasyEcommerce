@@ -1,8 +1,8 @@
 import { Row, Col } from 'antd';
-import StoreMessage from '../mock';
 import './layout.less';
 
-const StoreDataMessage = () => {
+const OwnerMessage = props => {
+  const { source } = props;
   const styles = {
     dataItem: {
       display: 'flex',
@@ -40,6 +40,7 @@ const StoreDataMessage = () => {
       margin: '0 0 19px 0 ',
     },
   };
+
   return (
     <div className="real-content">
       <span>
@@ -53,33 +54,13 @@ const StoreDataMessage = () => {
               alt=""
               style={styles.dataItemImg}
             />
-            <div className="dataItemUnitShop">
-              <div style={styles.unitTitle}>商店名称</div>
-              <div style={styles.shopItem}>{StoreMessage[0].storeName}</div>
+            <div className="dataItemOwner">
+              <div style={styles.unitTitle}>身份证号码</div>
+              <div style={styles.shopItem}>{source?.identity}</div>
             </div>
-            <div className="dataItemUnitShop">
-              <div style={styles.unitTitle}>注册时间</div>
-              <div style={styles.shopItem}>{StoreMessage[0].regimes}</div>
-            </div>
-          </div>
-        </Col>
-        <Col span={12}>
-          <div style={styles.dataItem}>
-            <img
-              src={require('./images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png')}
-              alt=""
-              style={styles.dataItemImg}
-            />
-            <div className="dataItemUnitShop">
-              <div style={styles.unitTitle}>店长昵称</div>
-              <div style={styles.shopItem}>{StoreMessage[0].ownerName}</div>
-            </div>
-            <div className="dataItemUnitShop">
-              <div style={styles.unitTitle}>门店总销售额</div>
-              <div style={styles.unitAmount}>
-                ¥ {StoreMessage[0].amountSales}
-              </div>
-              <div style={styles.unitFooter}>昨日：¥ 32000</div>
+            <div className="dataItemOwner">
+              <div style={styles.unitTitle}>联系方式</div>
+              <div style={styles.shopItem}>{source?.mobile}</div>
             </div>
           </div>
         </Col>
@@ -90,9 +71,9 @@ const StoreDataMessage = () => {
               alt=""
               style={styles.dataItemImg}
             />
-            <div className="dataItemUnitShop">
-              <div style={styles.unitTitle}>注册地址</div>
-              <div style={styles.shopItem}>{StoreMessage[0].address}</div>
+            <div className="dataItemOwner">
+              <div style={styles.unitTitle}>个人地址</div>
+              <div style={styles.shopItem}>{source?.address}</div>
             </div>
           </div>
         </Col>
@@ -101,4 +82,4 @@ const StoreDataMessage = () => {
   );
 };
 
-export default StoreDataMessage;
+export default OwnerMessage;

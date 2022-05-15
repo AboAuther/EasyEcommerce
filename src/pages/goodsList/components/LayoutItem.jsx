@@ -12,11 +12,12 @@ import {
 import { useState } from 'react';
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
-const { Header, Content, Footer, Sider } = Layout;
 import './layout.less'
 
 import { useHistory } from '@modern-js/runtime/router';
 import TableList from './tableList';
+
+const { Header, Content, Footer, Sider } = Layout;
 
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -58,7 +59,7 @@ const LayoutItem = () => {
   const hanldeOnclick = (item: { key: string; }) => {
     const { key } = item;
     if( Number(key) === 1) {
-      history.push('/admin');
+      history.push('/businessman');
     } else if( Number(key) === 4) {
       history.push('/storeMessage')
     } else if( Number(key) === 2) {

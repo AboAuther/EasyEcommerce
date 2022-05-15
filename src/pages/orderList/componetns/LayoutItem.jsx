@@ -1,22 +1,21 @@
-import { Layout, Menu, Breadcrumb, MenuProps } from 'antd';
+/* eslint-disable no-shadow */
+/* eslint-disable no-undef */
+import { Layout, Menu, MenuProps } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
   ContainerOutlined,
-  MailOutlined,
-  AppstoreOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
+import { useHistory } from '@modern-js/runtime/router';
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
-const { Header, Content, Footer, Sider } = Layout;
+import TableList from './tableList';
+
 import './layout.less'
 
-import { useHistory } from '@modern-js/runtime/router';
-import TableList from './tablelist';
+
+const { Header, Content, Footer, Sider } = Layout;
 
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -44,7 +43,6 @@ const LayoutItem = () => {
   const history = useHistory();
 
   const onCollapse = (collapsed: boolean) => {
-    console.log(collapsed);
     setCollapsed(collapsed);
   };
 
@@ -58,7 +56,7 @@ const LayoutItem = () => {
   const hanldeOnclick = (item: { key: string; }) => {
     const { key } = item;
     if( Number(key) === 1) {
-      history.push('/admin');
+      history.push('/businessman');
     } else if( Number(key) === 4) {
       history.push('/storeMessage')
     } else if( Number(key) === 2) {

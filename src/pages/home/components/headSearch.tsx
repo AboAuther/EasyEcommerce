@@ -1,7 +1,7 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/order */
-import { Button, Menu, Input, Layout } from 'antd';
+import { Button, Menu, Input, Layout, message } from 'antd';
 import { Link, NavLink, useHistory } from '@modern-js/runtime/router';
 import styled from '@modern-js/runtime/styled';
 import logoDark from './images/logoDark.jpeg';
@@ -43,7 +43,9 @@ const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
 
   const handleLogout = () => {
     localStorage.setItem('userId', '');
-  }
+    message.success('成功退出！');
+    history.push('/');
+  };
 
   return (
     <>
@@ -63,8 +65,8 @@ const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
             </>
           ) : (
             <Button type="text" className="headerButton" onClick={handleLogout}>
-            登出
-          </Button>
+              登出
+            </Button>
           )}
 
           <Button type="text" className="headerButton" href="/orders">
@@ -73,8 +75,6 @@ const HeadSearch = (props: { currentIndex: string; isDisplay: boolean }) => {
           <Button type="text" className="headerButton" href="/userCenter">
             个人中心
           </Button>
-
-
         </span>
       </Header>
       <div className="content">
