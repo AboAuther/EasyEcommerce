@@ -1,5 +1,6 @@
 import { Row, Col } from 'antd';
 import './index.less';
+
 export const Notifications = () => {
   const styles = {
     noticeItem: {
@@ -34,7 +35,7 @@ export const Notifications = () => {
         <Col span="12">
           <div style={styles.noticeItem}>
             <div style={styles.noticeItemTitle}>订单相关</div>
-            <div className='noticeItemBody'>
+            <div className="noticeItemBody">
               <div style={styles.bodyItem}>
                 待发货订单：<a href="#">100</a>
               </div>
@@ -48,7 +49,7 @@ export const Notifications = () => {
         <Col span="12">
           <div style={styles.noticeItem}>
             <div style={styles.noticeItemTitle}>物流信息</div>
-            <div className='noticeItemBody'>
+            <div className="noticeItemBody">
               <div style={styles.bodyItem}>
                 已完成：<a href="#">100</a>
               </div>
@@ -65,38 +66,12 @@ export const Notifications = () => {
         <Col span="12">
           <div style={styles.noticeItem}>
             <div style={styles.noticeItemTitle}>商品相关</div>
-            <div className='noticeItemBody' >
+            <div className="noticeItemBody">
               <div style={styles.bodyItem}>
                 门店在售：<a href="#">100</a>
               </div>
               <div style={styles.bodyItem}>
                 门店售罄：<a href="#">0</a>
-              </div>
-              <div style={styles.bodyItem}>
-                库存预警：<a href="#">0</a>
-              </div>
-              <div style={styles.bodyItem}>
-                网店在售：<a href="#">0</a>
-              </div>
-              <div style={styles.bodyItem}>
-                网店售罄：<a href="#">0</a>
-              </div>
-            </div>
-          </div>
-        </Col>
-
-        <Col span="12">
-          <div style={styles.noticeItem}>
-            <div style={styles.noticeItemTitle}>通知消息</div>
-            <div className='noticeItemBody'>
-              <div style={styles.bodyItem}>
-                未读客户消息：<a href="#">100</a>
-              </div>
-              <div style={styles.bodyItem}>
-                未读通知：<a href="#">0</a>
-              </div>
-              <div style={styles.bodyItem}>
-                系统通知：<a href="#">0</a>
               </div>
             </div>
           </div>

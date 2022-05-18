@@ -9,8 +9,8 @@ const TopicNotice = props => {
   return topicNotice !== null ? (
     <div className="topicContent">
       <img src={topic} width={700} height={300} className="topicBg" />
-      <h1 className="web-font">{topicNotice.Title}</h1>
-      <div className="topic-show">{topicNotice.Content}</div>
+      <h1 className="web-font">{topicNotice.title}</h1>
+      <div className="topic-show">{topicNotice.content}</div>
       <div className="topic-time">
         {moment(topicNotice.CreatedAt).format('YYYY-MM-DD')}
       </div>

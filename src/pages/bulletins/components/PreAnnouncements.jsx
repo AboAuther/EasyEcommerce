@@ -15,8 +15,8 @@ const PreAnnouncements = props => {
           <img src={bg} width={300} height={310} className="bgImg" />
           {noticeLeft !== null ? (
             <div className="noticeContent">
-              <div className="noticeTitle">{noticeLeft.Title}</div>
-              <div className="showContent">{noticeLeft.Content}</div>
+              <div className="noticeTitle">{noticeLeft.title}</div>
+              <div className="showContent">{noticeLeft.content}</div>
               <div className="createTime">
                 {moment(noticeLeft.CreatedAt).format('YYYY-MM-DD')}
               </div>
@@ -29,8 +29,8 @@ const PreAnnouncements = props => {
           <img src={bg} width={300} height={310} className="bgImg" />
           {noticeRight !== null ? (
             <div className="noticeContent">
-              <div className="noticeTitle">{noticeRight.Title}</div>
-              <div className="showContent">{noticeRight.Content}</div>
+              <div className="noticeTitle">{noticeRight.title}</div>
+              <div className="showContent">{noticeRight.content}</div>
               <div className="createTime">
                 {moment(noticeRight.CreatedAt).format('YYYY-MM-DD')}
               </div>

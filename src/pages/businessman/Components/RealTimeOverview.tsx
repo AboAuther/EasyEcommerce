@@ -59,21 +59,6 @@ const RealTimeOverview = () => {
         </Col>
         <Col span="12">
           <div style={styles.dataItem}>
-            <img src={pic} alt="" style={styles.dataItemImg} />
-            <div style={styles.dataItemUnit} className="content">
-              <div style={styles.unitTitle}>网店销售额(元)</div>
-              <div style={styles.unitAmount}>381.00</div>
-              <div style={styles.unitFooter}>昨日：123.00</div>
-            </div>
-            <div style={styles.dataItemUnit} className="content">
-              <div style={styles.unitTitle}>网店支付订单数</div>
-              <div style={styles.unitAmount}>120</div>
-              <div style={styles.unitFooter}>昨日：128</div>
-            </div>
-          </div>
-        </Col>
-        <Col span="12">
-          <div style={styles.dataItem}>
             <img src={pic2} alt="" style={styles.dataItemImg} />
             <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>新增客户数</div>
@@ -84,21 +69,6 @@ const RealTimeOverview = () => {
               <div style={styles.unitTitle}>支付客户数</div>
               <div style={styles.unitAmount}>96</div>
               <div style={styles.unitFooter}>昨日：90</div>
-            </div>
-          </div>
-        </Col>
-        <Col span="12">
-          <div style={styles.dataItem}>
-            <img src={pic2} alt="" style={styles.dataItemImg} />
-            <div style={styles.dataItemUnit} className="content">
-              <div style={styles.unitTitle}>新增会员数</div>
-              <div style={styles.unitAmount}>89</div>
-              <div style={styles.unitFooter}>昨日：78</div>
-            </div>
-            <div style={styles.dataItemUnit} className="content">
-              <div style={styles.unitTitle}>新增储值金额(元)</div>
-              <div style={styles.unitAmount}>568.00</div>
-              <div style={styles.unitFooter}>昨日：693.00</div>
             </div>
           </div>
         </Col>

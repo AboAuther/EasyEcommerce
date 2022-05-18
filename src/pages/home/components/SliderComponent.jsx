@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
-import Recommend from './Recomment/recommend';
 
 const SliderComponent = () => {
   const [nav1, setNav1] = useState(null);

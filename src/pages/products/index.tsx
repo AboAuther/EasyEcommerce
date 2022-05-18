@@ -15,18 +15,16 @@ import stateModel from '@/store/store';
 
 const Product = () => {
   const current = 1;
-  const total = 10;
-  const pageSize = 8;
   const { Meta } = Card;
   const { Title } = Typography;
-  // const [filter, setFilter] = useState({});
   const [productsList, setProductsList] = useState([]);
-  // const [map, setMap] = useState({});
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [state, actions] = useModel(stateModel);
+  const [state] = useModel(stateModel);
   const [searchList, setSearchList] = useState(state.allList);
   const [classify, setClassify] = useState<number>();
   const [price, setPrice] = useState<number>();
+  const total = productsList.length;
+  const pageSize = total;
+
   useEffect(() => {
     const getList = async () => {
       await axios.get(`${DOMAIN}/product/listByCategory`).then(res => {

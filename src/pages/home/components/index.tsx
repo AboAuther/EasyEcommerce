@@ -10,7 +10,8 @@ const Container = () => (
     <HeadSearch currentIndex="1" isDisplay={false} />
     <HomeContent />
     <Footer style={{ textAlign: 'center' }}>
-      <img src={logoIcon} className='lightLogo'/>©2022 Created by Arthur
+      <img src={logoIcon} className="lightLogo" />
+      ©2022 Created by Arthur
     </Footer>
   </Layout>
 );

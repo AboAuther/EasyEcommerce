@@ -1,5 +1,5 @@
 import { Carousel } from 'antd';
-import './index.less';
+// import './index.less';
 import styled from 'styled-components';
 import { get as banner } from '@api/banner';
 import { useEffect, useState } from 'react';

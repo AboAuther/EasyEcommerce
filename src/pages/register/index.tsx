@@ -1,4 +1,4 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
@@ -10,6 +10,7 @@ import {
 import './index.less';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useHistory } from '@modern-js/runtime/router';
 import bg from '../images/testBg.jpg';
 import { DOMAIN } from '@/constants';
 
@@ -28,12 +29,13 @@ const LoginPage = styled.div`
   justify-content: center;
 `;
 const Register = () => {
+  const history = useHistory();
   const onFinish = async (values: FinishValue) => {
     await axios({
       method: 'post',
       url: `${DOMAIN}/user/register`,
       data: {
-        username: values.username,
+        userID: values.username,
         nickName: values.nickname,
         mobile: values.phone,
         password: values.password,
@@ -41,7 +43,12 @@ const Register = () => {
         address: values.detail,
       },
     }).then(res => {
-      console.log(res);
+      if (res.data.entity.success) {
+        message.success('注册成功');
+        history.push('./login');
+      } else {
+        message.error('注册失败');
+      }
     });
   };
   return (

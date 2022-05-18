@@ -153,9 +153,15 @@ const Orders = () => {
                     title="图片"
                     dataIndex="productImg"
                     key="productImg"
-                    width="34%"
+                    width="300px"
+                    align="center"
                     render={text => (
-                      <img className="imgs_style" src={text} alt={text} />
+                      <img
+                        className="imgs_style"
+                        src={text}
+                        alt={text}
+                        width={240}
+                      />
                     )}
                   />
                   <Column
@@ -163,35 +169,38 @@ const Orders = () => {
                     dataIndex="description"
                     key="description"
                     align="center"
-                    width="34%"
+                    width="300px"
                   />
                   <Column
                     title="单价"
                     dataIndex="productPrice"
                     key="productPrice"
                     align="center"
-                    width="10%"
+                    width="90px"
                   />
                   <Column
                     title="数量"
                     dataIndex="productNum"
                     key="productNum"
                     align="center"
-                    width="14%"
+                    width="90px"
                   />
                   <Column
                     title="小计"
                     dataIndex="totalPrice"
                     key="totalPrice"
                     align="center"
-                    width="16%"
+                    width="100px"
+                    render={text =>
+                      text ? `￥${parseFloat(text).toFixed(2)}` : 0
+                    }
                   />
                   <Column
                     title="操作"
                     dataIndex="operation"
                     key="operation"
                     align="center"
-                    width="200px"
+                    width="100px"
                     render={(text, record) => (
                       <>
                         {record.evaluationStatus ? (

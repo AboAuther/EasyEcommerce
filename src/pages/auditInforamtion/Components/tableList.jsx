@@ -103,14 +103,14 @@ const TableList = () => {
           render={(text, record) => (
             <>
               <Popconfirm
-                title="确定通过这条留言吗？"
+                title="确定通过吗？"
                 onConfirm={() => handleComfirm(record)}
                 okText="是"
                 cancelText="否">
                 <Button type="link">通过</Button>
               </Popconfirm>
               <Popconfirm
-                title="确定不通过这条留言吗？"
+                title="确定不通过吗？"
                 onConfirm={() => handleRefuseComfirm(record)}
                 okText="是"
                 cancelText="否">

@@ -39,13 +39,12 @@ const AddressModal = (props: {
     mobile: string,
     default: boolean,
   }) => {
-    const id = localStorage.getItem('userId');
     if (isUpdate) {
       await axios({
         method: 'post',
         url: `${DOMAIN}/user/addAddress`,
         data: {
-          createUser: id,
+          createUser: localStorage.getItem('userId'),
           name: value.name,
           region: value.region,
           detail: value.detail,
@@ -65,7 +64,7 @@ const AddressModal = (props: {
         method: 'post',
         url: `${DOMAIN}/user/addAddress`,
         data: {
-          createUser: state.userID,
+          createUser: localStorage.getItem('userId'),
           name: value.name,
           region: value.region,
           detail: value.detail,

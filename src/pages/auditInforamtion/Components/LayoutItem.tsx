@@ -49,12 +49,12 @@ const LayoutItem = () => {
 
   const hanldeOnclick = (item: { key: string }) => {
     const { key } = item;
-    if( Number(key) === 1) {
+    if (Number(key) === 1) {
       history.push('/admin');
-    } else if( Number(key) === 2) {
-      history.push('./auditInforamtion')
-    } else if( Number(key) === 3) {
-      history.push('/annouce')
+    } else if (Number(key) === 2) {
+      history.push('./auditInforamtion');
+    } else if (Number(key) === 3) {
+      history.push('/annouce');
     }
   };
 

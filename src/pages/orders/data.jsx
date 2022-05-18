@@ -7,14 +7,15 @@ export const columns: ColumnsType<OrdersData> = [
     title: '图片',
     dataIndex: 'mainPicture',
     key: 'mainPicture',
-    width: '30%',
+    width: '300px',
+    align: 'center',
   },
   {
     title: '商品详情',
     dataIndex: 'description',
     key: 'description',
     align: 'center',
-    width: '32%',
+    width: '300px',
     render: (text, record) => (
       <Button type="text" href={`/products/${record.key}`}>
         <span title={text}>{text}</span>
@@ -26,7 +27,7 @@ export const columns: ColumnsType<OrdersData> = [
     dataIndex: 'price',
     key: 'price',
     align: 'center',
-    width: '10%',
+    width: '90px',
     render: text => (Number(text) ? `￥${Number(text).toFixed(2)}` : 0),
   },
   {
@@ -34,7 +35,7 @@ export const columns: ColumnsType<OrdersData> = [
     dataIndex: 'num',
     key: 'num',
     align: 'center',
-    width: '12%',
+    width: '90px',
     render: text => `x${text}`,
   },
   {
@@ -42,7 +43,7 @@ export const columns: ColumnsType<OrdersData> = [
     dataIndex: 'totalprice',
     key: 'totalprice',
     align: 'center',
-    width: '8%',
+    width: '100px',
     render: text => (text ? `￥${parseFloat(text).toFixed(2)}` : 0),
   },
   {
@@ -50,8 +51,8 @@ export const columns: ColumnsType<OrdersData> = [
     dataIndex: 'operation',
     key: 'operation',
     align: 'center',
-    // fixed: 'right',
-    width: '200px',
+    fixed: 'right',
+    width: '100px',
     render: (text, record) => (
       <>
         <Button type="link">详情</Button>

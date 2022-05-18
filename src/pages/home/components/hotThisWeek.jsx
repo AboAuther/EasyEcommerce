@@ -1,12 +1,9 @@
 import './index.less';
 import { Row, Card, Typography } from 'antd';
-// import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { Link } from '@modern-js/runtime/router';
-// import { productsList } from './mock';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import banana from './images/banana.webp';
 import { DOMAIN } from '@/constants';
 
 const HotThisWeek = () => {

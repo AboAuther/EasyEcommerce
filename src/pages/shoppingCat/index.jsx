@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+/* eslint-disable max-statements */
 import {
   Button,
   Checkbox,
@@ -11,11 +13,11 @@ import {
   Alert,
 } from 'antd';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Icon from '@ant-design/icons';
 import HeadSearch from '../home/components/headSearch';
 import './index.less';
 import BuyDrawer from '../paymentByCats/BuyDrawer';
-import axios from 'axios';
 import { DOMAIN } from '@/constants';
 import nullImage from '@/images/noContent.png';
 
@@ -24,6 +26,9 @@ const ShoppingCat = () => {
   const [changeVisible, setChangeVisible] = useState(-1);
   const [source, setSource] = useState([]);
   const [chosenMap, setChosenMap] = useState({});
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalNum, setTotalNum] = useState(0);
+  const [settleFlag, setSettlementFlag] = useState(false);
   const getSource = async () => {
     const id = localStorage.getItem('userId');
     await axios.get(`${DOMAIN}/order/getCart?userID=${id}`).then(res => {
@@ -35,6 +40,21 @@ const ShoppingCat = () => {
   useEffect(() => {
     getSource();
   }, []);
+  useEffect(() => {
+    if (settleFlag === false) {
+      const result = chosenMap;
+      if (Object.keys(result).length !== 0) {
+        Object.keys(result).forEach(item => {
+          result[item] = source.filter(goods => goods.ID === Number(item));
+        });
+      }
+      chosenBuy(result);
+      setChosenMap(result);
+      handleTotal(result);
+    } else {
+      setChosenMap({});
+    }
+  }, [source]);
   const openDialog = () => {
     setVisible(true);
   };
@@ -64,13 +84,16 @@ const ShoppingCat = () => {
     });
   };
   const handleMakeOrder = () => {
-    if (source.length !== 0) {
+    if (source.length !== 0 && Object.keys(chosenMap).length !== 0) {
       openDialog();
+    } else if (Object.keys(chosenMap).length === 0) {
+      message.error('请勾选商品后结算！');
     } else {
       message.error('加入购物车后，才可结算哦');
     }
   };
   const handleDeleteCart = async id => {
+    const result = chosenMap;
     // 删除单个
     await axios({
       method: 'post',
@@ -78,6 +101,8 @@ const ShoppingCat = () => {
       data: [{ id }],
     }).then(res => {
       if (res.data.entity.success) {
+        delete result[id];
+        setChosenMap(result);
         message.success('商品删除成功！');
         getSource();
       } else {
@@ -89,11 +114,20 @@ const ShoppingCat = () => {
   const handleChosen = id => {
     const result = chosenMap;
     if (!result[id]) {
-      result[id] = true;
+      result[id] = source.filter(item => item.ID === id);
     } else {
       delete result[id];
     }
     setChosenMap(result);
+    handleTotal(result);
+  };
+  const chosenBuy = map => {
+    const tarArr = [];
+    Object.keys(map).length !== 0 &&
+      Object.keys(map).forEach(item => {
+        tarArr.push(map[item][0]);
+      });
+    return tarArr;
   };
   const handleDeleteSomeCarts = async () => {
     // 批量删除
@@ -107,10 +141,35 @@ const ShoppingCat = () => {
       }),
     }).then(res => {
       if (res.data.entity.success) {
+        setChosenMap({});
         message.success('删除成功！');
         getSource();
       }
     });
+  };
+  const handleTotal = map => {
+    let total = 0;
+    let size = 0;
+    if (Object.keys(map) !== 0) {
+      const chosenList = chosenBuy(map);
+      const priceList = chosenList.map(item => {
+        return {
+          total: item.productPrice * item.productNum,
+          size: item.productNum,
+        };
+      });
+      priceList.forEach(item => {
+        total += item.total;
+        size += item.size;
+      });
+      setTotalPrice(total);
+      setTotalNum(size);
+    }
+  };
+
+  const changeSettlement = value => {
+    console.log(value);
+    setSettlementFlag(value);
   };
 
   const columns: ColumnsType<Data> = [
@@ -183,7 +242,7 @@ const ShoppingCat = () => {
       key: 'operation',
       align: 'center',
       width: '148px',
-      render: (text, record, index) => (
+      render: (text, record) => (
         <div className="operation">
           <Popconfirm
             title="你确定要删除这条数据？"
@@ -205,17 +264,11 @@ const ShoppingCat = () => {
       ),
     },
   ];
+
   const footer = () => {
-    let total = 0;
-    let size = 0;
-    const priceList = source.map(item => ({
-      total: item.productPrice * item.productNum,
-      size: item.productNum,
-    }));
-    priceList.forEach(item => {
-      total += item.total;
-      size += item.size;
-    });
+    const total = totalPrice;
+    const size = totalNum;
+
     return (
       <>
         <Row>
@@ -238,12 +291,16 @@ const ShoppingCat = () => {
           visible={visible}
           onClose={closeDialog}
           total={total}
-          shoppingCatsList={source}
+          shoppingCatsList={
+            Object.keys(chosenMap).length === 0 ? [] : chosenBuy(chosenMap)
+          }
           getSource={getSource}
+          changeSettlement={value => changeSettlement(value)}
         />
       </>
     );
   };
+
   return (
     <div className="content">
       <div className="orderHead">
@@ -270,7 +327,7 @@ const ShoppingCat = () => {
                 columns={columns}
                 dataSource={source}
                 pagination={false}
-                footer={() => footer()}
+                footer={() => footer(chosenMap)}
                 bordered={true}
                 rowKey={record => record.ID}
               />

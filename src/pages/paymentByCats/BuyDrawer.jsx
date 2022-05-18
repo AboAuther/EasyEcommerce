@@ -2,6 +2,7 @@ import { Button, Drawer, message, Space } from 'antd';
 import './buyDrawer.less';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useHistory } from '@modern-js/runtime/router';
 import AddressMenu from './AddressMenu';
 import MessageChosen from './MessageChosen';
 import { DOMAIN } from '@/constants';
@@ -15,32 +16,38 @@ const BuyDrawer = props => {
     shoppingCatsList,
     total,
     getSource,
+    changeSettlement,
   } = props;
   const [addressList, setAddressList] = useState();
   const [chosenAddress, setChosenAddress] = useState();
+  const history = useHistory();
   useEffect(() => {
     getAddressList();
   }, []);
   const handleMakeOrder = async () => {
     const id = localStorage.getItem('userId');
-    await axios({
-      method: 'post',
-      url: `${DOMAIN}/order/makeOrder`,
-      data: {
-        extra: {
-          userID: id,
-          mobile: chosenAddress.mobile,
-          userAddress: `${chosenAddress.region}${chosenAddress.detail}`,
+    if (chosenAddress !== undefined) {
+      await axios({
+        method: 'post',
+        url: `${DOMAIN}/order/makeOrder`,
+        data: {
+          extra: {
+            userID: id,
+            mobile: chosenAddress.mobile,
+            userAddress: `${chosenAddress.region}${chosenAddress.detail}`,
+          },
+          products: handleBasicInfo(shoppingCatsList),
         },
-        products: handleBasicInfo(shoppingCatsList),
-      },
-    }).then(res => {
-      if (res.data.entity.success) {
-        message.success('购买成功');
-        onClose();
-        deleteCart();
-      }
-    });
+      }).then(res => {
+        if (res.data.entity.success) {
+          message.success('购买成功');
+          onClose();
+          deleteCart();
+        }
+      });
+    } else {
+      message.error('请先选择地址！');
+    }
   };
   const handleBasicInfo = content => {
     const tar =
@@ -77,6 +84,7 @@ const BuyDrawer = props => {
       if (!res.data.entity.success) {
         message.error('刷新失败！');
       } else {
+        changeSettlement(true);
         getSource();
       }
     });
@@ -87,15 +95,25 @@ const BuyDrawer = props => {
     await axios.get(`${DOMAIN}/user/getAddress?userID=${id}`).then(res => {
       if (res.data.entity.success) {
         const { data } = res.data.entity;
-        setAddressList(data);
-        setChosenAddress(data.find(item => item.default === true));
+        if (data.length !== 0) {
+          const defaultAddress = data.find(item => item.default === true);
+          setAddressList(data);
+          setChosenAddress(
+            defaultAddress === undefined ? data[0] : defaultAddress,
+          );
+        } else {
+          message.error('请先选择地址！');
+        }
       }
     });
   };
   const handleChangeAddress = content => {
     setChosenAddress(content);
   };
-
+  const handleAddAddress = () => {
+    history.push('userCenter');
+    message.info('请选择收货地址，添加地址');
+  };
   return (
     <Drawer
       title="结算"
@@ -111,10 +129,20 @@ const BuyDrawer = props => {
           </Button>
         </Space>
       }>
-      <AddressMenu
-        addressSource={addressList}
-        changeAddress={content => handleChangeAddress(content)}
-      />
+      {addressList !== undefined && addressList.length !== 0 ? (
+        <AddressMenu
+          addressSource={addressList}
+          changeAddress={content => handleChangeAddress(content)}
+        />
+      ) : (
+        <Button
+          type="primary"
+          className="addAddress"
+          onClick={handleAddAddress}>
+          添加地址
+        </Button>
+      )}
+
       {basicInfo !== undefined && num !== undefined ? (
         <>
           <MessageChosen basicInfo={basicInfo} num={num} />
