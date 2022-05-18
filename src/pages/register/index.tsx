@@ -82,7 +82,6 @@ const Register = () => {
           </Form.Item>
           <Form.Item
             name="password"
-            // label="Password"
             rules={[
               {
                 required: true,
@@ -90,7 +89,6 @@ const Register = () => {
                 min: 6,
                 max: 20,
                 message: '密码长度应为 6-10 位',
-                // len: 10,
               },
             ]}
             hasFeedback={true}>
@@ -102,7 +100,6 @@ const Register = () => {
 
           <Form.Item
             name="confirm"
-            // label="Confirm Password"
             dependencies={['password']}
             hasFeedback={true}
             rules={[

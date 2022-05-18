@@ -1,7 +1,5 @@
 import { Carousel } from 'antd';
-// import './index.less';
 import styled from 'styled-components';
-import { get as banner } from '@api/banner';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from '@modern-js/runtime/router';

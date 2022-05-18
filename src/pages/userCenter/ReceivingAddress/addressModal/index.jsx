@@ -2,9 +2,7 @@ import { Modal, Form, Row, Col, Input, Radio, Button, message } from 'antd';
 import './index.less';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useModel } from '@modern-js/runtime/model';
 import { DOMAIN } from '@/constants';
-import stateModel from '@/store/store';
 
 const AddressModal = (props: {
   visible: boolean | undefined,
@@ -14,7 +12,6 @@ const AddressModal = (props: {
 }) => {
   const { visible, handleCancel, address, getAddress } = props;
   const [form] = Form.useForm();
-  const [state, actions] = useModel(stateModel);
   const [isUpdate, setIsUpdate] = useState(false);
   useEffect(() => {
     if (Object.keys(address).length === 0) {
@@ -89,7 +86,6 @@ const AddressModal = (props: {
       width={800}
       title="添加收货地址"
       visible={visible}
-      // onOk={value => handleOk(value)}
       onCancel={handleCancel}
       destroyOnClose={true}
       footer={null}

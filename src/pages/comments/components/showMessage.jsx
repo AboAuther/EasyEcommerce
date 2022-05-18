@@ -15,7 +15,6 @@ import {
 } from 'antd';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
-// import message from '../mock';
 import '../index.less';
 import axios from 'axios';
 import { DOMAIN } from '@/constants';

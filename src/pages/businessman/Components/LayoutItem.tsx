@@ -4,9 +4,10 @@ import {
   PieChartOutlined,
   ContainerOutlined,
 } from '@ant-design/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from '@modern-js/runtime/router';
 
+import axios from 'axios';
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
 import './index.less';
@@ -14,6 +15,7 @@ import RealTimeOverview from './RealTimeOverview';
 // eslint-disable-next-line import/no-named-as-default
 import Notifications from './Notifications';
 import PerformanceChart from './PerformanceChart';
+import { DOMAIN } from '@/constants';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -37,8 +39,24 @@ function getItem(
 
 const LayoutItem = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [saleData, setSaleData] = useState(null);
 
   const history = useHistory();
+  const getSource = async () => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      await axios
+        .get(`${DOMAIN}/seller/getSaleMessage?userID=${userId}`)
+        .then(res => {
+          if (res.data.entity.success) {
+            setSaleData(res.data.entity.data);
+          }
+        });
+    }
+  };
+  useEffect(() => {
+    getSource();
+  }, []);
 
   const onCollapse = (tar: boolean) => {
     setCollapsed(tar);
@@ -84,9 +102,9 @@ const LayoutItem = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}>
-            <RealTimeOverview />
-            <Notifications />
-            <PerformanceChart />
+            <RealTimeOverview data={saleData} />
+            <Notifications data={saleData} />
+            <PerformanceChart data={saleData} />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

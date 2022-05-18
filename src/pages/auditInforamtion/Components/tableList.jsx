@@ -1,11 +1,6 @@
-/* eslint-disable no-shadow */
-import { PlusOutlined, PlusSquareFilled } from '@ant-design/icons';
 import { Button, Image, message, Popconfirm, Table } from 'antd';
 import axios from 'axios';
-import { text } from 'express';
 import { useEffect, useState } from 'react';
-// import './layout.less';
-
 import { DOMAIN } from '@/constants';
 
 const TableList = () => {

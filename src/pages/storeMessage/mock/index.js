@@ -8,5 +8,3 @@ const StoreMessage = [
   },
 ];
 export default StoreMessage;
-
-

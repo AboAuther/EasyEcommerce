@@ -2,8 +2,10 @@ import { Row, Col } from 'antd';
 import './index.less';
 import pic from './images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png';
 import pic2 from './images/TB1Py4_ceuSBuNjy1XcXXcYjFXa-142-140.png';
+import picAdd from './images/TB1Ni4_ceuSBuNjy1XcXXcYjFXa-142-140.png';
 
-const RealTimeOverview = () => {
+const RealTimeOverview = (props: { data: any }) => {
+  const { data } = props;
   const styles = {
     dataItem: {
       display: 'flex',
@@ -20,7 +22,6 @@ const RealTimeOverview = () => {
       height: '72px',
       display: 'flex',
       flexBasis: '50%',
-      // flexDirection: 'column',
       justifyContent: 'space-between',
     },
     unitTitle: {
@@ -42,33 +43,33 @@ const RealTimeOverview = () => {
         <p className="title">实时概况</p>
       </span>
       <Row wrap>
-        <Col span="12">
+        <Col span="6" offset={2}>
           <div style={styles.dataItem}>
             <img src={pic} alt="" style={styles.dataItemImg} />
             <div style={styles.dataItemUnit} className="content">
               <div style={styles.unitTitle}>门店销售额(元)</div>
-              <div style={styles.unitAmount}>982.00</div>
-              <div style={styles.unitFooter}>昨日：680.00</div>
-            </div>
-            <div style={styles.dataItemUnit} className="content">
-              <div style={styles.unitTitle}>门店支付订单数</div>
-              <div style={styles.unitAmount}>80</div>
-              <div style={styles.unitFooter}>昨日：60</div>
+              <div style={styles.unitAmount}>{data?.totalPrice}</div>
+              <div style={styles.unitFooter}>昨日：{data?.yesterdayPrice}</div>
             </div>
           </div>
         </Col>
-        <Col span="12">
+        <Col span="6" offset={2}>
+          <div style={styles.dataItem}>
+            <img src={picAdd} alt="" style={styles.dataItemImg} />
+            <div style={styles.dataItemUnit} className="content">
+              <div style={styles.unitTitle}>门店支付订单数</div>
+              <div style={styles.unitAmount}>{data?.totalOrders}</div>
+              <div style={styles.unitFooter}>昨日：{data?.yesterdayOrders}</div>
+            </div>
+          </div>
+        </Col>
+        <Col span="6" offset={2}>
           <div style={styles.dataItem}>
             <img src={pic2} alt="" style={styles.dataItemImg} />
             <div style={styles.dataItemUnit} className="content">
-              <div style={styles.unitTitle}>新增客户数</div>
-              <div style={styles.unitAmount}>182</div>
-              <div style={styles.unitFooter}>昨日：123</div>
-            </div>
-            <div style={styles.dataItemUnit} className="content">
-              <div style={styles.unitTitle}>支付客户数</div>
-              <div style={styles.unitAmount}>96</div>
-              <div style={styles.unitFooter}>昨日：90</div>
+              <div style={styles.unitTitle}>今日活跃客户</div>
+              <div style={styles.unitAmount}>{data?.totalUsers}</div>
+              <div style={styles.unitFooter}>昨日：{data?.yesterdayUsers}</div>
             </div>
           </div>
         </Col>

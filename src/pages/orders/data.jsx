@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Popconfirm } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
@@ -59,11 +59,6 @@ export const columns: ColumnsType<OrdersData> = [
         <Popconfirm
           title="你确定要删除这条数据？"
           icon={<QuestionCircleOutlined />}
-          // onConfirm={() => {
-          //   state.deleteOrderData({
-          //     id: orderId,
-          //   });
-          // }}
           okText="是"
           cancelText="否">
           <span style={{ color: '#1890ff' }}>删除</span>

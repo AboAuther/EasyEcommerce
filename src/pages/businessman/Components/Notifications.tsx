@@ -1,11 +1,11 @@
 import { Row, Col } from 'antd';
 import './index.less';
 
-export const Notifications = () => {
+export const Notifications = (props: { data: any }) => {
+  const { data } = props;
   const styles = {
     noticeItem: {
       display: 'flex',
-      // flexDirection: 'column',
       flexBasis: '50%',
       padding: '20px',
     },
@@ -16,7 +16,6 @@ export const Notifications = () => {
     },
     noticeItemBody: {
       display: 'flex',
-      // flexWrap: 'wrap',
     },
     bodyItem: {
       display: 'flex',
@@ -32,46 +31,29 @@ export const Notifications = () => {
         <p className="title">重要提醒</p>
       </span>
       <Row wrap>
-        <Col span="12">
+        <Col span="10" offset={2}>
           <div style={styles.noticeItem}>
             <div style={styles.noticeItemTitle}>订单相关</div>
             <div className="noticeItemBody">
               <div style={styles.bodyItem}>
-                待发货订单：<a href="#">100</a>
+                订单总数：<a href="#">{data?.allOrders}</a>
               </div>
               <div style={styles.bodyItem}>
-                待处理退款：<a href="#">0</a>
+                待处理退款：<a href="#">{data?.rejectOrders}</a>
               </div>
             </div>
           </div>
         </Col>
 
-        <Col span="12">
-          <div style={styles.noticeItem}>
-            <div style={styles.noticeItemTitle}>物流信息</div>
-            <div className="noticeItemBody">
-              <div style={styles.bodyItem}>
-                已完成：<a href="#">100</a>
-              </div>
-              <div style={styles.bodyItem}>
-                派送中：<a href="#">0</a>
-              </div>
-              <div style={styles.bodyItem}>
-                退货中：<a href="#">0</a>
-              </div>
-            </div>
-          </div>
-        </Col>
-
-        <Col span="12">
+        <Col span="10" offset={2}>
           <div style={styles.noticeItem}>
             <div style={styles.noticeItemTitle}>商品相关</div>
             <div className="noticeItemBody">
               <div style={styles.bodyItem}>
-                门店在售：<a href="#">100</a>
+                门店在售：<a href="#">{data?.saleNum}</a>
               </div>
               <div style={styles.bodyItem}>
-                门店售罄：<a href="#">0</a>
+                门店售罄：<a href="#">{data?.saleOutNum}</a>
               </div>
             </div>
           </div>

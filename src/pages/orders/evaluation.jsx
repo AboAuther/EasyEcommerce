@@ -8,15 +8,7 @@ import { DOMAIN } from '@/constants';
 const Title = styled.p`
   font-size: 18px;
 `;
-const Evalution = (
-  props,
-  //   : {
-  //   visible: boolean;
-  //   handleOk: () => void;
-  //   handleCancel: () => void;
-  //   modalText: Object<>;
-  // }
-) => {
+const Evalution = props => {
   const [form] = Form.useForm();
   const {
     visible,

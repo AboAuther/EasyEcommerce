@@ -37,7 +37,6 @@ const Login = () => {
         .then(res => {
           const { success } = res.data.entity;
           if (success) {
-            actions.setUserId(res.data.entity.data);
             localStorage.setItem('userId', res.data.entity.data);
             if (checkdValue === 1) {
               history.push('/businessman');

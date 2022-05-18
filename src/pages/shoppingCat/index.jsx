@@ -168,7 +168,6 @@ const ShoppingCat = () => {
   };
 
   const changeSettlement = value => {
-    console.log(value);
     setSettlementFlag(value);
   };
 

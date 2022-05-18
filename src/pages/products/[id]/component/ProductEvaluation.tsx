@@ -16,7 +16,7 @@ interface type {
   star: number | undefined;
   CreatedAt: string;
 }
-const CommodityEvaluation = ({ comment }: any) => {
+const ProductEvaluation = ({ comment }: any) => {
   const data = comment
     ? comment.map((item: type) => ({
         author: item.createUser,
@@ -64,4 +64,4 @@ const CommodityEvaluation = ({ comment }: any) => {
     </div>
   );
 };
-export default CommodityEvaluation;
+export default ProductEvaluation;

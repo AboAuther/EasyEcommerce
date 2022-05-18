@@ -38,14 +38,6 @@ const Product = () => {
     setSearchList(state.allList);
   }, [state.allList]);
 
-  // const handleList = () => { // 分页
-  //   const len = productsList.length;
-  //   const pre = Math.ceil(len / 10);
-  //   for(let i = 0; i < pre; i++) {
-  //     const arr = len
-  //   }
-  // }
-
   const handleFileClick = async (value: number) => {
     setPrice(undefined);
     setClassify(value);
@@ -83,9 +75,9 @@ const Product = () => {
   return (
     <div className="dm_Products">
       <HeadSearch currentIndex="2" isDisplay={false} />
-
       <div className="common_width">
         <div className="page-all">
+          {/* 商品筛选 */}
           <div className="filter_title">
             <h1>商品筛选</h1>
             <span className="total">
@@ -96,8 +88,10 @@ const Product = () => {
               件商品
             </span>
           </div>
+          {/* 商品分类 */}
           <div className="filter_condition">
             <Fragment>
+              {/* 分类 */}
               <Row>
                 <Col span={2}>分类: </Col>
                 <Col span={22}>
@@ -113,6 +107,8 @@ const Product = () => {
                   ))}
                 </Col>
               </Row>
+
+              {/* 价格 */}
               <Row>
                 <Col span={2}>价格: </Col>
                 <Col span={22}>
@@ -131,6 +127,7 @@ const Product = () => {
               </Row>
             </Fragment>
           </div>
+          {/* 商品元素 */}
           {tarArr !== null ? (
             tarArr.length > 0 ? (
               <Row className="all_products">

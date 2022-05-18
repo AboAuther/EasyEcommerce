@@ -2,10 +2,7 @@
 import { Button, message, Popconfirm, Table, Tag } from 'antd';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-// import './layout.less';
-
 import moment from 'moment';
-// import message from '../mock';
 import { DOMAIN } from '@/constants';
 
 const TableList = () => {
@@ -60,7 +57,7 @@ const TableList = () => {
           width={60}
           align="center"
           key={record => record.ID}
-          render={(record, text) => {
+          render={record => {
             return (
               <div>
                 {record === 'praise' ? (

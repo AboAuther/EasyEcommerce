@@ -1,8 +1,8 @@
 import { Tabs } from 'antd';
-import CommodityEvaluation from './CommodityEvaluation';
+import ProductEvaluation from './ProductEvaluation';
 import './index.less';
 
-const CommodityDetails = ({ comment, basicInfo } : any) => {
+const ProductDetails = ({ comment, basicInfo }: any) => {
   const { TabPane } = Tabs;
   return (
     <div className="CommodityDetails">
@@ -18,11 +18,11 @@ const CommodityDetails = ({ comment, basicInfo } : any) => {
           )}
         </TabPane>
         <TabPane tab={<span className="tab_title">商品评价</span>} key={2}>
-          <CommodityEvaluation comment={comment} />
+          <ProductEvaluation comment={comment} />
         </TabPane>
       </Tabs>
     </div>
   );
 };
 
-export default CommodityDetails;
+export default ProductDetails;

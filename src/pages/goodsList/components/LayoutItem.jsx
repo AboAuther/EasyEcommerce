@@ -1,20 +1,17 @@
-import { Layout, Menu, Breadcrumb, MenuProps } from 'antd';
+/* eslint-disable no-undef */
+import { Layout, Menu, MenuProps } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
   ContainerOutlined,
-  MailOutlined,
-  AppstoreOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
+import { useHistory } from '@modern-js/runtime/router';
+
 import logo from '../../home/components/images/logoDark.jpeg';
 import logoLight from '../../home/components/images/logoLight.jpg';
 import './layout.less'
 
-import { useHistory } from '@modern-js/runtime/router';
 import TableList from './tableList';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -44,9 +41,8 @@ const LayoutItem = () => {
 
   const history = useHistory();
 
-  const onCollapse = (collapsed: boolean) => {
-    console.log(collapsed);
-    setCollapsed(collapsed);
+  const onCollapse = (props: boolean) => {
+    setCollapsed(props);
   };
 
   const items: MenuItem[] = [

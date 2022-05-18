@@ -4,15 +4,16 @@ export const data = [
     value: 301,
     category: '本月',
   },
-  {
-    day: '2021-4-10',
-    value: 290,
-    category: '上个月',
-  },
+
   {
     day: '2021-4-11',
     value: 500,
     category: '本月',
+  },
+  {
+    day: '2021-4-10',
+    value: 290,
+    category: '上个月',
   },
   {
     day: '2021-4-11',

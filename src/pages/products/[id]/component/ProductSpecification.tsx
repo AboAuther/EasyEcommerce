@@ -5,7 +5,7 @@ import axios from 'axios';
 import BuyDrawer from '@/pages/payment/BuyDrawer';
 import { DOMAIN } from '@/constants';
 
-const CommoditySpecification = (props: {
+const ProductSpecification = (props: {
   basicInfo: {
     productCoverImg: string;
     productName: string;
@@ -128,4 +128,4 @@ const CommoditySpecification = (props: {
   );
 };
 
-export default CommoditySpecification;
+export default ProductSpecification;
