@@ -2,17 +2,16 @@ import { Button, Drawer, message, Space } from 'antd';
 import './buyDrawer.less';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useModel } from '@modern-js/runtime/model';
+import { useHistory } from '@modern-js/runtime/router';
 import AddressMenu from './AddressMenu';
 import MessageChosen from './MessageChosen';
 import { DOMAIN } from '@/constants';
-import stateModel from '@/store/store';
 
 const BuyDrawer = props => {
   const { visible, onClose, basicInfo, num, shoppingCatsList, total } = props;
   const [addressList, setAddressList] = useState();
-  const [state, actions] = useModel(stateModel);
   const [chosenAddress, setChosenAddress] = useState();
+  const history = useHistory();
   useEffect(() => {
     getAddressList();
   }, []);
@@ -53,7 +52,7 @@ const BuyDrawer = props => {
   };
   const getAddressList = async () => {
     await axios
-      .get(`${DOMAIN}/user/getAddress?userID=${state.userID}`)
+      .get(`${DOMAIN}/user/getAddress?userID=${localStorage.getItem('userId')}`)
       .then(res => {
         if (res.data.entity.success) {
           const { data } = res.data.entity;
@@ -64,6 +63,10 @@ const BuyDrawer = props => {
   };
   const handleChangeAddress = content => {
     setChosenAddress(content);
+  };
+  const handleAddAddress = () => {
+    history.push('userCenter');
+    message.info('请选择收货地址，添加地址');
   };
   return (
     <Drawer
@@ -80,10 +83,20 @@ const BuyDrawer = props => {
           </Button>
         </Space>
       }>
-      <AddressMenu
-        addressSource={addressList}
-        changeAddress={content => handleChangeAddress(content)}
-      />
+      {addressList !== undefined && addressList.length !== 0 ? (
+        <AddressMenu
+          addressSource={addressList}
+          changeAddress={content => handleChangeAddress(content)}
+        />
+      ) : (
+        <Button
+          type="primary"
+          className="addAddress"
+          onClick={handleAddAddress}>
+          添加地址
+        </Button>
+      )}
+
       {basicInfo !== undefined && num !== undefined ? (
         <>
           <MessageChosen basicInfo={basicInfo} num={num} />

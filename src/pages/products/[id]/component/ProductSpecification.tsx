@@ -5,17 +5,17 @@ import axios from 'axios';
 import BuyDrawer from '@/pages/payment/BuyDrawer';
 import { DOMAIN } from '@/constants';
 
-const ProductSpecification = (props: {
-  basicInfo: {
-    productCoverImg: string;
-    productName: string;
-    productIntro: string;
-    sellingPrice: number;
-    categoryId: number;
-    productId: string;
-    description: string;
-  };
-}) => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+interface productStruct {
+  productCoverImg: string;
+  productName: string;
+  productIntro: string;
+  sellingPrice: number;
+  categoryId: number;
+  productId: string;
+  description: string;
+}
+const ProductSpecification = (props: { basicInfo: productStruct }) => {
   const { Title } = Typography;
   const [visible, setVisible] = useState(false);
   const [num, setNum] = useState(1);
@@ -27,7 +27,6 @@ const ProductSpecification = (props: {
   const closeDrawer = () => {
     setVisible(false);
   };
-
   const handleAddCart = async () => {
     const id = localStorage.getItem('userId');
     if (!id) {
@@ -53,24 +52,24 @@ const ProductSpecification = (props: {
       });
     }
   };
+
   return (
-    <div className="CommoditySpecification">
+    <div className="ProductSpecification">
       {basicInfo !== undefined ? (
         <Row>
+          {/* 商品图片 */}
           <Col span={8}>
-            <dl>
-              <dt>
-                {
-                  <img
-                    src={basicInfo.productCoverImg}
-                    alt="loading..."
-                    width={300}
-                    height={320}
-                  />
-                }
-              </dt>
-            </dl>
+            {
+              <img
+                src={basicInfo.productCoverImg}
+                alt="loading..."
+                width={300}
+                height={320}
+              />
+            }
           </Col>
+
+          {/* 商品信息 */}
           <Col span={16}>
             <Title level={4}>
               {basicInfo !== undefined ? basicInfo.productName : '敬请期待~~~'}
@@ -98,7 +97,7 @@ const ProductSpecification = (props: {
                 </Col>
               </Row>
               <Row className="handleButton">
-                <Col span={22}>
+                <Col span={16}>
                   <Button
                     type="primary"
                     size="large"

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/no-unused-prop-types */
 import { DownCircleTwoTone, EnvironmentTwoTone } from '@ant-design/icons';
 import { Dropdown, Menu } from 'antd';
@@ -18,7 +19,9 @@ const AddressMenu = (props: {
   const { addressSource, changeAddress } = props;
   const chosenAddress =
     addressSource !== undefined
-      ? addressSource.find(item => item.default === true)
+      ? addressSource.find(item => item.default === true) === undefined
+        ? addressSource[0]
+        : addressSource.find(item => item.default === true)
       : undefined;
   const [defaultAddress, setDefaultAddress] = useState(chosenAddress);
   const handleClick = (id: string) => {
