@@ -114,6 +114,10 @@ const Login = () => {
               <a href="/register" className=" register">
                 新用户注册
               </a>
+              <a href="/register" className=" register">
+                忘记密码
+              </a>
+
             </div>
           </Form.Item>
         </Form>
