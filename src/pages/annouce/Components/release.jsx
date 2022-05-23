@@ -24,7 +24,7 @@ const Release = () => {
   return (
     <div className="formContent">
       <Form onFinish={onFinish} form={form}>
-        <Form.Item name="title" label="公告题目">
+        <Form.Item name="title" label="公告标题">
           <Input />
         </Form.Item>
         <Form.Item name="content" label="公告内容">

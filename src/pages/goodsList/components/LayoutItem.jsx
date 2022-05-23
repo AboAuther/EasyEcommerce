@@ -46,9 +46,9 @@ const LayoutItem = () => {
   };
 
   const items: MenuItem[] = [
-    getItem('数据', '1', <PieChartOutlined />),
+    getItem('销售数据', '1', <PieChartOutlined />),
     getItem('商品列表', '2', <DesktopOutlined />),
-    getItem('订单', '3', <ContainerOutlined />),
+    getItem('已售订单', '3', <ContainerOutlined />),
     getItem('店铺信息', '4', <ContainerOutlined />),
   ];
 
@@ -77,6 +77,7 @@ const LayoutItem = () => {
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+              {/* 内容 */}
               <TableList />
             </div>
           </Content>

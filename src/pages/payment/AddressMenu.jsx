@@ -28,7 +28,6 @@ const AddressMenu = (props: {
     const chosen = addressSource.find(
       (address: { ID: number }) => address.ID === Number(id),
     );
-
     setDefaultAddress(chosen);
     handleChosenChange(chosen);
   };

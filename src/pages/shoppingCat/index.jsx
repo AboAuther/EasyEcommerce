@@ -131,21 +131,25 @@ const ShoppingCat = () => {
   };
   const handleDeleteSomeCarts = async () => {
     // 批量删除
-    await axios({
-      method: 'post',
-      url: `${DOMAIN}/order/deleteCart`,
-      data: Object.keys(chosenMap).map(item => {
-        return {
-          id: Number(item),
-        };
-      }),
-    }).then(res => {
-      if (res.data.entity.success) {
-        setChosenMap({});
-        message.success('删除成功！');
-        getSource();
-      }
-    });
+    if (Object.keys(chosenMap).length === 0) {
+      message.error('请选择商品！');
+    } else {
+      await axios({
+        method: 'post',
+        url: `${DOMAIN}/order/deleteCart`,
+        data: Object.keys(chosenMap).map(item => {
+          return {
+            id: Number(item),
+          };
+        }),
+      }).then(res => {
+        if (res.data.entity.success) {
+          setChosenMap({});
+          message.success('删除成功！');
+          getSource();
+        }
+      });
+    }
   };
   const handleTotal = map => {
     let total = 0;

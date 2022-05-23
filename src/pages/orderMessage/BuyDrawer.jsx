@@ -16,6 +16,8 @@ const OrderDrawer = props => {
       placement="right"
       size="default"
       onClose={onClose}
+      mask={true}
+      maskStyle={{ backgroundColor: ' rgba(0, 0, 0, 0.1)' }}
       visible={visible}>
       <AddressMenu addressSource={shoppingCatsList} />
       {shoppingCatsList?.map((item, index) => (

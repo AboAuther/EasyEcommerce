@@ -44,7 +44,7 @@ const OwnerMessage = props => {
   return (
     <div className="real-content">
       <span>
-        <p className="title">门店详情</p>
+        <p className="title">个人信息</p>
       </span>
       <Row wrap>
         <Col span={12}>

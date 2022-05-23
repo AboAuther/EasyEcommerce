@@ -1,10 +1,9 @@
 import { Row, Col } from 'antd';
-import StoreMessage from '../mock';
 import './layout.less';
+import moment from 'moment';
 import shopName from './images/shopName.png';
 import pic1 from './images/TB1iFKccamWBuNjy1XaXXXCbXXa-140-140.png';
 import address from './images/storeAddress.png';
-import moment from 'moment';
 
 const StoreDataMessage = (props: { source: any }) => {
   const { source } = props;
@@ -24,7 +23,6 @@ const StoreDataMessage = (props: { source: any }) => {
       height: '72px',
       display: 'flex',
       flexBasis: '50%',
-      // flexDirection: 'column',
       justifyContent: 'space-between',
     },
     unitTitle: {

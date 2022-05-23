@@ -10,7 +10,6 @@ const AddressMenu = props => {
         <div className="address">
           <div className="addressContent">
             <span>{addressSource[0].userAddress}</span>
-            {/* <span>{defaultAddress?.detail}</span> */}
           </div>
           <div className="userContent">
             {`${addressSource[0].userId}  `}

@@ -39,12 +39,7 @@ const Evalution = props => {
     });
   };
   return (
-    <Modal
-      title="评价"
-      footer={null}
-      visible={visible}
-      onOk={handleOk}
-      onCancel={handleCancel}>
+    <Modal title="评价" footer={null} visible={visible} onCancel={handleCancel}>
       <Title>{title}</Title>
       <Form onFinish={handleSubmit} form={form}>
         <Form.Item

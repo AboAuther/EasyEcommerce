@@ -11,7 +11,7 @@ export const Notifications = (props: { data: any }) => {
     },
     noticeItemTitle: {
       marginBottom: '10px',
-      fontSize: '14px',
+      fontSize: '15px',
       color: '#333',
     },
     noticeItemBody: {

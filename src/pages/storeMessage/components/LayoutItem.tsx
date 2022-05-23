@@ -55,14 +55,13 @@ const LayoutItem = () => {
     getSource();
   }, []);
   const onCollapse = (collapsed: boolean) => {
-    console.log(collapsed);
     setCollapsed(collapsed);
   };
 
   const items: MenuItem[] = [
-    getItem('数据', '1', <PieChartOutlined />),
+    getItem('销售数据', '1', <PieChartOutlined />),
     getItem('商品列表', '2', <DesktopOutlined />),
-    getItem('订单', '3', <ContainerOutlined />),
+    getItem('已售订单', '3', <ContainerOutlined />),
     getItem('店铺信息', '4', <ContainerOutlined />),
   ];
 
@@ -100,7 +99,7 @@ const LayoutItem = () => {
             style={{ padding: 24, minHeight: 360 }}>
             <StoreDataMessage source={source} />
             <OwnerMessage source={source} />
-            <LicenseMessage source={source} />
+            <LicenseMessage source={source} getSource={getSource} />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
